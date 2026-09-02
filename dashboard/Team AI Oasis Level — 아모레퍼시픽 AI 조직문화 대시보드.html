@@ -1,0 +1,1408 @@
+<!DOCTYPE html>
+<!-- saved from url=(0227)file:///C:/Users/%EA%B9%80%EB%AF%BC%EC%8A%B9/OneDrive/%EB%AC%B8%EC%84%9C/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/Team_AI_Oasis_Level_%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C_16%20(1).html#home -->
+<html lang="ko"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Team AI Oasis Level — 아모레퍼시픽 AI 조직문화 대시보드</title>
+<meta name="description" content="팀의 AI 활용이 업무와 협업 방식에 어느 단계까지 정착되었는지를 5단계로 보여주는 지표, Team AI Oasis Level의 산정 방식과 전사 대시보드.">
+<link rel="preconnect" href="https://fonts.googleapis.com/">
+<link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="">
+<link href="./Team AI Oasis Level — 아모레퍼시픽 AI 조직문화 대시보드_files/css2" rel="stylesheet">
+<style>
+:root {
+  --bg: #FFFFFF;
+  --surface: #FFFFFF;
+  --surface-2: #F4F4F2;
+  --ink: #1C1C1A;
+  --ink-soft: #5A5A56;
+  --ink-faint: #8F8F8A;
+  --brand: #2E5C46;
+  --brand-deep: #1D3E2E;
+  --brand-soft: #E2E9E0;
+  --rose: #B9836E;
+  --gold: #AD8A4E;
+  --line: #E4E4E0;
+  --line-soft: #EFEFEC;
+
+  --nav-bg: #0A0A0A;
+  --nav-text: #F2F2F0;
+  --nav-text-dim: #8F8F8A;
+
+  --l1: #C9B79C;
+  --l2: #9CB37E;
+  --l3: #5E9B6E;
+  --l4: #2E5C46;
+  --l5: #1C6B63;
+
+  --sans: "Noto Sans KR", -apple-system, sans-serif;
+  --display: "Poppins", "Noto Sans KR", sans-serif;
+
+  --radius: 14px;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  font-weight: 400;
+  line-height: 1.6;
+  word-break: keep-all;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+}
+
+.grain {
+  position: fixed; inset: 0; pointer-events: none; z-index: 999;
+  opacity: 0.025; mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+h1, h2, h3 { font-family: var(--sans); font-weight: 600; color: var(--brand-deep); margin: 0; letter-spacing: -0.01em; }
+em { font-style: normal; color: var(--brand); font-weight: 500; }
+a { color: inherit; text-decoration: none; }
+
+/* ---------- Nav ---------- */
+.nav {
+  position: sticky; top: 0; z-index: 50;
+  background: var(--nav-bg);
+}
+.nav-inner {
+  max-width: 1180px; margin: 0 auto; padding: 14px 32px;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px; flex-wrap: wrap;
+}
+.word-link { display: block; }
+.word-main { font-family: var(--display); font-size: 17px; letter-spacing: 0.07em; font-weight: 500; color: var(--nav-text); white-space: nowrap; }
+.word-main em { font-weight: 300; letter-spacing: 0.07em; color: var(--nav-text-dim); }
+.word-sub { display: block; font-size: 10.5px; color: var(--nav-text-dim); letter-spacing: 0.06em; margin-top: 3px; white-space: nowrap; font-family: var(--sans); }
+
+.nav-right { display: flex; align-items: center; gap: 4px; }
+.nav-divider { width: 1px; height: 20px; background: rgba(255,255,255,0.25); margin: 0 8px; }
+.icon-btn {
+  display: flex; align-items: center; justify-content: center; width: 38px; height: 38px;
+  border-radius: 50%; border: none; background: none; color: var(--nav-text); cursor: pointer;
+  transition: background 0.15s;
+}
+.icon-btn:hover { background: rgba(255,255,255,0.1); }
+
+.search-wrap { position: relative; }
+.search-panel {
+  position: absolute; top: 48px; right: 0; width: 320px; background: var(--surface);
+  border: 1px solid var(--line); border-radius: 12px; box-shadow: 0 20px 40px -20px rgba(0,0,0,0.3);
+  padding: 10px; z-index: 60;
+}
+.search-panel input {
+  width: 100%; font-family: var(--sans); font-size: 14px; padding: 10px 12px; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--surface-2); color: var(--ink);
+}
+.search-results { max-height: 280px; overflow-y: auto; margin-top: 6px; }
+.search-result-item {
+  display: flex; justify-content: space-between; align-items: center; padding: 9px 10px; border-radius: 8px;
+  cursor: pointer; font-size: 13px;
+}
+.search-result-item:hover { background: var(--surface-2); }
+.search-result-item .sr-type { font-size: 10.5px; color: var(--ink-faint); background: var(--surface-2); padding: 2px 7px; border-radius: 10px; }
+.search-empty { padding: 10px; font-size: 12.5px; color: var(--ink-faint); }
+
+/* ---------- Slide-in menu ---------- */
+.menu-overlay {
+  position: fixed; inset: 0; background: rgba(20,26,18,0.4); z-index: 70;
+  opacity: 0; transition: opacity 0.25s;
+}
+.menu-overlay.is-open { opacity: 1; }
+.menu-panel {
+  position: fixed; top: 0; right: 0; height: 100%; width: min(420px, 88vw);
+  background: var(--surface); z-index: 80; box-shadow: -20px 0 50px -20px rgba(0,0,0,0.25);
+  transform: translateX(100%); transition: transform 0.3s ease;
+  display: flex; flex-direction: column;
+}
+.menu-panel.is-open { transform: translateX(0); }
+.menu-panel-head { display: flex; align-items: center; justify-content: space-between; padding: 22px 28px; border-bottom: 1px solid var(--line); }
+.menu-word { font-size: 18px; }
+.menu-list { flex: 1; padding: 8px 28px; overflow-y: auto; }
+.menu-item {
+  display: flex; align-items: center; justify-content: space-between; width: 100%;
+  background: none; border: none; border-bottom: 1px solid var(--line-soft); padding: 20px 2px;
+  font-family: var(--sans); font-size: 16px; font-weight: 500; color: var(--ink); cursor: pointer; text-align: left;
+}
+.menu-item:hover { color: var(--brand); }
+.menu-item svg { color: var(--ink-faint); flex-shrink: 0; }
+.menu-panel-foot { padding: 20px 28px; font-size: 11.5px; color: var(--ink-faint); border-top: 1px solid var(--line); }
+
+/* ---------- Panels ---------- */
+.panel { display: none; }
+.panel.is-active { display: block; }
+
+/* ---------- Hero (compact, home panel) ---------- */
+.hero-compact { position: relative; padding: 44px 32px 0; overflow: hidden; }
+.hero-inner { max-width: 1180px; margin: 0 auto; position: relative; z-index: 2; }
+.hero-top { display: flex; gap: 28px; flex-wrap: wrap; align-items: stretch; }
+
+.hero-badge {
+  display: flex; flex-direction: column; gap: 14px;
+  background: var(--surface); border: 1px solid var(--line);
+  border-radius: var(--radius); padding: 22px 26px;
+  box-shadow: 0 20px 40px -28px rgba(30,40,25,0.35);
+  flex: 1 1 420px;
+}
+.hb-top-row { display: flex; align-items: center; gap: 18px; }
+.hb-icon { font-size: 32px; line-height: 1; flex-shrink: 0; }
+.hb-text { flex: 1 1 auto; min-width: 0; }
+.hb-level { font-family: var(--sans); font-size: 21px; color: var(--brand-deep); font-weight: 600; white-space: nowrap; }
+.hb-score { font-size: 13px; color: var(--ink-soft); margin-top: 3px; white-space: nowrap; }
+.hb-score strong { font-family: var(--sans); font-size: 17px; color: var(--brand); font-weight: 600; }
+.hb-meta { font-size: 12px; color: var(--ink-faint); line-height: 1.6; padding-top: 12px; border-top: 1px solid var(--line-soft); }
+
+.hero-areas { display: flex; gap: 10px; flex: 1 1 420px; flex-wrap: wrap; }
+.ha-item { flex: 1 1 90px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+.ha-label { font-size: 10.5px; color: var(--ink-faint); text-transform: uppercase; letter-spacing: 0.04em; line-height: 1.4; }
+.ha-val { font-family: var(--sans); font-size: 18px; font-weight: 600; color: var(--brand-deep); margin-top: 2px; }
+
+@media (max-width: 480px) {
+  .hb-top-row { flex-wrap: wrap; }
+  .hb-level { font-size: 19px; }
+}
+
+.growth-path { max-width: 1180px; margin: 36px auto 0; padding: 0 32px; }
+
+/* ---------- Sections ---------- */
+.sec-inner { max-width: 1180px; margin: 0 auto; padding: 0 32px 84px; }
+.sec-inner.narrow { max-width: 760px; padding-top: 64px; padding-bottom: 40px; }
+.k { font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--rose); font-weight: 600; margin: 0 0 14px; }
+h2 { font-size: clamp(26px, 3.4vw, 38px); line-height: 1.32; margin-bottom: 26px; }
+.why-note { font-size: 12.5px; color: var(--ink-faint); line-height: 1.7; max-width: 680px; margin-top: -8px; }
+.why-note strong { color: var(--ink-soft); font-weight: 600; }
+.body-lg { font-size: 16px; color: var(--ink-soft); max-width: 760px; }
+.body-lg.narrow { max-width: 640px; }
+
+#panel-levels .sec-inner:first-child { padding-top: 64px; padding-bottom: 20px; }
+#panel-formula .sec-inner, #panel-bands .sec-inner { padding-top: 64px; }
+
+/* ---------- Level rows ---------- */
+.level-rows { display: flex; flex-direction: column; border-top: 1px solid var(--line); margin-top: 8px; }
+.level-row {
+  display: grid; grid-template-columns: 64px 200px 1fr; gap: 28px;
+  padding: 30px 0; border-bottom: 1px solid var(--line); align-items: start;
+}
+.level-row .lr-icon { font-size: 30px; }
+.level-row .lr-name { font-family: var(--sans); font-size: 21px; font-weight: 600; }
+.level-row .lr-name small { display: block; font-family: var(--sans); font-size: 12px; color: var(--ink-faint); font-weight: 400; margin-top: 3px; }
+.level-row .lr-def { font-weight: 600; color: var(--ink); margin: 0 0 6px; }
+.level-row .lr-state { color: var(--ink-soft); font-size: 14.5px; margin: 0; }
+.level-row .lr-badge { width: 10px; height: 10px; border-radius: 50%; display: inline-block; margin-right: 10px; vertical-align: middle; }
+@media (max-width: 720px) { .level-row { grid-template-columns: 44px 1fr; } .level-row .lr-name { grid-column: 2; } .level-row .lr-def, .level-row .lr-state { grid-column: 1 / -1; } }
+
+/* ---------- Areas (formula) ---------- */
+.areas { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1px; background: var(--line); margin: 40px 0; border-radius: var(--radius); overflow: hidden; }
+.area-card { background: var(--surface); padding: 24px 20px; }
+.area-card .ac-num { font-family: var(--sans); font-size: 13px; color: var(--rose); font-weight: 600; }
+.area-card h4 { font-family: var(--sans); font-size: 16px; margin: 8px 0 10px; color: var(--brand-deep); font-weight: 600; }
+.area-card p { font-size: 13px; color: var(--ink-soft); margin: 0; }
+@media (max-width: 900px) { .areas { grid-template-columns: 1fr 1fr; } }
+@media (max-width: 560px) { .areas { grid-template-columns: 1fr; } }
+
+.sub-h-tight { margin-top: 12px; margin-bottom: 8px; }
+.formula-detail { display: flex; flex-direction: column; gap: 1px; background: var(--line); border-radius: var(--radius); overflow: hidden; }
+.formula-row { background: var(--surface); padding: 20px 24px; display: grid; grid-template-columns: 260px 1fr; gap: 24px; align-items: start; }
+.fr-head { display: flex; flex-direction: column; gap: 6px; }
+.fr-num { font-family: var(--sans); font-size: 12px; color: var(--rose); font-weight: 600; }
+.fr-name { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--brand-deep); }
+.fr-source { font-size: 11.5px; color: var(--ink-faint); background: var(--surface-2); border-radius: 6px; padding: 3px 8px; width: fit-content; }
+.fr-code {
+  margin: 0; font-family: var(--sans); font-size: 13.5px; font-weight: 400;
+  color: var(--ink); background: var(--surface-2); border-radius: 8px; padding: 14px 16px;
+  line-height: 2; white-space: pre-wrap; word-break: keep-all; letter-spacing: 0;
+}
+.fr-code .op { color: var(--rose); font-weight: 600; }
+@media (max-width: 780px) { .formula-row { grid-template-columns: 1fr; } }
+
+.composite-box {
+  margin-top: 1px; background: var(--brand-deep); color: #fff; border-radius: 0 0 var(--radius) var(--radius);
+  padding: 18px 24px; display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+}
+.composite-box .cb-label { font-family: var(--sans); font-size: 14px; font-weight: 600; flex-shrink: 0; }
+.composite-box .cb-formula { font-family: var(--sans); font-size: 13.5px; color: #E9E4D6; }
+
+.band-table { width: 100%; border-collapse: collapse; font-size: 14px; margin-top: 20px; }
+.band-table td { padding: 10px 4px; border-bottom: 1px solid var(--line-soft); }
+.band-table td:first-child { color: var(--ink-faint); font-variant-numeric: tabular-nums; width: 90px; }
+.band-table td:nth-child(2) { font-weight: 600; }
+.band-table-wide td:nth-child(3) { color: var(--ink-soft); font-size: 13px; }
+
+.cond-rows { display: flex; flex-direction: column; gap: 1px; background: var(--line); border-radius: var(--radius); overflow: hidden; margin-top: 8px; }
+.cond-row { background: var(--surface); padding: 22px 26px; display: grid; grid-template-columns: 200px 1fr; gap: 24px; align-items: start; }
+.cond-row .cr-lvl { display: flex; align-items: center; gap: 10px; }
+.cond-row .cr-icon { font-size: 24px; }
+.cond-row .cr-name { font-family: var(--sans); font-size: 16px; font-weight: 600; color: var(--brand-deep); }
+.cond-row .cr-name small { display: block; font-family: var(--sans); font-weight: 400; font-size: 11.5px; color: var(--ink-faint); }
+.cond-row .cr-rule { font-size: 14.5px; color: var(--ink); margin: 0 0 6px; font-weight: 600; }
+.cond-row .cr-why { font-size: 13.5px; color: var(--ink-soft); margin: 0; }
+@media (max-width: 700px) { .cond-row { grid-template-columns: 1fr; } }
+
+.scope-note { margin-top: 32px; font-size: 13px; color: var(--ink-faint); border-top: 1px dashed var(--line); padding-top: 20px; }
+
+/* ---------- Dashboard (home panel) ---------- */
+.sub-h { font-family: var(--sans); font-size: 18px; color: var(--brand-deep); margin: 44px 0 18px; font-weight: 600; }
+.sub-h-first { margin-top: 40px; }
+
+.dist-bar { display: flex; height: 44px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.dist-seg { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 13px; font-weight: 600; font-variant-numeric: tabular-nums; transition: filter 0.15s; }
+.dist-seg:hover { filter: brightness(1.08); }
+.dist-legend { display: flex; gap: 22px; margin-top: 14px; flex-wrap: wrap; font-size: 13px; color: var(--ink-soft); }
+.dist-legend span { display: flex; align-items: center; gap: 7px; }
+.dist-legend i { width: 9px; height: 9px; border-radius: 50%; display: inline-block; }
+
+.honbu-list { display: flex; flex-direction: column; gap: 10px; }
+.h-row { display: grid; grid-template-columns: 170px 1fr 100px 130px 70px; gap: 16px; align-items: center; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 14px 18px; }
+.h-name { font-weight: 600; font-size: 13.5px; }
+.h-name small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 11px; margin-top: 1px; }
+.h-bar-track { height: 7px; background: var(--line-soft); border-radius: 4px; overflow: hidden; flex: 1; }
+.h-bar-fill { height: 100%; border-radius: 4px; }
+.h-score-col { text-align: right; font-variant-numeric: tabular-nums; font-size: 13.5px; font-weight: 600; color: var(--ink); }
+.h-lvl { font-size: 11px; font-weight: 600; padding: 3px 8px; border-radius: 20px; text-align: center; color: #fff; display: inline-block; }
+@media (max-width: 780px) { .h-row { grid-template-columns: 1fr; gap: 10px; text-align: left; } .h-score-col { text-align: left; } .h-lvl { justify-self: start; width: fit-content; } }
+
+.spot-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; margin-top: 8px; }
+@media (max-width: 780px) { .spot-grid { grid-template-columns: 1fr; } }
+.spot-card { display: flex; justify-content: space-between; align-items: center; padding: 13px 16px; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; margin-bottom: 8px; }
+.spot-card .sc-name { font-size: 13.5px; font-weight: 600; }
+.spot-card .sc-name small { display: block; font-weight: 400; color: var(--ink-faint); font-size: 11.5px; }
+.spot-card .sc-score { font-variant-numeric: tabular-nums; font-size: 13px; color: var(--ink-soft); }
+
+.table-controls { display: flex; gap: 10px; margin-bottom: 14px; flex-wrap: wrap; }
+.table-controls input, .table-controls select {
+  font-family: var(--sans); font-size: 13.5px; padding: 9px 14px; border: 1px solid var(--line);
+  border-radius: 8px; background: var(--surface); color: var(--ink);
+}
+.table-controls input { flex: 1; min-width: 200px; }
+
+.table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 10px; background: var(--surface); }
+table#teamTable { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 820px; }
+#teamTable th { text-align: left; font-weight: 600; color: var(--ink-faint); font-size: 11.5px; text-transform: uppercase; letter-spacing: 0.03em; padding: 12px 14px; border-bottom: 1px solid var(--line); cursor: pointer; white-space: nowrap; }
+#teamTable th:hover { color: var(--brand); }
+#teamTable td { padding: 10px 14px; border-bottom: 1px solid var(--line-soft); font-variant-numeric: tabular-nums; white-space: nowrap; }
+#teamTable tbody tr:hover { background: var(--surface-2); }
+.lvl-chip { display: inline-block; padding: 2px 9px; border-radius: 20px; font-size: 11.5px; font-weight: 600; color: #fff; }
+.table-count { font-size: 12.5px; color: var(--ink-faint); margin-top: 10px; }
+
+.pagination { display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 20px; flex-wrap: wrap; }
+.page-btn {
+  min-width: 34px; height: 34px; padding: 0 8px; border-radius: 8px; border: 1px solid var(--line);
+  background: var(--surface); color: var(--ink-soft); font-family: var(--sans); font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: background 0.15s, color 0.15s;
+}
+.page-btn:hover:not(:disabled) { background: var(--surface-2); color: var(--ink); }
+.page-btn.is-active { background: var(--brand-deep); border-color: var(--brand-deep); color: #fff; }
+.page-btn:disabled { opacity: 0.35; cursor: default; }
+.page-ellipsis { padding: 0 4px; color: var(--ink-faint); font-size: 13px; }
+
+/* ---------- Footer ---------- */
+.foot { padding: 48px 32px 64px; border-top: 1px solid var(--line); }
+.foot p { font-size: 12.5px; color: var(--ink-faint); max-width: 760px; line-height: 1.7; }
+.foot-meta { margin-top: 10px; letter-spacing: 0.02em; }
+
+/* ---------- focus ---------- */
+:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
+
+/* ---------- Intervention panel ---------- */
+.int-h3 { font-size: 17px; margin: 40px 0 14px; }
+.int-h3:first-of-type { margin-top: 8px; }
+.persona-note { font-size: 13.5px; color: var(--ink-soft); margin: 14px 0 0; padding: 12px 16px; background: var(--surface-2); border-radius: 8px; border-left: 3px solid var(--rose); }
+
+.step-flow { display: flex; flex-direction: column; gap: 0; margin: 18px 0 28px; }
+.step-flow-item {
+  display: flex; align-items: center; gap: 16px; background: var(--surface); border: 1px solid var(--line);
+  border-radius: 10px; padding: 14px 20px; font-size: 14px; font-weight: 500; color: var(--ink);
+}
+.step-flow-num { font-family: var(--sans); font-size: 13px; color: var(--rose); font-weight: 600; flex-shrink: 0; width: 22px; }
+.step-flow-arrow { text-align: center; color: var(--ink-faint); font-size: 15px; padding: 3px 0; }
+
+.persona-split { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 20px; }
+@media (max-width: 640px) { .persona-split { grid-template-columns: 1fr; } }
+.persona-card { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 18px; }
+.pc-tag { display: inline-block; font-size: 11.5px; font-weight: 600; color: var(--brand); background: var(--brand-soft); border-radius: 20px; padding: 2px 10px; margin-bottom: 8px; }
+.persona-card p { margin: 0; font-size: 14px; color: var(--ink); }
+
+.mission-cards { display: flex; flex-direction: column; gap: 10px; margin-top: 18px; }
+.mission-card { display: flex; gap: 16px; align-items: flex-start; background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 16px 20px; }
+.mission-card .mc-num { font-family: var(--sans); font-size: 20px; font-weight: 600; color: var(--rose); flex-shrink: 0; }
+.mission-card p { margin: 0; font-size: 14.5px; color: var(--ink); line-height: 1.6; }
+
+.wide-table-wrap { margin-top: 18px; }
+table.wide-table { width: 100%; border-collapse: collapse; font-size: 13px; min-width: 900px; }
+.wide-table th { text-align: left; font-weight: 600; color: var(--ink-faint); font-size: 11px; text-transform: uppercase; letter-spacing: 0.03em; padding: 12px 16px; border-bottom: 1px solid var(--line); background: var(--surface-2); white-space: nowrap; }
+.wide-table td { padding: 14px 16px; border-bottom: 1px solid var(--line-soft); vertical-align: top; line-height: 1.6; }
+.wide-table td:first-child, .wide-table td:nth-child(2) { font-weight: 600; color: var(--brand-deep); white-space: nowrap; }
+.wide-table td:nth-child(3) { color: var(--ink); min-width: 220px; }
+.wide-table td:nth-child(4) { color: var(--ink-soft); min-width: 280px; }
+.wide-table tbody tr:hover { background: var(--surface-2); }
+
+.role-compare { display: grid; grid-template-columns: 1fr auto 1fr; gap: 16px; align-items: center; margin-top: 20px; }
+@media (max-width: 700px) { .role-compare { grid-template-columns: 1fr; } .role-arrow { transform: rotate(90deg); } }
+.role-not, .role-yes { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 18px 20px; }
+.role-tag { display: inline-block; font-size: 11.5px; font-weight: 600; border-radius: 20px; padding: 2px 10px; margin-bottom: 10px; }
+.role-tag-not { color: #A6543F; background: #F3E0D8; }
+.role-tag-yes { color: var(--brand); background: var(--brand-soft); }
+.role-not p, .role-yes p { margin: 0; font-size: 14px; color: var(--ink); line-height: 1.6; }
+.role-not small { color: var(--ink-faint); font-size: 12.5px; }
+.role-arrow { font-size: 22px; color: var(--ink-faint); text-align: center; }
+
+.channel-table td:first-child { width: 220px; font-weight: 600; }
+
+.verify-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+@media (max-width: 700px) { .verify-split { grid-template-columns: 1fr; } }
+.verify-col { border-radius: var(--radius); padding: 20px 22px; }
+.verify-auto { background: var(--brand-soft); }
+.verify-pulse { background: var(--surface-2); }
+.verify-col h4 { font-family: var(--sans); font-size: 15px; margin: 0 0 4px; color: var(--brand-deep); display: flex; flex-direction: column; gap: 2px; }
+.verify-col h4 span { font-family: var(--sans); font-size: 11px; font-weight: 500; color: var(--ink-faint); }
+.verify-col ul { margin: 12px 0 0; padding-left: 18px; font-size: 13.5px; color: var(--ink); line-height: 1.9; }
+
+.remeasure-split { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-top: 20px; }
+@media (max-width: 700px) { .remeasure-split { grid-template-columns: 1fr; } }
+.remeasure-col { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 20px 22px; }
+.remeasure-col h4 { font-family: var(--sans); font-size: 15px; margin: 0 0 10px; color: var(--brand-deep); }
+.remeasure-col ul { margin: 0; padding-left: 18px; font-size: 13.5px; color: var(--ink-soft); line-height: 1.9; }
+
+.cycle-flow { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin: 20px 0; }
+.cycle-chip { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 8px 16px; font-size: 13px; font-weight: 500; color: var(--ink); white-space: nowrap; }
+.cycle-chip.is-loop { background: var(--brand-deep); color: #fff; border-color: var(--brand-deep); }
+.cycle-sep { color: var(--ink-faint); font-size: 14px; }
+
+/* ---------- Combined Before/After hero ---------- */
+.hb-delta { font-size: 13px; font-weight: 600; margin-left: 8px; }
+.hb-delta.pos { color: var(--brand); }
+.hb-delta.neg { color: #A6543F; }
+.hb-sub { font-size: 12px; color: var(--ink-soft); margin-top: 3px; }
+.hb-meta-note { display: block; font-size: 11px; color: var(--ink-faint); margin-top: 3px; }
+.hb-spark { flex-shrink: 0; padding: 0 8px; }
+
+.ha-item .ha-val-row { display: flex; align-items: baseline; gap: 6px; flex-wrap: wrap; }
+.ha-item .ha-delta { font-size: 11px; font-weight: 600; }
+
+.dist-compare { display: flex; flex-direction: column; gap: 10px; }
+.dist-compare-row { display: grid; grid-template-columns: 84px 1fr; gap: 12px; align-items: center; }
+.dist-compare-label { font-size: 12px; color: var(--ink-faint); }
+
+.spark-cell { display: flex; align-items: center; gap: 8px; }
+.spark-dot-cur { fill: var(--brand-deep); }
+.spark-dot-start { fill: var(--ink-faint); }
+
+.dist-bar { display: flex; height: 36px; border-radius: 10px; overflow: hidden; border: 1px solid var(--line); }
+.dist-seg { display: flex; align-items: center; justify-content: center; color: #fff; font-size: 12.5px; font-weight: 600; font-variant-numeric: tabular-nums; transition: filter 0.15s; }
+.dist-seg:hover { filter: brightness(1.08); }
+
+.h-delta { font-size: 12px; font-weight: 600; text-align: right; }
+.h-delta.pos { color: var(--brand); }
+.h-delta.neg { color: #A6543F; }
+.h-arrow { color: var(--ink-faint); font-size: 12px; margin: 0 4px; }
+
+.td-delta.pos { color: var(--brand); font-weight: 600; }
+.td-delta.neg { color: #A6543F; font-weight: 600; }
+.lvl-change { display: inline-flex; align-items: center; gap: 4px; font-size: 11.5px; white-space: nowrap; }
+.lvl-change .lc-arrow { color: var(--ink-faint); }
+
+@media (prefers-reduced-motion: reduce) {
+  * { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+}
+
+</style>
+</head>
+<body>
+
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <div class="word">
+      <a href="file:///C:/Users/%EA%B9%80%EB%AF%BC%EC%8A%B9/OneDrive/%EB%AC%B8%EC%84%9C/%EC%B9%B4%EC%B9%B4%EC%98%A4%ED%86%A1%20%EB%B0%9B%EC%9D%80%20%ED%8C%8C%EC%9D%BC/Team_AI_Oasis_Level_%EB%8C%80%EC%8B%9C%EB%B3%B4%EB%93%9C_16%20(1).html#home" class="word-link"><span class="word-main"><em>AMORE</em>PACIFIC</span></a>
+      <span class="word-sub">AI Change Management</span>
+    </div>
+    <div class="nav-right">
+      <div class="search-wrap">
+        <button class="icon-btn" id="searchBtn" aria-label="검색 열기" aria-expanded="false">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="11" cy="11" r="7" stroke="currentColor" stroke-width="1.6"></circle><line x1="21" y1="21" x2="16.4" y2="16.4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line></svg>
+        </button>
+        <div class="search-panel" id="searchPanel" hidden="">
+          <input type="text" id="globalSearch" placeholder="본부·팀·항목 검색" aria-label="전체 검색">
+          <div class="search-results" id="searchResults"></div>
+        </div>
+      </div>
+      <div class="nav-divider"></div>
+      <button class="icon-btn" id="menuBtn" aria-label="메뉴 열기" aria-controls="menuPanel" aria-expanded="false">
+        <svg width="22" height="22" viewBox="0 0 24 24" fill="none"><line x1="3" y1="6" x2="21" y2="6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line><line x1="3" y1="12" x2="21" y2="12" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line><line x1="3" y1="18" x2="21" y2="18" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line></svg>
+      </button>
+    </div>
+  </div>
+</nav>
+
+<div class="menu-overlay" id="menuOverlay" hidden=""></div>
+<aside class="menu-panel" id="menuPanel" aria-hidden="true">
+  <div class="menu-panel-head">
+    <span class="word-main menu-word"><em>AMORE</em>PACIFIC</span>
+    <button class="icon-btn" id="menuCloseBtn" aria-label="메뉴 닫기">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none"><line x1="5" y1="5" x2="19" y2="19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line><line x1="19" y1="5" x2="5" y2="19" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"></line></svg>
+    </button>
+  </div>
+  <nav class="menu-list" aria-label="주요 메뉴">
+    <button class="menu-item" data-panel="home">전사 현황 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+    <button class="menu-item" data-panel="levels">5단계 정의 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+    <button class="menu-item" data-panel="formula">산정 방식 · 산출 수식 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+    <button class="menu-item" data-panel="bands">점수 구간 · 핵심 조건 <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M9 6l6 6-6 6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"></path></svg></button>
+  </nav>
+  <div class="menu-panel-foot">
+    <span>AI Agent 기반 AI 조직문화 변화관리 모델</span>
+  </div>
+</aside>
+
+<main>
+
+<!-- ============ PANEL: HOME ============ -->
+<section class="panel is-active" id="panel-home" role="tabpanel">
+
+  <header class="hero hero-compact">
+    <div class="hero-inner">
+      <div class="hero-top">
+        <div class="hero-badge" id="companyBadge">
+          <div class="hb-top-row">
+            <div class="hb-icon" id="companyIcon">🌳</div>
+            <div class="hb-text">
+              <div class="hb-level" id="companyLevelName">Level 4 · Forest</div>
+              <div class="hb-score">전사 종합점수 <strong id="companyScore">60.9</strong><span>/100</span><span class="hb-delta pos" id="companyDelta"> (진단 대비 +13.3)</span></div>
+              <div class="hb-sub" id="companyLevelChange">Level 상승 — 🌿 Sprout → 🌳 Forest</div>
+            </div>
+            <div class="hb-spark" id="companySpark" aria-hidden="true"><svg width="120" height="40" viewBox="0 0 120 40" role="img" aria-label="Cycle 0부터 최신까지 47.6, 52.5, 56.9, 60.9점 추이">
+    <path d="M4.0,36.0 L41.3,24.2 L78.7,13.6 L116.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="36.0" r="2" class="spark-dot-start"></circle><circle cx="116.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+          </div>
+          <div class="hb-meta">
+            <span id="companyN">4,748</span>명 · <span id="companyTeams">215</span>개 팀 · 기준월 2026-06
+            <span class="hb-meta-note">진단 이후 <span id="companyCycleCount">3</span>회 재측정 누적 (Cycle 추이, 시뮬레이션)</span>
+          </div>
+        </div>
+        <div class="hero-areas" id="companyAreas"><div class="ha-item"><div class="ha-label">AI<br>Adoption</div>
+      <div class="ha-val-row"><span class="ha-val">62.6</span>
+      <span class="ha-delta" style="color:var(--brand)">+9.5</span></div>
+    </div><div class="ha-item"><div class="ha-label">AI<br>Application</div>
+      <div class="ha-val-row"><span class="ha-val">58.8</span>
+      <span class="ha-delta" style="color:var(--brand)">+15.6</span></div>
+    </div><div class="ha-item"><div class="ha-label">AI<br>Collaboration</div>
+      <div class="ha-val-row"><span class="ha-val">64.9</span>
+      <span class="ha-delta" style="color:var(--brand)">+9.6</span></div>
+    </div><div class="ha-item"><div class="ha-label">AI<br>Integration</div>
+      <div class="ha-val-row"><span class="ha-val">51.8</span>
+      <span class="ha-delta" style="color:var(--brand)">+24.6</span></div>
+    </div><div class="ha-item"><div class="ha-label">AI<br>Improvement</div>
+      <div class="ha-val-row"><span class="ha-val">66.2</span>
+      <span class="ha-delta" style="color:var(--brand)">+7.0</span></div>
+    </div></div>
+      </div>
+    </div>
+    <div class="growth-path" id="growthPath" aria-hidden="true">
+    <svg viewBox="0 0 1116 136" width="100%" role="img" aria-label="Desert부터 Oasis까지의 성장 경로. Cycle 0부터 최신 Cycle까지의 위치가 표시됩니다.">
+      <path d="M 46 86 S 302 72, 302 72 S 558 56, 558 56 S 814 38, 814 38 S 1070 20, 1070 20" fill="none" stroke="var(--line)" stroke-width="2"></path>
+      <g transform="translate(46,86)"><circle r="4" fill="var(--l1)" stroke="var(--surface)" stroke-width="2"></circle><text x="0" y="22" text-anchor="start" font-size="11" fill="var(--ink-faint)" font-family="var(--sans)">Desert</text></g><g transform="translate(302,72)"><circle r="4" fill="var(--l2)" stroke="var(--surface)" stroke-width="2"></circle><text x="0" y="22" text-anchor="middle" font-size="11" fill="var(--ink-faint)" font-family="var(--sans)">Seed</text></g><g transform="translate(558,56)"><circle r="4" fill="var(--l3)" stroke="var(--surface)" stroke-width="2"></circle><text x="0" y="22" text-anchor="middle" font-size="11" fill="var(--ink-faint)" font-family="var(--sans)">Sprout</text></g><g transform="translate(814,38)"><circle r="4" fill="var(--l4)" stroke="var(--surface)" stroke-width="2"></circle><text x="0" y="22" text-anchor="middle" font-size="11" fill="var(--ink-faint)" font-family="var(--sans)">Forest</text></g><g transform="translate(1070,20)"><circle r="4" fill="var(--l5)" stroke="var(--surface)" stroke-width="2"></circle><text x="0" y="22" text-anchor="end" font-size="11" fill="var(--ink-faint)" font-family="var(--sans)">Oasis</text></g>
+      <path d="M533.4,57.5 L583.6,54.2 L628.7,51.0 L669.6,48.2" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.55"></path>
+      <g transform="translate(533.424,57.536)">
+      <circle r="5" fill="var(--surface)" stroke="var(--ink-faint)" stroke-width="2"></circle>
+      <text x="0" y="-11" text-anchor="middle" font-size="10" fill="var(--ink-faint)" font-family="var(--sans)">C0</text>
+    </g><g transform="translate(583.6,54.199999999999996)">
+      <circle r="5" fill="var(--surface)" stroke="var(--ink-faint)" stroke-width="2"></circle>
+      <text x="0" y="-11" text-anchor="middle" font-size="10" fill="var(--ink-faint)" font-family="var(--sans)">C1</text>
+    </g><g transform="translate(628.656,51.032000000000004)">
+      <circle r="5" fill="var(--surface)" stroke="var(--ink-faint)" stroke-width="2"></circle>
+      <text x="0" y="-11" text-anchor="middle" font-size="10" fill="var(--ink-faint)" font-family="var(--sans)">C2</text>
+    </g><g transform="translate(669.616,48.152)">
+        <circle r="8" fill="var(--brand-deep)" stroke="var(--surface)" stroke-width="3"></circle>
+        <text x="0" y="-16" text-anchor="middle" font-size="12" font-weight="600" fill="var(--brand-deep)" font-family="var(--sans)">3차 재측정 · 60.9점</text>
+      </g>
+    </svg></div>
+  </header>
+
+  <div class="sec-inner">
+    <h3 class="sub-h sub-h-first">전사 Level 분포 — Cycle별 추이</h3>
+    <div class="dist-compare" id="distCompare"><div class="dist-compare-row"><span class="dist-compare-label">최초 진단</span><div class="dist-bar"><div class="dist-seg" style="width:6.046511627906977%;background:var(--l1)" title="Desert 13개 팀">13</div><div class="dist-seg" style="width:20.46511627906977%;background:var(--l2)" title="Seed 44개 팀">44</div><div class="dist-seg" style="width:68.37209302325581%;background:var(--l3)" title="Sprout 147개 팀">147</div><div class="dist-seg" style="width:5.116279069767442%;background:var(--l4)" title="Forest 11개 팀"></div></div></div><div class="dist-compare-row"><span class="dist-compare-label">1차 재측정</span><div class="dist-bar"><div class="dist-seg" style="width:4.651162790697675%;background:var(--l1)" title="Desert 10개 팀"></div><div class="dist-seg" style="width:6.976744186046512%;background:var(--l2)" title="Seed 15개 팀">15</div><div class="dist-seg" style="width:73.48837209302326%;background:var(--l3)" title="Sprout 158개 팀">158</div><div class="dist-seg" style="width:14.883720930232558%;background:var(--l4)" title="Forest 32개 팀">32</div></div></div><div class="dist-compare-row"><span class="dist-compare-label">2차 재측정</span><div class="dist-bar"><div class="dist-seg" style="width:2.3255813953488373%;background:var(--l1)" title="Desert 5개 팀"></div><div class="dist-seg" style="width:3.7209302325581395%;background:var(--l2)" title="Seed 8개 팀"></div><div class="dist-seg" style="width:69.76744186046511%;background:var(--l3)" title="Sprout 150개 팀">150</div><div class="dist-seg" style="width:24.186046511627907%;background:var(--l4)" title="Forest 52개 팀">52</div></div></div><div class="dist-compare-row"><span class="dist-compare-label">3차 재측정</span><div class="dist-bar"><div class="dist-seg" style="width:1.8604651162790697%;background:var(--l1)" title="Desert 4개 팀"></div><div class="dist-seg" style="width:0.46511627906976744%;background:var(--l2)" title="Seed 1개 팀"></div><div class="dist-seg" style="width:55.348837209302324%;background:var(--l3)" title="Sprout 119개 팀">119</div><div class="dist-seg" style="width:41.3953488372093%;background:var(--l4)" title="Forest 89개 팀">89</div><div class="dist-seg" style="width:0.9302325581395349%;background:var(--l5)" title="Oasis 2개 팀"></div></div></div></div>
+    <div class="dist-legend" id="distLegend"><span><i style="background:var(--l1)"></i>Desert — 13 → 10 → 5 → 4개 팀</span><span><i style="background:var(--l2)"></i>Seed — 44 → 15 → 8 → 1개 팀</span><span><i style="background:var(--l3)"></i>Sprout — 147 → 158 → 150 → 119개 팀</span><span><i style="background:var(--l4)"></i>Forest — 11 → 32 → 52 → 89개 팀</span><span><i style="background:var(--l5)"></i>Oasis — 0 → 0 → 0 → 2개 팀</span></div>
+
+    <h3 class="sub-h">본부별 순위 — 최신 Cycle 기준</h3>
+    <div class="honbu-list" id="honbuList">
+    <div class="h-row">
+      <div class="h-name">디지털·IT<small>9개 팀 · 180명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:76.8%;background:var(--l4)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 68.7, 71, 74.1, 76.8점 추이">
+    <path d="M4.0,24.0 L31.3,18.3 L58.7,10.7 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">76.8점 <span class="h-delta pos">+8.1</span></div>
+      <span class="h-lvl" style="background:var(--l4)">🌳 Forest</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">디지털커머스<small>13개 팀 · 290명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:71.7%;background:var(--l4)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 62.4, 65.5, 68.9, 71.7점 추이">
+    <path d="M4.0,24.0 L31.3,17.3 L58.7,10.0 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">71.7점 <span class="h-delta pos">+9.3</span></div>
+      <span class="h-lvl" style="background:var(--l4)">🌳 Forest</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">글로벌마케팅<small>15개 팀 · 310명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:67.1%;background:var(--l4)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 59.1, 61.9, 64.1, 67.1점 추이">
+    <path d="M4.0,24.0 L31.3,17.0 L58.7,11.5 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">67.1점 <span class="h-delta pos">+8.0</span></div>
+      <span class="h-lvl" style="background:var(--l4)">🌳 Forest</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">데일리뷰티<small>11개 팀 · 260명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:65.8%;background:var(--l4)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 52.7, 57.6, 61.6, 65.8점 추이">
+    <path d="M4.0,24.0 L31.3,16.5 L58.7,10.4 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">65.8점 <span class="h-delta pos">+13.1</span></div>
+      <span class="h-lvl" style="background:var(--l4)">🌳 Forest</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">프리미엄브랜드<small>18개 팀 · 380명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:65.7%;background:var(--l4)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 52.7, 57.5, 61.3, 65.7점 추이">
+    <path d="M4.0,24.0 L31.3,16.6 L58.7,10.8 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">65.7점 <span class="h-delta pos">+13.0</span></div>
+      <span class="h-lvl" style="background:var(--l4)">🌳 Forest</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">전략·재무<small>7개 팀 · 150명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:64.0%;background:var(--l4)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 51, 55.8, 59.8, 64점 추이">
+    <path d="M4.0,24.0 L31.3,16.6 L58.7,10.5 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">64.0점 <span class="h-delta pos">+13.0</span></div>
+      <span class="h-lvl" style="background:var(--l4)">🌳 Forest</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">럭셔리브랜드<small>19개 팀 · 420명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:63.7%;background:var(--l4)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 51.2, 56.2, 59.8, 63.7점 추이">
+    <path d="M4.0,24.0 L31.3,16.0 L58.7,10.2 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">63.7점 <span class="h-delta pos">+12.5</span></div>
+      <span class="h-lvl" style="background:var(--l4)">🌳 Forest</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">글로벌사업<small>14개 팀 · 339명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:63.2%;background:var(--l4)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 50.8, 55.9, 60.3, 63.2점 추이">
+    <path d="M4.0,24.0 L31.3,15.8 L58.7,8.7 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">63.2점 <span class="h-delta pos">+12.4</span></div>
+      <span class="h-lvl" style="background:var(--l4)">🌳 Forest</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">R&amp;I<small>27개 팀 · 610명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:59.8%;background:var(--l3)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 46, 50.8, 55.5, 59.8점 추이">
+    <path d="M4.0,24.0 L31.3,17.0 L58.7,10.2 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">59.8점 <span class="h-delta pos">+13.8</span></div>
+      <span class="h-lvl" style="background:var(--l3)">🌿 Sprout</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">법무·준법·ESG<small>3개 팀 · 84명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:58.7%;background:var(--l3)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 43.1, 48.7, 55.4, 58.7점 추이">
+    <path d="M4.0,24.0 L31.3,16.8 L58.7,8.2 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">58.7점 <span class="h-delta pos">+15.6</span></div>
+      <span class="h-lvl" style="background:var(--l3)">🌿 Sprout</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">국내영업<small>24개 팀 · 520명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:58.2%;background:var(--l3)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 44, 49.3, 53.7, 58.2점 추이">
+    <path d="M4.0,24.0 L31.3,16.5 L58.7,10.3 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">58.2점 <span class="h-delta pos">+14.2</span></div>
+      <span class="h-lvl" style="background:var(--l3)">🌿 Sprout</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">인사·조직문화<small>4개 팀 · 95명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:58.2%;background:var(--l3)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 45, 50.5, 54.4, 58.2점 추이">
+    <path d="M4.0,24.0 L31.3,15.7 L58.7,9.8 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">58.2점 <span class="h-delta pos">+13.2</span></div>
+      <span class="h-lvl" style="background:var(--l3)">🌿 Sprout</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">SCM물류<small>19개 팀 · 420명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:52.9%;background:var(--l3)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 38, 44.5, 49.8, 52.9점 추이">
+    <path d="M4.0,24.0 L31.3,15.3 L58.7,8.2 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">52.9점 <span class="h-delta pos">+14.9</span></div>
+      <span class="h-lvl" style="background:var(--l3)">🌿 Sprout</span>
+    </div>
+    <div class="h-row">
+      <div class="h-name">SCM생산<small>32개 팀 · 690명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:49.7%;background:var(--l3)"></div></div>
+      <div class="spark-cell"><svg width="90" height="28" viewBox="0 0 90 28" role="img" aria-label="Cycle 0부터 최신까지 32.2, 38.1, 44.2, 49.7점 추이">
+    <path d="M4.0,24.0 L31.3,17.3 L58.7,10.3 L86.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="24.0" r="2" class="spark-dot-start"></circle><circle cx="86.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></div>
+      <div class="h-score-col">49.7점 <span class="h-delta pos">+17.5</span></div>
+      <span class="h-lvl" style="background:var(--l3)">🌿 Sprout</span>
+    </div></div>
+
+    <div class="spot-grid">
+      <div class="spot">
+        <h3 class="sub-h" id="topTeamsTitle">상위 5개 팀 (최신 Cycle)</h3>
+        <div id="topTeams"><div class="spot-card"><div class="sc-name">Data·AI 1팀<small>디지털·IT · Data·AI</small></div><div class="sc-score">83.8점</div><div class="lvl-chip" style="background:var(--l5)">🏝️ L5</div></div><div class="spot-card"><div class="sc-name">Digital Workplace 2팀<small>디지털·IT · Digital Workplace</small></div><div class="sc-score">80.1점</div><div class="lvl-chip" style="background:var(--l5)">🏝️ L5</div></div><div class="spot-card"><div class="sc-name">Enterprise IT 1팀<small>디지털·IT · Enterprise IT</small></div><div class="sc-score">78.5점</div><div class="lvl-chip" style="background:var(--l4)">🌳 L4</div></div><div class="spot-card"><div class="sc-name">CRM·고객데이터 3팀<small>디지털커머스 · CRM·고객데이터</small></div><div class="sc-score">77.8점</div><div class="lvl-chip" style="background:var(--l4)">🌳 L4</div></div><div class="spot-card"><div class="sc-name">Enterprise IT 3팀<small>디지털·IT · Enterprise IT</small></div><div class="sc-score">77.8점</div><div class="lvl-chip" style="background:var(--l4)">🌳 L4</div></div></div>
+      </div>
+      <div class="spot">
+        <h3 class="sub-h">누적 개선폭 상위 5개 팀</h3>
+        <div id="bottomTeams"><div class="spot-card"><div class="sc-name">포장재개발 3팀<small>SCM생산 · 포장재개발</small></div><div class="sc-score td-delta pos">+26.1</div><div class="lvl-chip" style="background:var(--l3)">🏜️→🌿</div></div><div class="spot-card"><div class="sc-name">오산제조 6팀<small>SCM생산 · 오산제조</small></div><div class="sc-score td-delta pos">+23.4</div><div class="lvl-chip" style="background:var(--l3)">🌱→🌿</div></div><div class="spot-card"><div class="sc-name">설비·엔지니어링 2팀<small>SCM생산 · 설비·엔지니어링</small></div><div class="sc-score td-delta pos">+23.1</div><div class="lvl-chip" style="background:var(--l3)">🌱→🌿</div></div><div class="spot-card"><div class="sc-name">오산제조 1팀<small>SCM생산 · 오산제조</small></div><div class="sc-score td-delta pos">+22.9</div><div class="lvl-chip" style="background:var(--l3)">🌱→🌿</div></div><div class="spot-card"><div class="sc-name">물류운영 4팀<small>SCM물류 · 물류운영</small></div><div class="sc-score td-delta pos">+22.9</div><div class="lvl-chip" style="background:var(--l3)">🌱→🌿</div></div></div>
+      </div>
+    </div>
+
+    <h3 class="sub-h">전체 215개 팀 조회</h3>
+    <div class="table-controls">
+      <input type="text" id="searchInput" placeholder="본부·부서·팀명 검색" aria-label="팀 검색">
+      <select id="honbuFilter" aria-label="본부 필터"><option value="">전체 본부</option><option value="럭셔리브랜드">럭셔리브랜드</option><option value="프리미엄브랜드">프리미엄브랜드</option><option value="데일리뷰티">데일리뷰티</option><option value="글로벌마케팅">글로벌마케팅</option><option value="디지털커머스">디지털커머스</option><option value="국내영업">국내영업</option><option value="글로벌사업">글로벌사업</option><option value="R&amp;I">R&amp;I</option><option value="SCM생산">SCM생산</option><option value="SCM물류">SCM물류</option><option value="디지털·IT">디지털·IT</option><option value="전략·재무">전략·재무</option><option value="인사·조직문화">인사·조직문화</option><option value="법무·준법·ESG">법무·준법·ESG</option></select>
+      <select id="levelFilter" aria-label="Level 필터"><option value="">전체 Level</option><option value="1">Level 1 · Desert</option><option value="2">Level 2 · Seed</option><option value="3">Level 3 · Sprout</option><option value="4">Level 4 · Forest</option><option value="5">Level 5 · Oasis</option></select>
+    </div>
+    <div class="table-wrap">
+      <table id="teamTable">
+        <thead>
+          <tr>
+            <th data-k="honbu">본부</th><th data-k="name">팀명</th><th data-k="n">인원</th>
+            <th data-k="trend">Cycle 추이 (0→최신)</th>
+            <th data-k="score">최신 점수</th><th data-k="lvl">최신 Level</th>
+            <th data-k="delta">누적 변화(Δ)</th>
+          </tr>
+        </thead>
+        <tbody id="teamTbody">
+    <tr>
+      <td>디지털·IT</td><td>Data·AI 1팀</td><td>19</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 71.9, 72.2, 77.3, 83.8점 추이">
+    <path d="M4.0,20.0 L26.7,19.6 L49.3,12.7 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>83.8</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l5)">🏝️ L5</span></td>
+      <td class="td-delta pos">+11.9</td>
+    </tr>
+  
+    <tr>
+      <td>디지털·IT</td><td>Digital Workplace 2팀</td><td>20</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 67.6, 71.2, 77.5, 80.1점 추이">
+    <path d="M4.0,20.0 L26.7,15.4 L49.3,7.3 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>80.1</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l5)">🏝️ L5</span></td>
+      <td class="td-delta pos">+12.5</td>
+    </tr>
+  
+    <tr>
+      <td>디지털·IT</td><td>Enterprise IT 1팀</td><td>19</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 70.9, 71.4, 74.6, 78.5점 추이">
+    <path d="M4.0,20.0 L26.7,18.9 L49.3,12.2 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>78.5</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l4)">🌳 L4</span></td>
+      <td class="td-delta pos">+7.6</td>
+    </tr>
+  
+    <tr>
+      <td>디지털커머스</td><td>CRM·고객데이터 3팀</td><td>23</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 63.8, 68.2, 73.5, 77.8점 추이">
+    <path d="M4.0,20.0 L26.7,15.0 L49.3,8.9 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>77.8</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l4)">🌳 L4</span></td>
+      <td class="td-delta pos">+14.0</td>
+    </tr>
+  
+    <tr>
+      <td>디지털·IT</td><td>Enterprise IT 3팀</td><td>18</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 72.2, 76.5, 77.1, 77.8점 추이">
+    <path d="M4.0,20.0 L26.7,7.7 L49.3,6.0 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>77.8</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l4)">🌳 L4</span></td>
+      <td class="td-delta pos">+5.6</td>
+    </tr>
+  
+    <tr>
+      <td>디지털커머스</td><td>디지털그로스 1팀</td><td>20</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 66.2, 69.6, 73, 77.5점 추이">
+    <path d="M4.0,20.0 L26.7,15.2 L49.3,10.4 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>77.5</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l4)">🌳 L4</span></td>
+      <td class="td-delta pos">+11.3</td>
+    </tr>
+  
+    <tr>
+      <td>디지털·IT</td><td>Digital Workplace 1팀</td><td>20</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 73.5, 75.5, 75.8, 77.4점 추이">
+    <path d="M4.0,20.0 L26.7,11.8 L49.3,10.6 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>77.4</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l4)">🌳 L4</span></td>
+      <td class="td-delta pos">+3.9</td>
+    </tr>
+  
+    <tr>
+      <td>디지털·IT</td><td>Enterprise IT 2팀</td><td>18</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 73.3, 75.4, 74.9, 76.8점 추이">
+    <path d="M4.0,20.0 L26.7,10.4 L49.3,12.7 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>76.8</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l4)">🌳 L4</span></td>
+      <td class="td-delta pos">+3.5</td>
+    </tr>
+  
+    <tr>
+      <td>디지털커머스</td><td>디지털그로스 2팀</td><td>20</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 61.4, 67, 71.5, 76.4점 추이">
+    <path d="M4.0,20.0 L26.7,14.0 L49.3,9.2 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>76.4</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l4)">🌳 L4</span></td>
+      <td class="td-delta pos">+15.0</td>
+    </tr>
+  
+    <tr>
+      <td>디지털·IT</td><td>정보보안 1팀</td><td>30</td>
+      <td><svg width="76" height="24" viewBox="0 0 76 24" role="img" aria-label="Cycle 0부터 최신까지 63.7, 68.2, 71.3, 75.2점 추이">
+    <path d="M4.0,20.0 L26.7,13.7 L49.3,9.4 L72.0,4.0" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"></path>
+    <circle cx="4.0" cy="20.0" r="2" class="spark-dot-start"></circle><circle cx="72.0" cy="4.0" r="3" class="spark-dot-cur"></circle>
+  </svg></td>
+      <td><strong>75.2</strong></td>
+      <td><span class="lvl-chip" style="background:var(--l4)">🌳 L4</span></td>
+      <td class="td-delta pos">+11.5</td>
+    </tr>
+  </tbody>
+      </table>
+    </div>
+    <p class="table-count" id="tableCount">1–10번째 표시 (검색결과 215개 / 전체 215개) · 진단 이후 3회 재측정 누적</p>
+    <div class="pagination" id="pagination"><button class="page-btn" data-page="0" disabled="">‹</button><button class="page-btn is-active" data-page="1">1</button><button class="page-btn" data-page="2">2</button><span class="page-ellipsis">…</span><button class="page-btn" data-page="22">22</button><button class="page-btn" data-page="2">›</button></div>
+  </div>
+</section>
+
+
+<!-- ============ PANEL: LEVELS ============ -->
+<section class="panel" id="panel-levels" role="tabpanel" hidden="">
+  <div class="sec-inner narrow" style="padding-top:64px">
+    <p class="k">5단계 정의</p>
+    <h2>Desert에서 Oasis까지</h2>
+    <p class="why-note"><strong>왜 이 지표인가</strong> — "이 팀이 Copilot을 얼마나 많이 썼는가"는 Team AI Oasis Level이 답하려는 질문이 아닙니다.
+    개인의 산발적인 사용이 팀의 업무 방식으로 굳어지고, 협업 방식이 되고, 결국 스스로 개선해 나가는 문화가 되었는지 — 그 정착의 깊이를 봅니다.
+    같은 사용률이라도 업무 프로세스에 연결되어 있지 않다면 낮은 단계로, 사용률이 낮아도 팀 전체가 함께 개선을 시도하고 있다면 그 궤적을 반영합니다.</p>
+  </div>
+  <div class="sec-inner">
+    <div class="level-rows" id="levelRows">
+    <div class="level-row">
+      <div class="lr-icon">🏜️</div>
+      <div class="lr-name">Level 1 · Desert<small>사막</small></div>
+      <div><p class="lr-def"><span class="lr-badge" style="background:var(--l1)"></span>AI 활용 기반이 형성되지 않은 단계</p><p class="lr-state">AI 사용 구성원이 적고 실제 업무 적용도 낮으며, 팀 차원의 AI 활용 경험이나 공통된 활용 방식이 거의 없습니다.</p></div>
+    </div>
+    <div class="level-row">
+      <div class="lr-icon">🌱</div>
+      <div class="lr-name">Level 2 · Seed<small>씨앗</small></div>
+      <div><p class="lr-def"><span class="lr-badge" style="background:var(--l2)"></span>개인 단위의 AI 활용이 시작되는 단계</p><p class="lr-state">일부 구성원이 AI를 사용하기 시작하지만 활용이 개인의 관심이나 역량에 의존하며, 팀 전체로 확산되지는 않습니다.</p></div>
+    </div>
+    <div class="level-row">
+      <div class="lr-icon">🌿</div>
+      <div class="lr-name">Level 3 · Sprout<small>새싹</small></div>
+      <div><p class="lr-def"><span class="lr-badge" style="background:var(--l3)"></span>AI 활용이 팀 내 여러 구성원과 업무로 확산되는 단계</p><p class="lr-state">여러 구성원이 실제 업무에 AI를 활용하고, AI 활용 경험·사례·노하우가 팀 내에서 공유되기 시작합니다.</p></div>
+    </div>
+    <div class="level-row">
+      <div class="lr-icon">🌳</div>
+      <div class="lr-name">Level 4 · Forest<small>숲</small></div>
+      <div><p class="lr-def"><span class="lr-badge" style="background:var(--l4)"></span>AI가 팀의 주요 업무와 협업 방식에 내재화되는 단계</p><p class="lr-state">AI 활용이 일회성 시도가 아니라 반복적으로 이루어지며, 주요 업무 프로세스와 협업 과정에 AI가 자연스럽게 연결됩니다.</p></div>
+    </div>
+    <div class="level-row">
+      <div class="lr-icon">🏝️</div>
+      <div class="lr-name">Level 5 · Oasis<small>오아시스</small></div>
+      <div><p class="lr-def"><span class="lr-badge" style="background:var(--l5)"></span>AI가 팀의 업무문화로 정착된 단계</p><p class="lr-state">AI 활용이 구성원의 자연스러운 업무 방식으로 자리 잡고, 구성원들이 AI를 활용해 기존 업무를 지속적으로 개선·재설계합니다.</p></div>
+    </div></div>
+  </div>
+</section>
+
+<!-- ============ PANEL: FORMULA ============ -->
+<section class="panel" id="panel-formula" role="tabpanel" hidden="">
+  <div class="sec-inner">
+    <p class="k">산정 방식</p>
+    <h2>5개 영역을 종합해 하나의 점수로</h2>
+    <p class="body-lg narrow">하나의 사용량 지표만으로 Level을 정하지 않습니다. 팀의 AI 활용 수준을 보여주는 5개 영역을 각각 0~100점으로 환산한 뒤 종합하고,
+    그 점수를 5단계 기준에 대입합니다.</p>
+
+    <div class="areas" id="areaCards">
+    <div class="area-card"><div class="ac-num">01</div><h4>AI Adoption</h4><p>팀 구성원의 AI 사용률, 지속 사용률, 사용 빈도</p></div>
+    <div class="area-card"><div class="ac-num">02</div><h4>AI Application</h4><p>실제 업무에서의 AI 활용률 및 업무 적용 범위</p></div>
+    <div class="area-card"><div class="ac-num">03</div><h4>AI Collaboration</h4><p>AI 활용 경험·사례·Prompt·Workflow 공유 및 동료 간 지원</p></div>
+    <div class="area-card"><div class="ac-num">04</div><h4>AI Integration</h4><p>주요 업무 및 협업 과정에서 AI가 반복적으로 활용되는 정도</p></div>
+    <div class="area-card"><div class="ac-num">05</div><h4>AI Improvement</h4><p>AI를 활용한 업무 개선·재설계 및 새로운 활용 방식의 지속적 시도</p></div></div>
+
+    <h3 class="sub-h sub-h-tight">영역별 산출 수식</h3>
+    <div class="formula-detail" id="formulaDetail">
+    <div class="formula-row">
+      <div class="fr-head"><span class="fr-num">01</span><span class="fr-name">AI Adoption</span><span class="fr-source">Adoption_Log · 활성일수, 지속사용주(8주), 월간로그인</span></div>
+      <pre class="fr-code">usage = min(활성일수 ÷ 20, 1) × 100
+persist = min(지속사용주(8주) ÷ 8, 1) × 100
+freq = min(월간로그인 ÷ 25, 1) × 100
+개인 점수 = (usage + persist + freq) ÷ 3
+팀 AI Adoption = 개인 점수의 팀 평균</pre>
+    </div>
+    <div class="formula-row">
+      <div class="fr-head"><span class="fr-num">02</span><span class="fr-name">AI Application</span><span class="fr-source">Adoption_Log · AI활용업무비율(%)</span></div>
+      <pre class="fr-code">AI활용업무비율 = AI활용업무 ÷ 전체담당업무 × 100
+팀 AI Application = AI활용업무비율의 팀 평균</pre>
+    </div>
+    <div class="formula-row">
+      <div class="fr-head"><span class="fr-num">03</span><span class="fr-name">AI Collaboration</span><span class="fr-source">Collaboration_Log · AI경험공유, 노하우자산등록, 자산재사용, 동료페어학습, 공동Workflow표준화</span></div>
+      <pre class="fr-code">share = min(AI경험공유 ÷ 10, 1) × 100
+asset = min(노하우자산등록 ÷ 6, 1) × 100
+reuse = min(자산재사용 ÷ 6, 1) × 100
+peer = min(동료페어학습 ÷ 4, 1) × 100
+표준화 보너스 = 공동Workflow표준화 '있음' 이면 +10
+팀 AI Collaboration = min((share+asset+reuse+peer)÷4 + 보너스, 100)</pre>
+    </div>
+    <div class="formula-row">
+      <div class="fr-head"><span class="fr-num">04</span><span class="fr-name">AI Integration</span><span class="fr-source">Workflow_Meta · AI초안비율(%), AI회의록비율(%), AI ActionItem비율(%), AI검토후제출비율(%), 표준프로세스AI단계</span></div>
+      <pre class="fr-code">표준화율 = 표준프로세스AI단계 '포함' 워크플로 비율 × 100
+팀 AI Integration = (AI초안비율 + AI회의록비율
+  + AI ActionItem비율 + AI검토후제출비율 + 표준화율) ÷ 5</pre>
+    </div>
+    <div class="formula-row">
+      <div class="fr-head"><span class="fr-num">05</span><span class="fr-name">AI Improvement</span><span class="fr-source">Pulse_Check · Q6, Q42</span></div>
+      <pre class="fr-code">Q6 = "AI 사용 전후로 시간·품질이 좋아진 것을 체감한다" (1~5)
+Q42 = "AI 활용으로 실제 업무시간이 줄었다고 느낀다" (1~5)
+개인 점수 = (Q6 + Q42) ÷ 2 × 20
+팀 AI Improvement = 응답자 개인 점수의 팀 평균</pre>
+    </div></div>
+    <div class="composite-box">
+      <span class="cb-label">종합점수</span>
+      <span class="cb-formula">Composite = (AI Adoption + AI Application + AI Collaboration + AI Integration + AI Improvement) ÷ 5</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ PANEL: BANDS ============ -->
+<section class="panel" id="panel-bands" role="tabpanel" hidden="">
+  <div class="sec-inner">
+    <p class="k">점수 구간</p>
+    <h2>종합점수는 5단계 기준에,<br>핵심 조건은 레벨별로</h2>
+    <p class="body-lg narrow">종합점수가 구간을 충족해도, 그 레벨이 실제로 요구하는 조건을 채우지 못하면 조건을 만족하는 단계까지 내려갑니다.
+    레벨이 높아질수록 조건은 누적됩니다 — Forest가 되려면 Seed·Sprout 조건까지 전부 충족한 상태에서 Integration 조건까지 채워야 합니다.</p>
+
+    <table class="band-table band-table-wide" id="bandTable"><tbody><tr><td>0 – 19점</td><td>🏜️ Desert</td><td>AI 활용 기반 부족</td></tr><tr><td>20 – 39점</td><td>🌱 Seed</td><td>개인 단위 활용 시작</td></tr><tr><td>40 – 59점</td><td>🌿 Sprout</td><td>팀 내 활용 확산</td></tr><tr><td>60 – 79점</td><td>🌳 Forest</td><td>업무·협업 내재화</td></tr><tr><td>80 – 100점</td><td>🏝️ Oasis</td><td>업무문화 정착·지속적 개선</td></tr></tbody></table>
+
+    <h3 class="sub-h">레벨별 핵심 조건</h3>
+    <div class="cond-rows" id="condRows">
+    <div class="cond-row">
+      <div class="cr-lvl"><span class="cr-icon">🏜️</span><span class="cr-name">Level 1 · Desert<small>사막</small></span></div>
+      <div><p class="cr-rule">별도 조건 없음</p><p class="cr-why">종합점수 20점 미만이면 그대로 Desert로 판정합니다.</p></div>
+    </div>
+    <div class="cond-row">
+      <div class="cr-lvl"><span class="cr-icon">🌱</span><span class="cr-name">Level 2 · Seed<small>씨앗</small></span></div>
+      <div><p class="cr-rule">AI Application ≥ 25점</p><p class="cr-why">로그인만 하고 실제 업무에 적용하지 않는다면 Seed로 인정하지 않고 Desert에 머무릅니다.</p></div>
+    </div>
+    <div class="cond-row">
+      <div class="cr-lvl"><span class="cr-icon">🌿</span><span class="cr-name">Level 3 · Sprout<small>새싹</small></span></div>
+      <div><p class="cr-rule">AI Application ≥ 25점 + AI Collaboration ≥ 30점</p><p class="cr-why">업무 적용은 있어도 경험·노하우가 팀 안에서 공유되지 않는다면 Sprout으로 인정하지 않고 Seed에 머무릅니다.</p></div>
+    </div>
+    <div class="cond-row">
+      <div class="cr-lvl"><span class="cr-icon">🌳</span><span class="cr-name">Level 4 · Forest<small>숲</small></span></div>
+      <div><p class="cr-rule">AI Application ≥ 25점 + AI Collaboration ≥ 30점 + AI Integration ≥ 50점</p><p class="cr-why">공유는 활발해도 실제 업무 프로세스에 AI가 연결되어 있지 않다면 Forest로 인정하지 않고 Sprout에 머무릅니다.</p></div>
+    </div>
+    <div class="cond-row">
+      <div class="cr-lvl"><span class="cr-icon">🏝️</span><span class="cr-name">Level 5 · Oasis<small>오아시스</small></span></div>
+      <div><p class="cr-rule">AI Application ≥ 25점 + AI Collaboration ≥ 30점 + AI Integration ≥ 50점 + AI Improvement ≥ 70점</p><p class="cr-why">업무에 내재화되어 있어도 지속적인 개선·재설계 시도가 없다면 Oasis로 인정하지 않고 Forest에 머무릅니다.</p></div>
+    </div></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  <div class="sec-inner">
+    <p>본 대시보드의 조직 구조·인력 규모는 아모레퍼시픽의 공시 정보를 참고했으나, Copilot 사용 로그·Pulse 설문 응답·팀별 시나리오는 PoC 설계를 위해 생성한 더미데이터입니다. 실제 아모레퍼시픽의 내부 성과·개인정보가 아닙니다.</p>
+    <p class="foot-meta">AI Agent 기반 AI 조직문화 변화관리 모델 · Team AI Oasis Level · 기준월 2026-06</p>
+  </div>
+</footer>
+
+<script>
+const OASIS_DATA = {"company":{"n":4748,"teams":215,"cycles":[{"a":53.1,"ap":43.2,"c":55.3,"i":27.2,"im":59.2,"score":47.6,"lvl":3,"cycle":0},{"a":55.7,"ap":49.5,"c":58.8,"i":36.5,"im":62.0,"score":52.5,"lvl":3,"cycle":1},{"a":59.2,"ap":54.4,"c":62.2,"i":44.6,"im":64.0,"score":56.9,"lvl":3,"cycle":2},{"a":62.6,"ap":58.8,"c":64.9,"i":51.8,"im":66.2,"score":60.9,"lvl":4,"cycle":3}]},"honbu":[{"honbu":"디지털·IT","n":180,"teams":9,"cycles":[{"a":82.1,"ap":65.7,"c":65.5,"i":55.0,"im":75.3,"score":68.7,"lvl":4,"cycle":0},{"a":82.0,"ap":69.5,"c":68.7,"i":57.7,"im":76.9,"score":71.0,"lvl":4,"cycle":1},{"a":83.7,"ap":71.4,"c":73.5,"i":63.7,"im":78.0,"score":74.1,"lvl":4,"cycle":2},{"a":85.5,"ap":76.2,"c":75.3,"i":70.4,"im":76.4,"score":76.8,"lvl":4,"cycle":3}]},{"honbu":"디지털커머스","n":290,"teams":13,"cycles":[{"a":68.8,"ap":56.6,"c":69.2,"i":47.8,"im":69.3,"score":62.4,"lvl":3,"cycle":0},{"a":71.2,"ap":59.8,"c":71.5,"i":54.3,"im":70.9,"score":65.5,"lvl":4,"cycle":1},{"a":72.5,"ap":64.1,"c":74.8,"i":59.1,"im":74.0,"score":68.9,"lvl":4,"cycle":2},{"a":74.2,"ap":66.6,"c":76.0,"i":65.6,"im":76.2,"score":71.7,"lvl":4,"cycle":3}]},{"honbu":"글로벌마케팅","n":310,"teams":15,"cycles":[{"a":66.9,"ap":54.6,"c":59.3,"i":46.5,"im":68.2,"score":59.1,"lvl":3,"cycle":0},{"a":68.4,"ap":58.5,"c":62.7,"i":52.0,"im":68.0,"score":61.9,"lvl":4,"cycle":1},{"a":68.0,"ap":60.7,"c":66.7,"i":55.9,"im":69.3,"score":64.1,"lvl":4,"cycle":2},{"a":72.3,"ap":64.5,"c":71.4,"i":56.4,"im":70.9,"score":67.1,"lvl":4,"cycle":3}]},{"honbu":"데일리뷰티","n":260,"teams":11,"cycles":[{"a":59.8,"ap":49.2,"c":59.2,"i":32.0,"im":63.3,"score":52.7,"lvl":3,"cycle":0},{"a":61.7,"ap":56.5,"c":62.0,"i":42.3,"im":65.3,"score":57.6,"lvl":3,"cycle":1},{"a":63.6,"ap":61.4,"c":66.0,"i":50.4,"im":66.4,"score":61.6,"lvl":4,"cycle":2},{"a":66.8,"ap":65.9,"c":70.4,"i":55.8,"im":70.2,"score":65.8,"lvl":4,"cycle":3}]},{"honbu":"프리미엄브랜드","n":380,"teams":18,"cycles":[{"a":59.8,"ap":48.2,"c":58.5,"i":33.6,"im":63.1,"score":52.7,"lvl":3,"cycle":0},{"a":61.7,"ap":54.4,"c":63.1,"i":44.2,"im":64.3,"score":57.5,"lvl":3,"cycle":1},{"a":63.8,"ap":61.1,"c":64.4,"i":51.3,"im":66.1,"score":61.3,"lvl":4,"cycle":2},{"a":68.4,"ap":64.7,"c":69.2,"i":58.5,"im":67.7,"score":65.7,"lvl":4,"cycle":3}]},{"honbu":"전략·재무","n":150,"teams":7,"cycles":[{"a":57.6,"ap":47.6,"c":60.0,"i":28.7,"im":61.4,"score":51.0,"lvl":3,"cycle":0},{"a":59.8,"ap":57.7,"c":63.9,"i":35.4,"im":62.3,"score":55.8,"lvl":3,"cycle":1},{"a":65.0,"ap":61.2,"c":65.8,"i":41.8,"im":65.4,"score":59.8,"lvl":3,"cycle":2},{"a":66.6,"ap":66.2,"c":69.0,"i":50.1,"im":68.0,"score":64.0,"lvl":4,"cycle":3}]},{"honbu":"럭셔리브랜드","n":420,"teams":19,"cycles":[{"a":58.1,"ap":47.2,"c":55.9,"i":33.1,"im":61.9,"score":51.2,"lvl":3,"cycle":0},{"a":60.8,"ap":54.3,"c":59.9,"i":41.2,"im":64.9,"score":56.2,"lvl":3,"cycle":1},{"a":63.9,"ap":58.3,"c":65.1,"i":47.3,"im":64.7,"score":59.8,"lvl":3,"cycle":2},{"a":66.7,"ap":64.3,"c":66.8,"i":52.8,"im":68.1,"score":63.7,"lvl":4,"cycle":3}]},{"honbu":"글로벌사업","n":339,"teams":14,"cycles":[{"a":58.8,"ap":47.2,"c":56.2,"i":31.4,"im":60.4,"score":50.8,"lvl":3,"cycle":0},{"a":61.7,"ap":52.8,"c":59.4,"i":41.9,"im":63.7,"score":55.9,"lvl":3,"cycle":1},{"a":63.6,"ap":57.2,"c":64.3,"i":50.9,"im":65.4,"score":60.3,"lvl":4,"cycle":2},{"a":65.7,"ap":61.3,"c":66.3,"i":56.9,"im":65.7,"score":63.2,"lvl":4,"cycle":3}]},{"honbu":"R&I","n":610,"teams":27,"cycles":[{"a":51.1,"ap":41.6,"c":57.3,"i":21.5,"im":58.6,"score":46.0,"lvl":3,"cycle":0},{"a":52.6,"ap":48.4,"c":58.7,"i":32.2,"im":62.2,"score":50.8,"lvl":3,"cycle":1},{"a":57.2,"ap":55.3,"c":61.6,"i":38.6,"im":65.0,"score":55.5,"lvl":3,"cycle":2},{"a":59.8,"ap":57.8,"c":64.9,"i":48.5,"im":67.9,"score":59.8,"lvl":3,"cycle":3}]},{"honbu":"법무·준법·ESG","n":84,"teams":3,"cycles":[{"a":48.6,"ap":39.5,"c":50.3,"i":20.2,"im":56.9,"score":43.1,"lvl":3,"cycle":0},{"a":55.2,"ap":47.1,"c":52.4,"i":26.1,"im":62.9,"score":48.7,"lvl":3,"cycle":1},{"a":60.3,"ap":56.8,"c":61.4,"i":33.0,"im":65.6,"score":55.4,"lvl":3,"cycle":2},{"a":64.7,"ap":57.7,"c":60.7,"i":46.6,"im":63.9,"score":58.7,"lvl":3,"cycle":3}]},{"honbu":"국내영업","n":520,"teams":24,"cycles":[{"a":49.8,"ap":40.3,"c":52.3,"i":21.0,"im":56.5,"score":44.0,"lvl":3,"cycle":0},{"a":52.6,"ap":46.8,"c":55.8,"i":31.2,"im":60.1,"score":49.3,"lvl":3,"cycle":1},{"a":54.9,"ap":51.6,"c":59.5,"i":40.9,"im":61.4,"score":53.7,"lvl":3,"cycle":2},{"a":58.0,"ap":57.8,"c":62.0,"i":48.8,"im":64.5,"score":58.2,"lvl":3,"cycle":3}]},{"honbu":"인사·조직문화","n":95,"teams":4,"cycles":[{"a":51.9,"ap":44.7,"c":45.3,"i":21.8,"im":61.4,"score":45.0,"lvl":3,"cycle":0},{"a":55.3,"ap":51.9,"c":53.2,"i":27.2,"im":65.0,"score":50.5,"lvl":3,"cycle":1},{"a":60.5,"ap":51.5,"c":57.6,"i":36.2,"im":66.3,"score":54.4,"lvl":3,"cycle":2},{"a":61.4,"ap":52.3,"c":61.6,"i":51.1,"im":64.5,"score":58.2,"lvl":3,"cycle":3}]},{"honbu":"SCM물류","n":420,"teams":19,"cycles":[{"a":41.4,"ap":33.2,"c":49.3,"i":14.5,"im":51.7,"score":38.0,"lvl":2,"cycle":0},{"a":44.9,"ap":39.9,"c":54.3,"i":28.3,"im":55.2,"score":44.5,"lvl":3,"cycle":1},{"a":50.6,"ap":45.3,"c":56.3,"i":37.9,"im":59.1,"score":49.8,"lvl":3,"cycle":2},{"a":53.6,"ap":46.6,"c":57.9,"i":44.8,"im":61.5,"score":52.9,"lvl":3,"cycle":3}]},{"honbu":"SCM생산","n":690,"teams":32,"cycles":[{"a":31.8,"ap":25.7,"c":46.3,"i":10.4,"im":47.1,"score":32.2,"lvl":2,"cycle":0},{"a":36.1,"ap":32.7,"c":50.4,"i":20.4,"im":51.2,"score":38.1,"lvl":2,"cycle":1},{"a":42.6,"ap":38.3,"c":52.7,"i":33.5,"im":53.9,"score":44.2,"lvl":3,"cycle":2},{"a":49.1,"ap":46.2,"c":55.1,"i":41.5,"im":56.8,"score":49.7,"lvl":3,"cycle":3}]}],"teams":[{"id":"T001","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"설화수브랜드","name":"설화수브랜드 1팀","n":22,"cycles":[{"a":64.4,"ap":55.5,"c":60.0,"i":29.7,"im":67.5,"score":55.4,"lvl":3,"cycle":0},{"a":65.4,"ap":61.9,"c":66.6,"i":24.4,"im":69.5,"score":57.6,"lvl":3,"cycle":1},{"a":62.2,"ap":55.5,"c":71.5,"i":18.0,"im":72.7,"score":56.0,"lvl":3,"cycle":2},{"a":69.4,"ap":70.6,"c":74.6,"i":13.9,"im":69.7,"score":59.7,"lvl":3,"cycle":3}]},{"id":"T002","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"설화수브랜드","name":"설화수브랜드 2팀","n":22,"cycles":[{"a":61.1,"ap":47.2,"c":62.5,"i":28.7,"im":60.0,"score":51.9,"lvl":3,"cycle":0},{"a":65.3,"ap":59.7,"c":60.2,"i":42.5,"im":63.8,"score":58.3,"lvl":3,"cycle":1},{"a":72.3,"ap":69.8,"c":68.3,"i":47.8,"im":61.4,"score":63.9,"lvl":3,"cycle":2},{"a":72.8,"ap":73.3,"c":73.6,"i":55.8,"im":71.2,"score":69.3,"lvl":4,"cycle":3}]},{"id":"T003","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"설화수브랜드","name":"설화수브랜드 3팀","n":22,"cycles":[{"a":57.8,"ap":50.0,"c":19.6,"i":34.9,"im":65.0,"score":45.5,"lvl":2,"cycle":0},{"a":59.6,"ap":52.5,"c":30.7,"i":48.6,"im":71.7,"score":52.6,"lvl":3,"cycle":1},{"a":66.1,"ap":58.5,"c":43.9,"i":53.2,"im":76.3,"score":59.6,"lvl":3,"cycle":2},{"a":70.1,"ap":63.8,"c":56.2,"i":56.0,"im":79.3,"score":65.1,"lvl":4,"cycle":3}]},{"id":"T004","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"설화수브랜드","name":"설화수브랜드 4팀","n":21,"cycles":[{"a":53.5,"ap":45.7,"c":70.0,"i":29.7,"im":57.5,"score":51.3,"lvl":3,"cycle":0},{"a":49.4,"ap":57.1,"c":62.4,"i":36.5,"im":54.4,"score":52.0,"lvl":3,"cycle":1},{"a":46.2,"ap":58.0,"c":64.9,"i":49.4,"im":49.0,"score":53.5,"lvl":3,"cycle":2},{"a":42.1,"ap":62.7,"c":68.7,"i":45.7,"im":57.6,"score":55.4,"lvl":3,"cycle":3}]},{"id":"T005","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"설화수브랜드","name":"설화수브랜드 5팀","n":21,"cycles":[{"a":59.5,"ap":45.8,"c":67.5,"i":49.2,"im":65.9,"score":57.6,"lvl":3,"cycle":0},{"a":67.6,"ap":53.9,"c":70.7,"i":58.3,"im":68.6,"score":63.8,"lvl":4,"cycle":1},{"a":69.0,"ap":49.8,"c":70.0,"i":63.9,"im":75.1,"score":65.6,"lvl":4,"cycle":2},{"a":68.4,"ap":58.3,"c":75.1,"i":68.6,"im":73.2,"score":68.7,"lvl":4,"cycle":3}]},{"id":"T006","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"설화수브랜드","name":"설화수브랜드 6팀","n":21,"cycles":[{"a":52.5,"ap":44.7,"c":78.8,"i":29.6,"im":55.3,"score":52.2,"lvl":3,"cycle":0},{"a":55.8,"ap":55.5,"c":79.2,"i":25.2,"im":66.1,"score":56.4,"lvl":3,"cycle":1},{"a":60.8,"ap":64.3,"c":80.3,"i":37.9,"im":59.8,"score":60.6,"lvl":3,"cycle":2},{"a":59.6,"ap":69.1,"c":74.1,"i":37.7,"im":69.2,"score":62.0,"lvl":3,"cycle":3}]},{"id":"T007","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"설화수브랜드","name":"설화수브랜드 7팀","n":21,"cycles":[{"a":59.2,"ap":47.3,"c":60.0,"i":35.8,"im":62.4,"score":52.9,"lvl":3,"cycle":0},{"a":55.8,"ap":61.6,"c":64.3,"i":49.2,"im":65.1,"score":59.2,"lvl":3,"cycle":1},{"a":61.0,"ap":57.3,"c":68.6,"i":61.5,"im":68.7,"score":63.4,"lvl":4,"cycle":2},{"a":70.3,"ap":71.3,"c":60.1,"i":64.3,"im":73.7,"score":67.9,"lvl":4,"cycle":3}]},{"id":"T008","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"헤라브랜드","name":"헤라브랜드 1팀","n":22,"cycles":[{"a":54.4,"ap":48.1,"c":50.8,"i":45.8,"im":61.1,"score":52.0,"lvl":3,"cycle":0},{"a":57.6,"ap":55.3,"c":48.2,"i":51.4,"im":65.3,"score":55.5,"lvl":3,"cycle":1},{"a":62.4,"ap":55.9,"c":64.6,"i":58.5,"im":69.4,"score":62.1,"lvl":4,"cycle":2},{"a":65.2,"ap":65.9,"c":57.9,"i":54.9,"im":70.9,"score":63.0,"lvl":4,"cycle":3}]},{"id":"T009","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"헤라브랜드","name":"헤라브랜드 2팀","n":22,"cycles":[{"a":51.5,"ap":39.6,"c":53.8,"i":23.0,"im":62.4,"score":46.0,"lvl":3,"cycle":0},{"a":58.0,"ap":33.9,"c":58.6,"i":39.1,"im":64.2,"score":50.8,"lvl":3,"cycle":1},{"a":59.4,"ap":50.5,"c":60.9,"i":50.5,"im":60.0,"score":56.2,"lvl":3,"cycle":2},{"a":65.6,"ap":56.9,"c":53.3,"i":66.5,"im":62.5,"score":61.0,"lvl":4,"cycle":3}]},{"id":"T010","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"헤라브랜드","name":"헤라브랜드 3팀","n":22,"cycles":[{"a":59.6,"ap":47.0,"c":61.7,"i":35.1,"im":59.3,"score":52.5,"lvl":3,"cycle":0},{"a":60.0,"ap":55.1,"c":65.9,"i":48.2,"im":57.8,"score":57.4,"lvl":3,"cycle":1},{"a":66.3,"ap":54.0,"c":70.2,"i":42.4,"im":56.6,"score":57.9,"lvl":3,"cycle":2},{"a":64.3,"ap":46.8,"c":71.8,"i":45.7,"im":59.8,"score":57.7,"lvl":3,"cycle":3}]},{"id":"T011","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"헤라브랜드","name":"헤라브랜드 4팀","n":22,"cycles":[{"a":52.3,"ap":42.6,"c":63.3,"i":42.6,"im":58.4,"score":51.9,"lvl":3,"cycle":0},{"a":55.2,"ap":55.8,"c":69.6,"i":41.1,"im":59.3,"score":56.2,"lvl":3,"cycle":1},{"a":63.0,"ap":57.8,"c":71.6,"i":39.5,"im":60.6,"score":58.5,"lvl":3,"cycle":2},{"a":69.2,"ap":64.9,"c":74.6,"i":56.9,"im":56.0,"score":64.3,"lvl":4,"cycle":3}]},{"id":"T012","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"헤라브랜드","name":"헤라브랜드 5팀","n":22,"cycles":[{"a":57.7,"ap":45.2,"c":34.2,"i":27.5,"im":63.0,"score":45.5,"lvl":3,"cycle":0},{"a":55.4,"ap":51.9,"c":44.7,"i":44.4,"im":67.0,"score":52.7,"lvl":3,"cycle":1},{"a":63.2,"ap":54.1,"c":54.2,"i":53.6,"im":62.2,"score":57.4,"lvl":3,"cycle":2},{"a":67.3,"ap":61.8,"c":60.4,"i":60.6,"im":64.2,"score":62.9,"lvl":4,"cycle":3}]},{"id":"T013","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"AP브랜드","name":"AP브랜드 1팀","n":24,"cycles":[{"a":56.6,"ap":44.2,"c":73.8,"i":21.5,"im":64.1,"score":52.0,"lvl":3,"cycle":0},{"a":57.6,"ap":53.7,"c":71.1,"i":15.2,"im":61.2,"score":51.8,"lvl":3,"cycle":1},{"a":53.7,"ap":58.5,"c":67.5,"i":38.7,"im":59.4,"score":55.6,"lvl":3,"cycle":2},{"a":61.8,"ap":56.7,"c":59.4,"i":52.7,"im":67.7,"score":59.7,"lvl":3,"cycle":3}]},{"id":"T014","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"AP브랜드","name":"AP브랜드 2팀","n":23,"cycles":[{"a":59.4,"ap":48.3,"c":18.8,"i":35.9,"im":62.2,"score":44.9,"lvl":2,"cycle":0},{"a":64.4,"ap":51.5,"c":38.1,"i":44.9,"im":66.9,"score":53.2,"lvl":3,"cycle":1},{"a":66.9,"ap":57.1,"c":51.7,"i":40.2,"im":61.2,"score":55.4,"lvl":3,"cycle":2},{"a":72.3,"ap":61.7,"c":69.3,"i":54.3,"im":68.0,"score":65.1,"lvl":4,"cycle":3}]},{"id":"T015","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"AP브랜드","name":"AP브랜드 3팀","n":23,"cycles":[{"a":68.1,"ap":57.6,"c":72.5,"i":22.4,"im":70.0,"score":58.1,"lvl":3,"cycle":0},{"a":76.3,"ap":55.0,"c":77.1,"i":29.2,"im":75.2,"score":62.6,"lvl":3,"cycle":1},{"a":78.8,"ap":63.5,"c":78.1,"i":44.9,"im":70.4,"score":67.1,"lvl":3,"cycle":2},{"a":81.7,"ap":70.0,"c":82.7,"i":54.2,"im":68.8,"score":71.5,"lvl":4,"cycle":3}]},{"id":"T016","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"럭셔리IMC","name":"럭셔리IMC 1팀","n":23,"cycles":[{"a":63.4,"ap":51.1,"c":73.3,"i":40.1,"im":65.9,"score":58.8,"lvl":3,"cycle":0},{"a":67.1,"ap":60.6,"c":69.2,"i":53.4,"im":66.8,"score":63.4,"lvl":4,"cycle":1},{"a":68.2,"ap":69.2,"c":65.8,"i":63.1,"im":72.5,"score":67.8,"lvl":4,"cycle":2},{"a":64.1,"ap":69.3,"c":72.6,"i":61.2,"im":77.4,"score":68.9,"lvl":4,"cycle":3}]},{"id":"T017","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"럭셔리IMC","name":"럭셔리IMC 2팀","n":23,"cycles":[{"a":60.7,"ap":47.6,"c":35.8,"i":35.0,"im":63.8,"score":48.6,"lvl":3,"cycle":0},{"a":66.9,"ap":49.8,"c":48.2,"i":49.2,"im":66.9,"score":56.2,"lvl":3,"cycle":1},{"a":72.9,"ap":54.9,"c":57.4,"i":43.9,"im":69.3,"score":59.7,"lvl":3,"cycle":2},{"a":71.1,"ap":63.6,"c":62.2,"i":57.3,"im":72.8,"score":65.4,"lvl":4,"cycle":3}]},{"id":"T018","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"럭셔리IMC","name":"럭셔리IMC 3팀","n":22,"cycles":[{"a":52.5,"ap":40.9,"c":72.5,"i":28.8,"im":49.5,"score":48.8,"lvl":3,"cycle":0},{"a":57.3,"ap":50.3,"c":72.6,"i":38.5,"im":55.7,"score":54.9,"lvl":3,"cycle":1},{"a":64.2,"ap":57.4,"c":78.0,"i":37.1,"im":58.6,"score":59.1,"lvl":3,"cycle":2},{"a":68.8,"ap":69.6,"c":78.4,"i":48.0,"im":63.9,"score":65.7,"lvl":3,"cycle":3}]},{"id":"T019","biz":"화장품/생활용품","honbu":"럭셔리브랜드","dept":"럭셔리IMC","name":"럭셔리IMC 4팀","n":22,"cycles":[{"a":58.2,"ap":48.4,"c":34.6,"i":34.8,"im":62.6,"score":47.7,"lvl":3,"cycle":0},{"a":58.3,"ap":57.9,"c":41.5,"i":46.4,"im":66.4,"score":54.1,"lvl":3,"cycle":1},{"a":55.5,"ap":61.7,"c":49.6,"i":56.9,"im":64.8,"score":57.7,"lvl":3,"cycle":2},{"a":62.3,"ap":65.0,"c":44.7,"i":47.5,"im":67.1,"score":57.3,"lvl":3,"cycle":3}]},{"id":"T020","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"라네즈브랜드","name":"라네즈브랜드 1팀","n":22,"cycles":[{"a":58.2,"ap":49.3,"c":67.1,"i":28.8,"im":65.8,"score":53.8,"lvl":3,"cycle":0},{"a":67.5,"ap":62.4,"c":70.5,"i":36.6,"im":70.3,"score":61.4,"lvl":3,"cycle":1},{"a":68.1,"ap":76.6,"c":72.5,"i":31.3,"im":76.8,"score":65.1,"lvl":3,"cycle":2},{"a":73.9,"ap":79.0,"c":75.1,"i":48.3,"im":79.7,"score":71.2,"lvl":3,"cycle":3}]},{"id":"T021","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"라네즈브랜드","name":"라네즈브랜드 2팀","n":22,"cycles":[{"a":58.6,"ap":46.2,"c":64.6,"i":34.6,"im":60.7,"score":52.9,"lvl":3,"cycle":0},{"a":52.9,"ap":61.8,"c":67.3,"i":27.5,"im":59.6,"score":53.8,"lvl":3,"cycle":1},{"a":64.5,"ap":67.5,"c":68.0,"i":43.3,"im":64.3,"score":61.5,"lvl":3,"cycle":2},{"a":67.8,"ap":70.2,"c":71.5,"i":51.2,"im":65.7,"score":65.3,"lvl":4,"cycle":3}]},{"id":"T022","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"라네즈브랜드","name":"라네즈브랜드 3팀","n":22,"cycles":[{"a":62.9,"ap":50.4,"c":70.4,"i":29.5,"im":63.9,"score":55.4,"lvl":3,"cycle":0},{"a":66.4,"ap":60.0,"c":63.9,"i":25.5,"im":60.9,"score":55.3,"lvl":3,"cycle":1},{"a":67.1,"ap":71.8,"c":65.1,"i":37.3,"im":62.1,"score":60.7,"lvl":3,"cycle":2},{"a":68.8,"ap":74.8,"c":71.5,"i":45.7,"im":71.1,"score":66.4,"lvl":3,"cycle":3}]},{"id":"T023","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"라네즈브랜드","name":"라네즈브랜드 4팀","n":22,"cycles":[{"a":57.6,"ap":45.6,"c":78.3,"i":35.0,"im":58.4,"score":55.0,"lvl":3,"cycle":0},{"a":59.8,"ap":58.6,"c":81.3,"i":50.3,"im":61.7,"score":62.3,"lvl":4,"cycle":1},{"a":63.4,"ap":67.9,"c":84.9,"i":58.3,"im":54.9,"score":65.9,"lvl":4,"cycle":2},{"a":65.5,"ap":76.0,"c":89.1,"i":67.2,"im":64.1,"score":72.4,"lvl":4,"cycle":3}]},{"id":"T024","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"라네즈브랜드","name":"라네즈브랜드 5팀","n":21,"cycles":[{"a":57.8,"ap":48.3,"c":60.0,"i":35.8,"im":60.6,"score":52.5,"lvl":3,"cycle":0},{"a":53.9,"ap":56.0,"c":61.2,"i":49.0,"im":53.9,"score":54.8,"lvl":3,"cycle":1},{"a":60.4,"ap":57.4,"c":59.3,"i":61.5,"im":58.3,"score":59.4,"lvl":3,"cycle":2},{"a":59.6,"ap":64.1,"c":65.5,"i":71.3,"im":68.2,"score":65.7,"lvl":4,"cycle":3}]},{"id":"T025","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"라네즈브랜드","name":"라네즈브랜드 6팀","n":21,"cycles":[{"a":60.0,"ap":50.9,"c":30.8,"i":33.6,"im":67.2,"score":48.5,"lvl":3,"cycle":0},{"a":66.0,"ap":52.7,"c":47.2,"i":52.6,"im":63.0,"score":56.3,"lvl":3,"cycle":1},{"a":71.6,"ap":50.5,"c":55.8,"i":51.1,"im":68.8,"score":59.6,"lvl":3,"cycle":2},{"a":76.0,"ap":59.1,"c":54.5,"i":62.8,"im":72.8,"score":65.0,"lvl":4,"cycle":3}]},{"id":"T026","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"마몽드브랜드","name":"마몽드브랜드 1팀","n":22,"cycles":[{"a":63.4,"ap":45.9,"c":81.2,"i":40.8,"im":60.0,"score":58.3,"lvl":3,"cycle":0},{"a":56.9,"ap":45.4,"c":80.9,"i":55.9,"im":62.8,"score":60.4,"lvl":4,"cycle":1},{"a":48.6,"ap":44.9,"c":81.8,"i":66.6,"im":55.3,"score":59.4,"lvl":3,"cycle":2},{"a":59.2,"ap":59.9,"c":82.4,"i":69.3,"im":48.3,"score":63.8,"lvl":4,"cycle":3}]},{"id":"T027","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"마몽드브랜드","name":"마몽드브랜드 2팀","n":21,"cycles":[{"a":59.9,"ap":47.9,"c":50.0,"i":48.7,"im":62.9,"score":53.9,"lvl":3,"cycle":0},{"a":62.6,"ap":47.4,"c":47.0,"i":57.3,"im":72.6,"score":57.4,"lvl":3,"cycle":1},{"a":65.4,"ap":54.4,"c":57.1,"i":58.6,"im":74.5,"score":62.0,"lvl":4,"cycle":2},{"a":73.8,"ap":47.6,"c":60.6,"i":55.8,"im":74.2,"score":62.4,"lvl":4,"cycle":3}]},{"id":"T028","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"마몽드브랜드","name":"마몽드브랜드 3팀","n":21,"cycles":[{"a":58.3,"ap":50.0,"c":67.5,"i":34.9,"im":61.9,"score":54.5,"lvl":3,"cycle":0},{"a":64.4,"ap":57.8,"c":67.9,"i":44.4,"im":59.6,"score":58.8,"lvl":3,"cycle":1},{"a":58.4,"ap":70.1,"c":66.1,"i":41.5,"im":59.0,"score":59.0,"lvl":3,"cycle":2},{"a":66.7,"ap":73.0,"c":69.3,"i":52.7,"im":65.0,"score":65.4,"lvl":4,"cycle":3}]},{"id":"T029","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"마몽드브랜드","name":"마몽드브랜드 4팀","n":21,"cycles":[{"a":63.7,"ap":50.2,"c":80.4,"i":26.2,"im":66.7,"score":57.4,"lvl":3,"cycle":0},{"a":61.5,"ap":48.6,"c":81.4,"i":37.1,"im":68.8,"score":59.5,"lvl":3,"cycle":1},{"a":67.6,"ap":60.2,"c":81.7,"i":46.4,"im":74.3,"score":66.1,"lvl":3,"cycle":2},{"a":66.0,"ap":68.0,"c":84.5,"i":40.2,"im":72.0,"score":66.1,"lvl":3,"cycle":3}]},{"id":"T030","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"에스트라브랜드","name":"에스트라브랜드 1팀","n":22,"cycles":[{"a":56.2,"ap":45.3,"c":59.6,"i":27.8,"im":62.2,"score":50.2,"lvl":3,"cycle":0},{"a":59.2,"ap":48.6,"c":58.3,"i":45.2,"im":58.3,"score":53.9,"lvl":3,"cycle":1},{"a":52.8,"ap":62.2,"c":56.0,"i":57.7,"im":61.7,"score":58.1,"lvl":3,"cycle":2},{"a":63.9,"ap":60.9,"c":61.5,"i":62.2,"im":60.2,"score":61.7,"lvl":4,"cycle":3}]},{"id":"T031","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"에스트라브랜드","name":"에스트라브랜드 2팀","n":21,"cycles":[{"a":59.6,"ap":50.5,"c":27.5,"i":40.1,"im":64.4,"score":48.4,"lvl":2,"cycle":0},{"a":55.8,"ap":56.4,"c":45.9,"i":49.4,"im":59.3,"score":53.3,"lvl":3,"cycle":1},{"a":60.1,"ap":55.9,"c":54.3,"i":41.5,"im":65.7,"score":55.5,"lvl":3,"cycle":2},{"a":63.7,"ap":59.3,"c":61.9,"i":38.5,"im":72.9,"score":59.2,"lvl":3,"cycle":3}]},{"id":"T032","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"에스트라브랜드","name":"에스트라브랜드 3팀","n":21,"cycles":[{"a":62.5,"ap":48.5,"c":42.5,"i":30.5,"im":64.1,"score":49.6,"lvl":3,"cycle":0},{"a":66.4,"ap":52.2,"c":35.9,"i":45.7,"im":66.0,"score":53.2,"lvl":3,"cycle":1},{"a":66.1,"ap":54.4,"c":28.7,"i":55.8,"im":68.9,"score":54.8,"lvl":2,"cycle":2},{"a":72.1,"ap":63.6,"c":45.7,"i":64.6,"im":67.3,"score":62.6,"lvl":4,"cycle":3}]},{"id":"T033","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"에스트라브랜드","name":"에스트라브랜드 4팀","n":21,"cycles":[{"a":58.4,"ap":48.8,"c":28.3,"i":27.5,"im":67.5,"score":46.1,"lvl":2,"cycle":0},{"a":66.0,"ap":57.0,"c":47.1,"i":44.5,"im":70.4,"score":57.0,"lvl":3,"cycle":1},{"a":66.5,"ap":61.6,"c":52.8,"i":58.1,"im":76.0,"score":63.0,"lvl":4,"cycle":2},{"a":70.9,"ap":65.6,"c":59.5,"i":66.4,"im":75.1,"score":67.5,"lvl":4,"cycle":3}]},{"id":"T034","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"프리미엄IMC","name":"프리미엄IMC 1팀","n":20,"cycles":[{"a":61.5,"ap":47.5,"c":82.9,"i":30.3,"im":63.3,"score":57.1,"lvl":3,"cycle":0},{"a":58.6,"ap":57.1,"c":89.9,"i":41.2,"im":70.4,"score":63.5,"lvl":3,"cycle":1},{"a":65.1,"ap":64.5,"c":94.6,"i":55.2,"im":71.8,"score":70.2,"lvl":4,"cycle":2},{"a":73.1,"ap":56.8,"c":91.5,"i":63.3,"im":72.7,"score":71.5,"lvl":4,"cycle":3}]},{"id":"T035","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"프리미엄IMC","name":"프리미엄IMC 2팀","n":20,"cycles":[{"a":61.7,"ap":52.9,"c":42.9,"i":35.7,"im":61.9,"score":51.0,"lvl":3,"cycle":0},{"a":68.3,"ap":61.5,"c":54.4,"i":35.8,"im":74.3,"score":58.9,"lvl":3,"cycle":1},{"a":70.8,"ap":64.2,"c":48.7,"i":45.6,"im":74.9,"score":60.9,"lvl":3,"cycle":2},{"a":72.4,"ap":67.3,"c":57.2,"i":58.2,"im":72.2,"score":65.4,"lvl":4,"cycle":3}]},{"id":"T036","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"프리미엄IMC","name":"프리미엄IMC 3팀","n":20,"cycles":[{"a":56.8,"ap":44.4,"c":75.8,"i":36.2,"im":60.0,"score":54.7,"lvl":3,"cycle":0},{"a":60.3,"ap":42.0,"c":80.9,"i":55.3,"im":64.9,"score":60.7,"lvl":4,"cycle":1},{"a":64.9,"ap":52.7,"c":81.0,"i":62.3,"im":70.5,"score":66.3,"lvl":4,"cycle":2},{"a":68.3,"ap":61.5,"c":83.5,"i":73.1,"im":70.9,"score":71.4,"lvl":4,"cycle":3}]},{"id":"T037","biz":"화장품/생활용품","honbu":"프리미엄브랜드","dept":"프리미엄IMC","name":"프리미엄IMC 4팀","n":20,"cycles":[{"a":59.8,"ap":45.8,"c":39.6,"i":29.2,"im":65.3,"score":47.9,"lvl":3,"cycle":0},{"a":64.0,"ap":52.6,"c":54.7,"i":43.9,"im":62.7,"score":55.6,"lvl":3,"cycle":1},{"a":67.9,"ap":61.6,"c":49.9,"i":52.1,"im":53.8,"score":57.1,"lvl":3,"cycle":2},{"a":69.8,"ap":54.7,"c":60.3,"i":63.7,"im":47.2,"score":59.2,"lvl":3,"cycle":3}]},{"id":"T038","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"헤어케어브랜드","name":"헤어케어브랜드 1팀","n":24,"cycles":[{"a":58.7,"ap":51.9,"c":80.8,"i":30.1,"im":64.5,"score":57.2,"lvl":3,"cycle":0},{"a":60.4,"ap":60.8,"c":81.1,"i":40.7,"im":72.2,"score":63.0,"lvl":3,"cycle":1},{"a":66.6,"ap":68.8,"c":85.2,"i":38.3,"im":75.4,"score":66.9,"lvl":3,"cycle":2},{"a":76.9,"ap":68.6,"c":84.2,"i":34.1,"im":78.9,"score":68.5,"lvl":3,"cycle":3}]},{"id":"T039","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"헤어케어브랜드","name":"헤어케어브랜드 2팀","n":24,"cycles":[{"a":67.8,"ap":54.6,"c":41.2,"i":27.8,"im":67.9,"score":51.9,"lvl":3,"cycle":0},{"a":73.1,"ap":60.7,"c":33.0,"i":22.5,"im":67.8,"score":51.4,"lvl":3,"cycle":1},{"a":69.0,"ap":61.9,"c":46.7,"i":36.8,"im":68.0,"score":56.5,"lvl":3,"cycle":2},{"a":61.8,"ap":68.1,"c":51.2,"i":36.8,"im":67.4,"score":57.1,"lvl":3,"cycle":3}]},{"id":"T040","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"헤어케어브랜드","name":"헤어케어브랜드 3팀","n":23,"cycles":[{"a":57.3,"ap":47.2,"c":44.6,"i":34.3,"im":63.2,"score":49.3,"lvl":3,"cycle":0},{"a":62.9,"ap":48.8,"c":42.7,"i":47.2,"im":57.4,"score":51.8,"lvl":3,"cycle":1},{"a":59.7,"ap":54.1,"c":36.7,"i":53.3,"im":61.2,"score":53.0,"lvl":3,"cycle":2},{"a":66.9,"ap":61.2,"c":47.1,"i":61.9,"im":65.4,"score":60.5,"lvl":4,"cycle":3}]},{"id":"T041","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"헤어케어브랜드","name":"헤어케어브랜드 4팀","n":23,"cycles":[{"a":58.2,"ap":47.8,"c":70.4,"i":34.1,"im":62.9,"score":54.7,"lvl":3,"cycle":0},{"a":56.7,"ap":58.7,"c":69.2,"i":51.5,"im":65.2,"score":60.3,"lvl":4,"cycle":1},{"a":63.2,"ap":61.4,"c":74.8,"i":64.5,"im":69.2,"score":66.6,"lvl":4,"cycle":2},{"a":65.1,"ap":66.6,"c":83.6,"i":71.4,"im":75.7,"score":72.5,"lvl":4,"cycle":3}]},{"id":"T042","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"헤어케어브랜드","name":"헤어케어브랜드 5팀","n":23,"cycles":[{"a":52.3,"ap":44.5,"c":81.2,"i":32.2,"im":61.1,"score":54.3,"lvl":3,"cycle":0},{"a":56.9,"ap":58.2,"c":80.9,"i":28.9,"im":65.0,"score":58.0,"lvl":3,"cycle":1},{"a":61.9,"ap":53.0,"c":79.7,"i":41.0,"im":67.6,"score":60.7,"lvl":3,"cycle":2},{"a":64.7,"ap":60.6,"c":78.4,"i":53.4,"im":59.6,"score":63.3,"lvl":4,"cycle":3}]},{"id":"T043","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"헤어케어브랜드","name":"헤어케어브랜드 6팀","n":23,"cycles":[{"a":61.2,"ap":49.9,"c":60.0,"i":28.1,"im":63.8,"score":52.6,"lvl":3,"cycle":0},{"a":55.3,"ap":62.2,"c":62.6,"i":42.1,"im":66.4,"score":57.7,"lvl":3,"cycle":1},{"a":63.8,"ap":72.7,"c":67.6,"i":55.4,"im":68.6,"score":65.6,"lvl":4,"cycle":2},{"a":72.7,"ap":69.1,"c":69.7,"i":62.3,"im":73.5,"score":69.4,"lvl":4,"cycle":3}]},{"id":"T044","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"바디·오랄케어","name":"바디·오랄케어 1팀","n":24,"cycles":[{"a":66.0,"ap":53.5,"c":45.8,"i":35.5,"im":66.7,"score":53.5,"lvl":3,"cycle":0},{"a":70.8,"ap":56.7,"c":52.8,"i":46.3,"im":68.3,"score":59.0,"lvl":3,"cycle":1},{"a":71.8,"ap":66.8,"c":66.4,"i":39.5,"im":61.7,"score":61.2,"lvl":3,"cycle":2},{"a":74.6,"ap":70.6,"c":72.0,"i":48.5,"im":67.9,"score":66.7,"lvl":3,"cycle":3}]},{"id":"T045","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"바디·오랄케어","name":"바디·오랄케어 2팀","n":23,"cycles":[{"a":60.8,"ap":50.5,"c":34.2,"i":33.8,"im":63.7,"score":48.6,"lvl":3,"cycle":0},{"a":60.0,"ap":54.2,"c":49.7,"i":48.3,"im":66.4,"score":55.7,"lvl":3,"cycle":1},{"a":61.9,"ap":57.9,"c":56.8,"i":59.6,"im":69.0,"score":61.0,"lvl":4,"cycle":2},{"a":55.1,"ap":65.3,"c":68.2,"i":67.6,"im":67.6,"score":64.8,"lvl":4,"cycle":3}]},{"id":"T046","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"바디·오랄케어","name":"바디·오랄케어 3팀","n":23,"cycles":[{"a":59.8,"ap":47.4,"c":60.4,"i":34.9,"im":56.0,"score":51.7,"lvl":3,"cycle":0},{"a":62.0,"ap":58.5,"c":68.8,"i":49.5,"im":59.7,"score":59.7,"lvl":3,"cycle":1},{"a":59.4,"ap":63.6,"c":71.6,"i":59.6,"im":56.1,"score":62.1,"lvl":4,"cycle":2},{"a":68.3,"ap":62.4,"c":72.3,"i":58.1,"im":66.2,"score":65.5,"lvl":4,"cycle":3}]},{"id":"T047","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"데일리뷰티마케팅","name":"데일리뷰티마케팅 1팀","n":25,"cycles":[{"a":58.0,"ap":46.0,"c":68.3,"i":27.7,"im":65.0,"score":53.0,"lvl":3,"cycle":0},{"a":56.7,"ap":56.7,"c":74.2,"i":39.1,"im":71.4,"score":59.6,"lvl":3,"cycle":1},{"a":57.1,"ap":60.4,"c":78.2,"i":50.1,"im":73.8,"score":63.9,"lvl":4,"cycle":2},{"a":64.1,"ap":68.1,"c":81.3,"i":60.5,"im":79.3,"score":70.7,"lvl":4,"cycle":3}]},{"id":"T048","biz":"화장품/생활용품","honbu":"데일리뷰티","dept":"데일리뷰티마케팅","name":"데일리뷰티마케팅 2팀","n":25,"cycles":[{"a":57.2,"ap":47.8,"c":62.9,"i":33.7,"im":60.8,"score":52.5,"lvl":3,"cycle":0},{"a":63.1,"ap":46.8,"c":66.6,"i":49.5,"im":58.4,"score":56.9,"lvl":3,"cycle":1},{"a":64.7,"ap":55.2,"c":61.3,"i":57.3,"im":60.1,"score":59.7,"lvl":3,"cycle":2},{"a":64.5,"ap":64.1,"c":65.8,"i":60.8,"im":70.3,"score":65.1,"lvl":4,"cycle":3}]},{"id":"T049","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"글로벌브랜드전략","name":"글로벌브랜드전략 1팀","n":20,"cycles":[{"a":65.0,"ap":53.8,"c":68.3,"i":48.2,"im":68.9,"score":60.9,"lvl":3,"cycle":0},{"a":66.2,"ap":61.6,"c":71.4,"i":54.4,"im":73.0,"score":65.3,"lvl":4,"cycle":1},{"a":72.1,"ap":53.6,"c":68.3,"i":48.4,"im":71.9,"score":62.8,"lvl":3,"cycle":2},{"a":75.5,"ap":67.3,"c":76.0,"i":41.8,"im":65.2,"score":65.2,"lvl":3,"cycle":3}]},{"id":"T050","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"글로벌브랜드전략","name":"글로벌브랜드전략 2팀","n":20,"cycles":[{"a":65.4,"ap":53.3,"c":43.3,"i":42.9,"im":65.0,"score":54.0,"lvl":3,"cycle":0},{"a":67.8,"ap":54.6,"c":35.1,"i":51.3,"im":63.1,"score":54.4,"lvl":3,"cycle":1},{"a":59.0,"ap":45.8,"c":50.8,"i":60.9,"im":68.4,"score":57.0,"lvl":3,"cycle":2},{"a":63.6,"ap":44.0,"c":64.5,"i":53.6,"im":72.6,"score":59.7,"lvl":3,"cycle":3}]},{"id":"T051","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"글로벌브랜드전략","name":"글로벌브랜드전략 3팀","n":20,"cycles":[{"a":64.3,"ap":55.0,"c":47.1,"i":41.1,"im":70.0,"score":55.5,"lvl":3,"cycle":0},{"a":67.6,"ap":48.1,"c":53.4,"i":51.2,"im":75.8,"score":59.2,"lvl":3,"cycle":1},{"a":62.6,"ap":52.3,"c":56.5,"i":63.5,"im":77.3,"score":62.5,"lvl":4,"cycle":2},{"a":67.6,"ap":60.0,"c":51.6,"i":60.2,"im":82.3,"score":64.3,"lvl":4,"cycle":3}]},{"id":"T052","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"글로벌브랜드전략","name":"글로벌브랜드전략 4팀","n":20,"cycles":[{"a":68.3,"ap":56.1,"c":63.8,"i":49.6,"im":68.1,"score":61.2,"lvl":3,"cycle":0},{"a":63.9,"ap":52.9,"c":69.3,"i":48.0,"im":65.8,"score":60.0,"lvl":3,"cycle":1},{"a":68.1,"ap":63.0,"c":69.9,"i":55.9,"im":67.3,"score":64.8,"lvl":4,"cycle":2},{"a":65.6,"ap":56.8,"c":75.1,"i":60.3,"im":75.6,"score":66.7,"lvl":4,"cycle":3}]},{"id":"T053","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"글로벌브랜드전략","name":"글로벌브랜드전략 5팀","n":20,"cycles":[{"a":66.8,"ap":50.8,"c":67.9,"i":43.8,"im":68.3,"score":59.5,"lvl":3,"cycle":0},{"a":70.9,"ap":63.5,"c":69.1,"i":35.3,"im":67.5,"score":61.3,"lvl":3,"cycle":1},{"a":74.4,"ap":73.4,"c":63.8,"i":33.2,"im":73.0,"score":63.6,"lvl":3,"cycle":2},{"a":79.9,"ap":71.1,"c":77.1,"i":28.3,"im":78.3,"score":66.9,"lvl":3,"cycle":3}]},{"id":"T054","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"콘텐츠·크리에이티브","name":"콘텐츠·크리에이티브 1팀","n":24,"cycles":[{"a":66.3,"ap":52.3,"c":23.3,"i":49.5,"im":70.0,"score":52.3,"lvl":2,"cycle":0},{"a":68.0,"ap":58.0,"c":39.7,"i":46.1,"im":64.4,"score":55.2,"lvl":3,"cycle":1},{"a":74.0,"ap":67.6,"c":47.6,"i":49.0,"im":69.4,"score":61.5,"lvl":3,"cycle":2},{"a":77.0,"ap":75.8,"c":59.2,"i":57.6,"im":63.7,"score":66.6,"lvl":4,"cycle":3}]},{"id":"T055","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"콘텐츠·크리에이티브","name":"콘텐츠·크리에이티브 2팀","n":24,"cycles":[{"a":58.5,"ap":48.4,"c":75.0,"i":52.0,"im":63.5,"score":59.5,"lvl":3,"cycle":0},{"a":58.3,"ap":57.3,"c":75.0,"i":61.0,"im":60.1,"score":62.4,"lvl":4,"cycle":1},{"a":50.9,"ap":67.9,"c":72.5,"i":56.6,"im":65.6,"score":62.7,"lvl":4,"cycle":2},{"a":62.0,"ap":73.0,"c":67.2,"i":63.6,"im":68.7,"score":66.9,"lvl":4,"cycle":3}]},{"id":"T056","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"콘텐츠·크리에이티브","name":"콘텐츠·크리에이티브 3팀","n":24,"cycles":[{"a":71.4,"ap":57.6,"c":72.5,"i":50.0,"im":66.8,"score":63.7,"lvl":4,"cycle":0},{"a":72.2,"ap":68.3,"c":75.7,"i":60.7,"im":64.3,"score":68.3,"lvl":4,"cycle":1},{"a":67.5,"ap":62.5,"c":79.5,"i":70.0,"im":73.5,"score":70.6,"lvl":4,"cycle":2},{"a":69.7,"ap":67.1,"c":79.4,"i":74.5,"im":75.3,"score":73.2,"lvl":4,"cycle":3}]},{"id":"T057","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"콘텐츠·크리에이티브","name":"콘텐츠·크리에이티브 4팀","n":23,"cycles":[{"a":70.8,"ap":58.2,"c":73.3,"i":42.5,"im":67.5,"score":62.5,"lvl":3,"cycle":0},{"a":75.8,"ap":50.6,"c":79.7,"i":38.8,"im":65.4,"score":62.1,"lvl":3,"cycle":1},{"a":70.9,"ap":58.3,"c":84.9,"i":55.2,"im":64.2,"score":66.7,"lvl":4,"cycle":2},{"a":76.1,"ap":64.5,"c":82.3,"i":49.0,"im":68.7,"score":68.1,"lvl":3,"cycle":3}]},{"id":"T058","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"소비자·시장인사이트","name":"소비자·시장인사이트 1팀","n":19,"cycles":[{"a":65.2,"ap":53.5,"c":83.3,"i":49.5,"im":68.7,"score":64.0,"lvl":3,"cycle":0},{"a":72.5,"ap":61.9,"c":85.0,"i":56.5,"im":70.9,"score":69.4,"lvl":4,"cycle":1},{"a":75.5,"ap":57.3,"c":84.7,"i":63.1,"im":63.8,"score":68.9,"lvl":4,"cycle":2},{"a":84.3,"ap":57.0,"c":88.5,"i":65.8,"im":63.9,"score":71.9,"lvl":4,"cycle":3}]},{"id":"T059","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"소비자·시장인사이트","name":"소비자·시장인사이트 2팀","n":18,"cycles":[{"a":71.0,"ap":57.3,"c":51.7,"i":49.1,"im":68.6,"score":59.5,"lvl":3,"cycle":0},{"a":66.6,"ap":62.6,"c":60.2,"i":53.7,"im":70.1,"score":62.6,"lvl":4,"cycle":1},{"a":70.9,"ap":65.6,"c":67.3,"i":61.7,"im":68.9,"score":66.9,"lvl":4,"cycle":2},{"a":73.3,"ap":77.4,"c":73.1,"i":66.3,"im":71.9,"score":72.4,"lvl":4,"cycle":3}]},{"id":"T060","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"소비자·시장인사이트","name":"소비자·시장인사이트 3팀","n":18,"cycles":[{"a":66.8,"ap":57.4,"c":47.1,"i":42.6,"im":69.3,"score":56.6,"lvl":3,"cycle":0},{"a":67.6,"ap":61.0,"c":57.9,"i":53.3,"im":73.4,"score":62.7,"lvl":4,"cycle":1},{"a":73.6,"ap":61.0,"c":70.5,"i":47.8,"im":64.5,"score":63.5,"lvl":3,"cycle":2},{"a":70.8,"ap":66.9,"c":72.2,"i":41.3,"im":66.9,"score":63.6,"lvl":3,"cycle":3}]},{"id":"T061","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"글로벌커뮤니케이션","name":"글로벌커뮤니케이션 1팀","n":20,"cycles":[{"a":71.2,"ap":57.6,"c":15.4,"i":43.1,"im":72.2,"score":51.9,"lvl":2,"cycle":0},{"a":78.3,"ap":57.4,"c":10.3,"i":57.0,"im":71.6,"score":54.9,"lvl":2,"cycle":1},{"a":77.2,"ap":52.7,"c":23.0,"i":54.8,"im":81.3,"score":57.8,"lvl":2,"cycle":2},{"a":79.5,"ap":45.1,"c":39.9,"i":58.7,"im":81.2,"score":60.9,"lvl":4,"cycle":3}]},{"id":"T062","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"글로벌커뮤니케이션","name":"글로벌커뮤니케이션 2팀","n":20,"cycles":[{"a":69.5,"ap":56.4,"c":72.5,"i":44.1,"im":67.2,"score":61.9,"lvl":3,"cycle":0},{"a":73.5,"ap":59.9,"c":72.3,"i":52.1,"im":73.1,"score":66.2,"lvl":4,"cycle":1},{"a":74.2,"ap":67.8,"c":74.7,"i":60.8,"im":71.2,"score":69.7,"lvl":4,"cycle":2},{"a":73.6,"ap":76.4,"c":77.9,"i":66.4,"im":74.6,"score":73.8,"lvl":4,"cycle":3}]},{"id":"T063","biz":"화장품/생활용품","honbu":"글로벌마케팅","dept":"글로벌커뮤니케이션","name":"글로벌커뮤니케이션 3팀","n":20,"cycles":[{"a":63.8,"ap":52.9,"c":83.3,"i":47.4,"im":69.3,"score":63.3,"lvl":3,"cycle":0},{"a":56.6,"ap":60.8,"c":83.9,"i":61.4,"im":65.8,"score":65.7,"lvl":4,"cycle":1},{"a":51.7,"ap":59.7,"c":85.8,"i":56.7,"im":59.8,"score":62.7,"lvl":4,"cycle":2},{"a":68.2,"ap":62.5,"c":88.2,"i":53.5,"im":55.6,"score":65.6,"lvl":4,"cycle":3}]},{"id":"T064","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"이커머스전략","name":"이커머스전략 1팀","n":23,"cycles":[{"a":66.0,"ap":55.7,"c":64.2,"i":50.0,"im":66.5,"score":60.5,"lvl":3,"cycle":0},{"a":60.9,"ap":65.7,"c":64.9,"i":59.8,"im":71.0,"score":64.5,"lvl":4,"cycle":1},{"a":68.1,"ap":57.8,"c":70.2,"i":61.7,"im":75.3,"score":66.6,"lvl":4,"cycle":2},{"a":69.5,"ap":54.2,"c":65.3,"i":70.2,"im":82.0,"score":68.2,"lvl":4,"cycle":3}]},{"id":"T065","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"이커머스전략","name":"이커머스전략 2팀","n":23,"cycles":[{"a":76.0,"ap":63.0,"c":68.8,"i":42.7,"im":71.0,"score":64.3,"lvl":3,"cycle":0},{"a":81.2,"ap":58.7,"c":65.8,"i":52.8,"im":72.7,"score":66.2,"lvl":4,"cycle":1},{"a":79.0,"ap":69.2,"c":68.6,"i":60.9,"im":75.6,"score":70.7,"lvl":4,"cycle":2},{"a":81.7,"ap":69.8,"c":67.8,"i":67.1,"im":75.2,"score":72.3,"lvl":4,"cycle":3}]},{"id":"T066","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"이커머스전략","name":"이커머스전략 3팀","n":22,"cycles":[{"a":69.1,"ap":58.1,"c":71.2,"i":49.9,"im":68.3,"score":63.4,"lvl":3,"cycle":0},{"a":70.9,"ap":59.1,"c":76.5,"i":59.3,"im":74.1,"score":68.0,"lvl":4,"cycle":1},{"a":75.1,"ap":64.6,"c":80.8,"i":56.6,"im":76.9,"score":70.8,"lvl":4,"cycle":2},{"a":76.2,"ap":61.1,"c":83.9,"i":65.1,"im":79.9,"score":73.2,"lvl":4,"cycle":3}]},{"id":"T067","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"이커머스전략","name":"이커머스전략 4팀","n":22,"cycles":[{"a":66.0,"ap":52.7,"c":45.4,"i":52.1,"im":67.0,"score":56.6,"lvl":3,"cycle":0},{"a":67.1,"ap":62.0,"c":57.0,"i":60.9,"im":62.0,"score":61.8,"lvl":4,"cycle":1},{"a":69.8,"ap":64.8,"c":66.6,"i":56.0,"im":63.4,"score":64.1,"lvl":4,"cycle":2},{"a":64.3,"ap":60.6,"c":70.5,"i":53.8,"im":66.3,"score":63.1,"lvl":4,"cycle":3}]},{"id":"T068","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"D2C플랫폼","name":"D2C플랫폼 1팀","n":24,"cycles":[{"a":70.4,"ap":57.0,"c":75.0,"i":44.8,"im":68.9,"score":63.2,"lvl":3,"cycle":0},{"a":74.1,"ap":51.9,"c":80.7,"i":56.9,"im":74.7,"score":67.7,"lvl":4,"cycle":1},{"a":73.1,"ap":51.6,"c":79.7,"i":62.9,"im":72.5,"score":68.0,"lvl":4,"cycle":2},{"a":75.0,"ap":59.7,"c":83.8,"i":69.7,"im":77.8,"score":73.2,"lvl":4,"cycle":3}]},{"id":"T069","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"D2C플랫폼","name":"D2C플랫폼 2팀","n":23,"cycles":[{"a":68.4,"ap":53.0,"c":59.6,"i":42.6,"im":65.8,"score":57.9,"lvl":3,"cycle":0},{"a":72.6,"ap":63.8,"c":53.9,"i":49.1,"im":71.2,"score":62.1,"lvl":3,"cycle":1},{"a":72.2,"ap":69.4,"c":65.8,"i":61.6,"im":69.5,"score":67.7,"lvl":4,"cycle":2},{"a":67.4,"ap":71.9,"c":68.4,"i":70.7,"im":72.4,"score":70.2,"lvl":4,"cycle":3}]},{"id":"T070","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"D2C플랫폼","name":"D2C플랫폼 3팀","n":23,"cycles":[{"a":62.6,"ap":54.3,"c":85.4,"i":44.2,"im":69.5,"score":63.2,"lvl":3,"cycle":0},{"a":67.4,"ap":50.1,"c":89.1,"i":39.2,"im":68.7,"score":62.9,"lvl":3,"cycle":1},{"a":64.1,"ap":58.1,"c":86.9,"i":37.7,"im":74.2,"score":64.2,"lvl":3,"cycle":2},{"a":69.6,"ap":65.1,"c":88.3,"i":31.0,"im":72.0,"score":65.2,"lvl":3,"cycle":3}]},{"id":"T071","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"CRM·고객데이터","name":"CRM·고객데이터 1팀","n":24,"cycles":[{"a":75.5,"ap":59.0,"c":70.8,"i":49.5,"im":70.5,"score":65.1,"lvl":3,"cycle":0},{"a":77.0,"ap":55.1,"c":72.6,"i":42.5,"im":73.1,"score":64.1,"lvl":3,"cycle":1},{"a":73.8,"ap":59.7,"c":76.1,"i":53.7,"im":78.9,"score":68.4,"lvl":4,"cycle":2},{"a":80.0,"ap":67.1,"c":76.9,"i":58.7,"im":79.1,"score":72.4,"lvl":4,"cycle":3}]},{"id":"T072","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"CRM·고객데이터","name":"CRM·고객데이터 2팀","n":23,"cycles":[{"a":66.4,"ap":54.9,"c":75.4,"i":49.1,"im":71.0,"score":63.4,"lvl":3,"cycle":0},{"a":69.9,"ap":56.9,"c":69.0,"i":58.1,"im":67.4,"score":64.2,"lvl":4,"cycle":1},{"a":71.7,"ap":68.8,"c":64.9,"i":67.7,"im":71.2,"score":68.9,"lvl":4,"cycle":2},{"a":68.1,"ap":71.5,"c":73.5,"i":78.7,"im":73.7,"score":73.1,"lvl":4,"cycle":3}]},{"id":"T073","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"CRM·고객데이터","name":"CRM·고객데이터 3팀","n":23,"cycles":[{"a":63.5,"ap":54.2,"c":78.3,"i":50.8,"im":72.1,"score":63.8,"lvl":4,"cycle":0},{"a":64.7,"ap":59.7,"c":85.8,"i":58.2,"im":72.9,"score":68.2,"lvl":4,"cycle":1},{"a":68.3,"ap":69.4,"c":89.1,"i":62.8,"im":77.8,"score":73.5,"lvl":4,"cycle":2},{"a":77.6,"ap":64.9,"c":90.6,"i":73.5,"im":82.3,"score":77.8,"lvl":4,"cycle":3}]},{"id":"T074","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"디지털그로스","name":"디지털그로스 1팀","n":20,"cycles":[{"a":72.1,"ap":60.2,"c":75.8,"i":51.1,"im":71.8,"score":66.2,"lvl":4,"cycle":0},{"a":76.5,"ap":69.0,"c":76.8,"i":54.0,"im":71.7,"score":69.6,"lvl":4,"cycle":1},{"a":81.4,"ap":63.5,"c":79.5,"i":65.3,"im":75.0,"score":73.0,"lvl":4,"cycle":2},{"a":84.0,"ap":69.8,"c":82.3,"i":72.6,"im":78.9,"score":77.5,"lvl":4,"cycle":3}]},{"id":"T075","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"디지털그로스","name":"디지털그로스 2팀","n":20,"cycles":[{"a":72.8,"ap":60.5,"c":57.5,"i":47.1,"im":69.4,"score":61.4,"lvl":3,"cycle":0},{"a":74.7,"ap":65.8,"c":62.6,"i":56.6,"im":75.6,"score":67.0,"lvl":4,"cycle":1},{"a":73.5,"ap":63.3,"c":71.6,"i":66.7,"im":82.4,"score":71.5,"lvl":4,"cycle":2},{"a":76.6,"ap":71.7,"c":70.6,"i":78.5,"im":85.0,"score":76.4,"lvl":4,"cycle":3}]},{"id":"T076","biz":"화장품/생활용품","honbu":"디지털커머스","dept":"디지털그로스","name":"디지털그로스 3팀","n":20,"cycles":[{"a":65.8,"ap":54.3,"c":70.0,"i":48.2,"im":70.0,"score":61.7,"lvl":3,"cycle":0},{"a":68.9,"ap":62.0,"c":73.7,"i":60.3,"im":66.4,"score":66.3,"lvl":4,"cycle":1},{"a":73.7,"ap":74.4,"c":71.5,"i":55.3,"im":68.7,"score":68.7,"lvl":4,"cycle":2},{"a":75.3,"ap":80.5,"c":64.2,"i":66.0,"im":66.1,"score":70.4,"lvl":4,"cycle":3}]},{"id":"T077","biz":"화장품/생활용품","honbu":"국내영업","dept":"백화점영업","name":"백화점영업 1팀","n":24,"cycles":[{"a":59.8,"ap":47.5,"c":64.2,"i":20.5,"im":59.5,"score":50.3,"lvl":3,"cycle":0},{"a":64.2,"ap":44.6,"c":61.0,"i":32.3,"im":63.5,"score":53.1,"lvl":3,"cycle":1},{"a":58.3,"ap":57.5,"c":66.5,"i":36.6,"im":61.9,"score":56.2,"lvl":3,"cycle":2},{"a":57.7,"ap":53.8,"c":70.8,"i":50.2,"im":63.8,"score":59.3,"lvl":3,"cycle":3}]},{"id":"T078","biz":"화장품/생활용품","honbu":"국내영업","dept":"백화점영업","name":"백화점영업 2팀","n":24,"cycles":[{"a":51.6,"ap":41.8,"c":48.8,"i":20.6,"im":55.0,"score":43.6,"lvl":3,"cycle":0},{"a":55.3,"ap":54.3,"c":54.1,"i":40.6,"im":62.8,"score":53.4,"lvl":3,"cycle":1},{"a":54.1,"ap":60.7,"c":47.6,"i":35.4,"im":60.7,"score":51.7,"lvl":3,"cycle":2},{"a":56.3,"ap":62.7,"c":57.8,"i":45.9,"im":62.7,"score":57.1,"lvl":3,"cycle":3}]},{"id":"T079","biz":"화장품/생활용품","honbu":"국내영업","dept":"백화점영업","name":"백화점영업 3팀","n":24,"cycles":[{"a":50.5,"ap":37.9,"c":59.2,"i":41.0,"im":56.7,"score":49.0,"lvl":3,"cycle":0},{"a":43.6,"ap":48.8,"c":65.4,"i":33.3,"im":51.1,"score":48.4,"lvl":3,"cycle":1},{"a":50.9,"ap":56.0,"c":73.1,"i":46.3,"im":53.2,"score":55.9,"lvl":3,"cycle":2},{"a":46.3,"ap":61.1,"c":68.5,"i":62.3,"im":63.9,"score":60.4,"lvl":4,"cycle":3}]},{"id":"T080","biz":"화장품/생활용품","honbu":"국내영업","dept":"백화점영업","name":"백화점영업 4팀","n":24,"cycles":[{"a":55.2,"ap":45.6,"c":65.8,"i":19.2,"im":60.5,"score":49.3,"lvl":3,"cycle":0},{"a":56.1,"ap":51.9,"c":58.3,"i":35.9,"im":66.9,"score":53.8,"lvl":3,"cycle":1},{"a":51.5,"ap":60.1,"c":61.7,"i":46.8,"im":69.1,"score":57.9,"lvl":3,"cycle":2},{"a":50.1,"ap":65.1,"c":60.0,"i":59.8,"im":69.8,"score":61.0,"lvl":4,"cycle":3}]},{"id":"T081","biz":"화장품/생활용품","honbu":"국내영업","dept":"백화점영업","name":"백화점영업 5팀","n":24,"cycles":[{"a":48.9,"ap":40.9,"c":41.2,"i":18.1,"im":51.8,"score":40.2,"lvl":3,"cycle":0},{"a":43.9,"ap":55.5,"c":49.1,"i":30.4,"im":59.5,"score":47.7,"lvl":3,"cycle":1},{"a":37.2,"ap":65.0,"c":41.9,"i":40.3,"im":64.1,"score":49.7,"lvl":3,"cycle":2},{"a":35.2,"ap":67.7,"c":44.5,"i":50.9,"im":67.4,"score":53.1,"lvl":3,"cycle":3}]},{"id":"T082","biz":"화장품/생활용품","honbu":"국내영업","dept":"MBS영업","name":"MBS영업 1팀","n":22,"cycles":[{"a":46.7,"ap":38.6,"c":57.1,"i":20.1,"im":55.0,"score":43.5,"lvl":3,"cycle":0},{"a":52.7,"ap":35.2,"c":57.4,"i":35.9,"im":59.9,"score":48.2,"lvl":3,"cycle":1},{"a":58.4,"ap":34.9,"c":61.9,"i":51.8,"im":51.8,"score":51.8,"lvl":3,"cycle":2},{"a":64.3,"ap":47.1,"c":69.2,"i":46.7,"im":61.3,"score":57.7,"lvl":3,"cycle":3}]},{"id":"T083","biz":"화장품/생활용품","honbu":"국내영업","dept":"MBS영업","name":"MBS영업 2팀","n":22,"cycles":[{"a":45.8,"ap":35.7,"c":32.9,"i":19.6,"im":54.4,"score":37.7,"lvl":2,"cycle":0},{"a":52.9,"ap":31.5,"c":46.5,"i":34.9,"im":60.5,"score":45.3,"lvl":3,"cycle":1},{"a":55.3,"ap":25.8,"c":41.0,"i":47.1,"im":66.0,"score":47.1,"lvl":3,"cycle":2},{"a":61.5,"ap":39.7,"c":38.6,"i":48.3,"im":72.1,"score":52.0,"lvl":3,"cycle":3}]},{"id":"T084","biz":"화장품/생활용품","honbu":"국내영업","dept":"MBS영업","name":"MBS영업 3팀","n":22,"cycles":[{"a":52.4,"ap":42.1,"c":57.5,"i":26.6,"im":59.3,"score":47.6,"lvl":3,"cycle":0},{"a":53.3,"ap":53.2,"c":63.0,"i":45.7,"im":66.4,"score":56.3,"lvl":3,"cycle":1},{"a":57.9,"ap":64.4,"c":63.8,"i":60.5,"im":62.2,"score":61.8,"lvl":4,"cycle":2},{"a":66.3,"ap":60.3,"c":67.5,"i":65.3,"im":67.6,"score":65.4,"lvl":4,"cycle":3}]},{"id":"T085","biz":"화장품/생활용품","honbu":"국내영업","dept":"MBS영업","name":"MBS영업 4팀","n":22,"cycles":[{"a":51.4,"ap":43.2,"c":57.5,"i":20.8,"im":59.5,"score":46.5,"lvl":3,"cycle":0},{"a":56.0,"ap":50.3,"c":51.1,"i":39.8,"im":65.2,"score":52.5,"lvl":3,"cycle":1},{"a":54.6,"ap":55.2,"c":55.3,"i":35.9,"im":71.9,"score":54.5,"lvl":3,"cycle":2},{"a":64.0,"ap":58.6,"c":60.2,"i":50.5,"im":64.9,"score":59.7,"lvl":3,"cycle":3}]},{"id":"T086","biz":"화장품/생활용품","honbu":"국내영업","dept":"MBS영업","name":"MBS영업 5팀","n":21,"cycles":[{"a":51.1,"ap":39.8,"c":41.2,"i":18.9,"im":59.3,"score":42.1,"lvl":3,"cycle":0},{"a":57.6,"ap":51.8,"c":36.0,"i":30.5,"im":66.9,"score":48.6,"lvl":3,"cycle":1},{"a":59.4,"ap":55.8,"c":50.2,"i":45.2,"im":68.2,"score":55.7,"lvl":3,"cycle":2},{"a":56.1,"ap":57.6,"c":46.2,"i":51.2,"im":68.1,"score":55.8,"lvl":3,"cycle":3}]},{"id":"T087","biz":"화장품/생활용품","honbu":"국내영업","dept":"MBS영업","name":"MBS영업 6팀","n":21,"cycles":[{"a":46.5,"ap":38.1,"c":75.0,"i":19.1,"im":54.7,"score":46.7,"lvl":3,"cycle":0},{"a":52.2,"ap":32.8,"c":77.3,"i":33.0,"im":57.8,"score":50.6,"lvl":3,"cycle":1},{"a":50.3,"ap":48.2,"c":80.8,"i":47.2,"im":52.4,"score":55.8,"lvl":3,"cycle":2},{"a":59.7,"ap":62.3,"c":74.8,"i":54.1,"im":48.5,"score":59.9,"lvl":3,"cycle":3}]},{"id":"T088","biz":"화장품/생활용품","honbu":"국내영업","dept":"온라인영업","name":"온라인영업 1팀","n":20,"cycles":[{"a":46.2,"ap":40.4,"c":42.1,"i":18.6,"im":57.2,"score":40.9,"lvl":3,"cycle":0},{"a":52.9,"ap":46.4,"c":44.8,"i":15.8,"im":61.4,"score":44.3,"lvl":3,"cycle":1},{"a":57.8,"ap":47.9,"c":49.6,"i":39.0,"im":67.4,"score":52.4,"lvl":3,"cycle":2},{"a":61.7,"ap":56.1,"c":53.6,"i":53.1,"im":69.7,"score":58.9,"lvl":3,"cycle":3}]},{"id":"T089","biz":"화장품/생활용품","honbu":"국내영업","dept":"온라인영업","name":"온라인영업 2팀","n":20,"cycles":[{"a":51.1,"ap":41.2,"c":33.8,"i":23.3,"im":52.4,"score":40.3,"lvl":3,"cycle":0},{"a":56.1,"ap":51.8,"c":45.0,"i":37.7,"im":59.8,"score":50.1,"lvl":3,"cycle":1},{"a":65.1,"ap":58.7,"c":56.1,"i":50.7,"im":61.7,"score":58.4,"lvl":3,"cycle":2},{"a":67.1,"ap":61.5,"c":66.7,"i":48.7,"im":65.9,"score":62.0,"lvl":3,"cycle":3}]},{"id":"T090","biz":"화장품/생활용품","honbu":"국내영업","dept":"온라인영업","name":"온라인영업 3팀","n":20,"cycles":[{"a":48.9,"ap":37.5,"c":27.9,"i":19.9,"im":59.3,"score":38.7,"lvl":2,"cycle":0},{"a":40.9,"ap":32.6,"c":44.5,"i":34.2,"im":53.2,"score":41.1,"lvl":3,"cycle":1},{"a":45.2,"ap":43.5,"c":48.7,"i":40.4,"im":59.9,"score":47.5,"lvl":3,"cycle":2},{"a":47.6,"ap":56.2,"c":55.9,"i":53.0,"im":62.2,"score":55.0,"lvl":3,"cycle":3}]},{"id":"T091","biz":"화장품/생활용품","honbu":"국내영업","dept":"온라인영업","name":"온라인영업 4팀","n":20,"cycles":[{"a":43.1,"ap":33.4,"c":70.8,"i":19.7,"im":53.3,"score":44.1,"lvl":3,"cycle":0},{"a":51.9,"ap":45.0,"c":73.6,"i":11.3,"im":47.7,"score":45.9,"lvl":3,"cycle":1},{"a":55.3,"ap":60.6,"c":76.1,"i":23.6,"im":55.0,"score":54.1,"lvl":3,"cycle":2},{"a":57.2,"ap":58.3,"c":77.4,"i":38.3,"im":65.8,"score":59.4,"lvl":3,"cycle":3}]},{"id":"T092","biz":"화장품/생활용품","honbu":"국내영업","dept":"온라인영업","name":"온라인영업 5팀","n":20,"cycles":[{"a":54.0,"ap":43.6,"c":64.6,"i":19.9,"im":59.3,"score":48.3,"lvl":3,"cycle":0},{"a":49.5,"ap":51.9,"c":68.1,"i":37.9,"im":55.9,"score":52.7,"lvl":3,"cycle":1},{"a":46.3,"ap":54.4,"c":62.2,"i":49.7,"im":62.8,"score":55.1,"lvl":3,"cycle":2},{"a":55.9,"ap":48.5,"c":56.2,"i":43.5,"im":66.5,"score":54.1,"lvl":3,"cycle":3}]},{"id":"T093","biz":"화장품/생활용품","honbu":"국내영업","dept":"면세영업","name":"면세영업 1팀","n":20,"cycles":[{"a":36.9,"ap":33.0,"c":72.9,"i":18.8,"im":54.1,"score":43.1,"lvl":3,"cycle":0},{"a":43.0,"ap":45.3,"c":78.1,"i":35.0,"im":58.0,"score":51.9,"lvl":3,"cycle":1},{"a":56.9,"ap":42.7,"c":80.8,"i":44.5,"im":52.4,"score":55.4,"lvl":3,"cycle":2},{"a":58.6,"ap":53.8,"c":76.7,"i":53.5,"im":56.2,"score":59.8,"lvl":3,"cycle":3}]},{"id":"T094","biz":"화장품/생활용품","honbu":"국내영업","dept":"면세영업","name":"면세영업 2팀","n":20,"cycles":[{"a":50.7,"ap":40.1,"c":63.3,"i":21.1,"im":55.6,"score":46.2,"lvl":3,"cycle":0},{"a":54.6,"ap":47.4,"c":57.1,"i":36.3,"im":59.0,"score":50.9,"lvl":3,"cycle":1},{"a":63.7,"ap":46.0,"c":63.8,"i":51.3,"im":56.8,"score":56.3,"lvl":3,"cycle":2},{"a":60.2,"ap":62.3,"c":70.0,"i":57.3,"im":59.9,"score":61.9,"lvl":4,"cycle":3}]},{"id":"T095","biz":"화장품/생활용품","honbu":"국내영업","dept":"면세영업","name":"면세영업 3팀","n":20,"cycles":[{"a":46.2,"ap":40.5,"c":55.0,"i":19.5,"im":59.4,"score":44.1,"lvl":3,"cycle":0},{"a":48.2,"ap":53.5,"c":54.1,"i":33.3,"im":64.3,"score":50.7,"lvl":3,"cycle":1},{"a":46.3,"ap":47.1,"c":57.4,"i":49.4,"im":59.2,"score":51.9,"lvl":3,"cycle":2},{"a":54.6,"ap":58.5,"c":61.9,"i":56.7,"im":63.6,"score":59.1,"lvl":3,"cycle":3}]},{"id":"T096","biz":"화장품/생활용품","honbu":"국내영업","dept":"면세영업","name":"면세영업 4팀","n":20,"cycles":[{"a":51.5,"ap":42.2,"c":41.2,"i":19.7,"im":57.6,"score":42.5,"lvl":3,"cycle":0},{"a":59.3,"ap":47.0,"c":36.8,"i":13.2,"im":62.8,"score":43.8,"lvl":3,"cycle":1},{"a":65.6,"ap":40.7,"c":49.1,"i":22.0,"im":65.9,"score":48.7,"lvl":3,"cycle":2},{"a":64.3,"ap":48.5,"c":54.5,"i":19.6,"im":70.2,"score":51.4,"lvl":3,"cycle":3}]},{"id":"T097","biz":"화장품/생활용품","honbu":"국내영업","dept":"지역영업","name":"지역영업 1팀","n":23,"cycles":[{"a":49.9,"ap":37.0,"c":65.0,"i":19.1,"im":52.6,"score":44.7,"lvl":3,"cycle":0},{"a":53.1,"ap":50.5,"c":68.5,"i":19.4,"im":59.4,"score":50.2,"lvl":3,"cycle":1},{"a":59.7,"ap":56.8,"c":73.2,"i":31.5,"im":67.1,"score":57.7,"lvl":3,"cycle":2},{"a":65.7,"ap":59.7,"c":77.7,"i":43.6,"im":72.4,"score":63.8,"lvl":3,"cycle":3}]},{"id":"T098","biz":"화장품/생활용품","honbu":"국내영업","dept":"지역영업","name":"지역영업 2팀","n":23,"cycles":[{"a":52.2,"ap":44.7,"c":52.5,"i":19.0,"im":58.0,"score":45.3,"lvl":3,"cycle":0},{"a":57.5,"ap":57.4,"c":57.1,"i":33.1,"im":64.1,"score":53.8,"lvl":3,"cycle":1},{"a":59.9,"ap":63.6,"c":64.8,"i":32.2,"im":65.3,"score":57.2,"lvl":3,"cycle":2},{"a":65.0,"ap":68.7,"c":66.6,"i":30.7,"im":59.5,"score":58.1,"lvl":3,"cycle":3}]},{"id":"T099","biz":"화장품/생활용품","honbu":"국내영업","dept":"지역영업","name":"지역영업 3팀","n":22,"cycles":[{"a":51.1,"ap":39.6,"c":28.3,"i":20.9,"im":53.8,"score":38.7,"lvl":2,"cycle":0},{"a":49.9,"ap":45.9,"c":42.9,"i":34.0,"im":58.8,"score":46.3,"lvl":3,"cycle":1},{"a":47.6,"ap":52.6,"c":56.7,"i":31.0,"im":64.1,"score":50.4,"lvl":3,"cycle":2},{"a":59.2,"ap":65.2,"c":59.5,"i":45.2,"im":68.2,"score":59.5,"lvl":3,"cycle":3}]},{"id":"T100","biz":"화장품/생활용품","honbu":"국내영업","dept":"지역영업","name":"지역영업 4팀","n":22,"cycles":[{"a":49.6,"ap":40.0,"c":35.4,"i":17.0,"im":58.5,"score":40.1,"lvl":3,"cycle":0},{"a":57.0,"ap":36.3,"c":49.1,"i":11.0,"im":56.7,"score":42.0,"lvl":3,"cycle":1},{"a":62.7,"ap":34.9,"c":45.5,"i":24.5,"im":51.8,"score":43.9,"lvl":3,"cycle":2},{"a":62.3,"ap":49.3,"c":53.0,"i":39.8,"im":57.5,"score":52.4,"lvl":3,"cycle":3}]},{"id":"T101","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"미주사업","name":"미주사업 1팀","n":24,"cycles":[{"a":63.8,"ap":52.5,"c":85.0,"i":35.2,"im":66.1,"score":60.5,"lvl":3,"cycle":0},{"a":66.8,"ap":58.7,"c":85.1,"i":34.3,"im":74.8,"score":63.9,"lvl":3,"cycle":1},{"a":70.6,"ap":55.2,"c":87.9,"i":40.5,"im":66.7,"score":64.2,"lvl":3,"cycle":2},{"a":72.4,"ap":50.4,"c":87.6,"i":49.5,"im":71.1,"score":66.2,"lvl":3,"cycle":3}]},{"id":"T102","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"미주사업","name":"미주사업 2팀","n":24,"cycles":[{"a":57.3,"ap":45.3,"c":30.4,"i":34.4,"im":61.7,"score":45.8,"lvl":3,"cycle":0},{"a":63.0,"ap":47.8,"c":42.5,"i":48.5,"im":57.8,"score":51.9,"lvl":3,"cycle":1},{"a":71.3,"ap":57.6,"c":54.2,"i":52.7,"im":63.8,"score":59.9,"lvl":3,"cycle":2},{"a":70.4,"ap":53.5,"c":52.7,"i":62.9,"im":65.1,"score":60.9,"lvl":4,"cycle":3}]},{"id":"T103","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"미주사업","name":"미주사업 3팀","n":24,"cycles":[{"a":61.9,"ap":51.1,"c":65.8,"i":28.5,"im":62.6,"score":54.0,"lvl":3,"cycle":0},{"a":63.5,"ap":58.6,"c":61.5,"i":41.8,"im":71.4,"score":59.4,"lvl":3,"cycle":1},{"a":67.7,"ap":57.1,"c":53.4,"i":50.0,"im":77.0,"score":61.0,"lvl":3,"cycle":2},{"a":73.1,"ap":56.3,"c":61.5,"i":47.5,"im":81.2,"score":63.9,"lvl":3,"cycle":3}]},{"id":"T104","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"미주사업","name":"미주사업 4팀","n":23,"cycles":[{"a":54.0,"ap":43.0,"c":60.4,"i":22.3,"im":60.0,"score":47.9,"lvl":3,"cycle":0},{"a":56.7,"ap":56.3,"c":63.0,"i":17.6,"im":63.3,"score":51.4,"lvl":3,"cycle":1},{"a":52.7,"ap":60.1,"c":66.7,"i":16.0,"im":66.7,"score":52.4,"lvl":3,"cycle":2},{"a":60.9,"ap":67.7,"c":63.0,"i":34.3,"im":70.2,"score":59.2,"lvl":3,"cycle":3}]},{"id":"T105","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"EMEA사업","name":"EMEA사업 1팀","n":24,"cycles":[{"a":58.9,"ap":49.2,"c":45.0,"i":29.0,"im":63.5,"score":49.1,"lvl":3,"cycle":0},{"a":65.0,"ap":52.0,"c":47.2,"i":39.9,"im":60.2,"score":52.9,"lvl":3,"cycle":1},{"a":57.7,"ap":55.8,"c":57.3,"i":49.1,"im":62.1,"score":56.4,"lvl":3,"cycle":2},{"a":65.6,"ap":61.5,"c":57.9,"i":62.9,"im":54.1,"score":60.4,"lvl":4,"cycle":3}]},{"id":"T106","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"EMEA사업","name":"EMEA사업 2팀","n":23,"cycles":[{"a":63.5,"ap":50.7,"c":79.2,"i":41.6,"im":59.4,"score":58.9,"lvl":3,"cycle":0},{"a":63.4,"ap":45.2,"c":73.6,"i":53.8,"im":66.5,"score":60.5,"lvl":4,"cycle":1},{"a":63.7,"ap":38.5,"c":77.0,"i":53.7,"im":61.1,"score":58.8,"lvl":3,"cycle":2},{"a":64.8,"ap":52.7,"c":71.4,"i":60.7,"im":66.7,"score":63.3,"lvl":4,"cycle":3}]},{"id":"T107","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"EMEA사업","name":"EMEA사업 3팀","n":23,"cycles":[{"a":60.8,"ap":49.9,"c":41.7,"i":28.5,"im":62.0,"score":48.6,"lvl":3,"cycle":0},{"a":65.4,"ap":44.2,"c":37.0,"i":37.6,"im":68.6,"score":50.5,"lvl":3,"cycle":1},{"a":68.2,"ap":50.4,"c":47.0,"i":49.7,"im":64.2,"score":55.9,"lvl":3,"cycle":2},{"a":70.4,"ap":52.9,"c":59.8,"i":43.2,"im":69.3,"score":59.1,"lvl":3,"cycle":3}]},{"id":"T108","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"중화권사업","name":"중화권사업 1팀","n":24,"cycles":[{"a":61.3,"ap":50.0,"c":53.3,"i":27.6,"im":63.5,"score":51.1,"lvl":3,"cycle":0},{"a":66.9,"ap":63.0,"c":59.2,"i":44.0,"im":66.2,"score":59.9,"lvl":3,"cycle":1},{"a":68.1,"ap":64.1,"c":70.0,"i":56.0,"im":70.6,"score":65.8,"lvl":4,"cycle":2},{"a":68.9,"ap":68.0,"c":72.6,"i":63.4,"im":61.7,"score":66.9,"lvl":4,"cycle":3}]},{"id":"T109","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"중화권사업","name":"중화권사업 2팀","n":23,"cycles":[{"a":55.6,"ap":42.3,"c":43.8,"i":34.6,"im":48.6,"score":45.0,"lvl":3,"cycle":0},{"a":57.4,"ap":57.3,"c":49.9,"i":49.1,"im":52.6,"score":53.3,"lvl":3,"cycle":1},{"a":51.6,"ap":61.5,"c":61.2,"i":60.3,"im":59.4,"score":58.8,"lvl":3,"cycle":2},{"a":43.5,"ap":67.8,"c":65.4,"i":55.7,"im":55.9,"score":57.7,"lvl":3,"cycle":3}]},{"id":"T110","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"중화권사업","name":"중화권사업 3팀","n":23,"cycles":[{"a":55.0,"ap":43.7,"c":82.5,"i":23.1,"im":55.3,"score":51.9,"lvl":3,"cycle":0},{"a":46.5,"ap":50.8,"c":86.3,"i":36.0,"im":59.0,"score":55.7,"lvl":3,"cycle":1},{"a":57.7,"ap":53.9,"c":86.5,"i":51.0,"im":55.7,"score":61.0,"lvl":4,"cycle":2},{"a":59.3,"ap":61.2,"c":78.8,"i":59.4,"im":49.7,"score":61.7,"lvl":4,"cycle":3}]},{"id":"T111","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"일본사업","name":"일본사업 1팀","n":27,"cycles":[{"a":54.3,"ap":43.5,"c":34.2,"i":29.1,"im":62.5,"score":44.7,"lvl":3,"cycle":0},{"a":56.6,"ap":40.1,"c":44.5,"i":42.9,"im":63.3,"score":49.5,"lvl":3,"cycle":1},{"a":59.7,"ap":52.5,"c":44.7,"i":55.3,"im":69.1,"score":56.3,"lvl":3,"cycle":2},{"a":64.0,"ap":63.6,"c":54.7,"i":53.0,"im":71.0,"score":61.3,"lvl":4,"cycle":3}]},{"id":"T112","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"일본사업","name":"일본사업 2팀","n":27,"cycles":[{"a":60.0,"ap":48.2,"c":72.9,"i":35.6,"im":61.9,"score":55.7,"lvl":3,"cycle":0},{"a":63.3,"ap":57.0,"c":75.2,"i":45.2,"im":66.1,"score":61.4,"lvl":3,"cycle":1},{"a":72.1,"ap":70.1,"c":78.3,"i":58.0,"im":67.4,"score":69.2,"lvl":4,"cycle":2},{"a":73.0,"ap":68.8,"c":79.4,"i":67.7,"im":77.3,"score":73.2,"lvl":4,"cycle":3}]},{"id":"T113","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"APAC사업","name":"APAC사업 1팀","n":25,"cycles":[{"a":60.2,"ap":47.8,"c":36.7,"i":34.7,"im":62.5,"score":48.4,"lvl":3,"cycle":0},{"a":63.2,"ap":53.6,"c":47.8,"i":47.8,"im":68.2,"score":56.1,"lvl":3,"cycle":1},{"a":63.4,"ap":59.2,"c":56.9,"i":62.9,"im":73.9,"score":63.2,"lvl":4,"cycle":2},{"a":68.2,"ap":64.4,"c":63.8,"i":67.7,"im":74.9,"score":67.8,"lvl":4,"cycle":3}]},{"id":"T114","biz":"화장품/생활용품","honbu":"글로벌사업","dept":"APAC사업","name":"APAC사업 2팀","n":25,"cycles":[{"a":57.5,"ap":44.1,"c":58.3,"i":34.3,"im":55.0,"score":49.9,"lvl":3,"cycle":0},{"a":65.8,"ap":54.9,"c":60.1,"i":46.1,"im":54.0,"score":56.2,"lvl":3,"cycle":1},{"a":65.0,"ap":63.1,"c":61.5,"i":54.7,"im":56.5,"score":60.2,"lvl":4,"cycle":2},{"a":63.6,"ap":67.2,"c":60.3,"i":65.6,"im":49.7,"score":61.3,"lvl":4,"cycle":3}]},{"id":"T115","biz":"지원/R&D/SCM","honbu":"R&I","dept":"R&I전략","name":"R&I전략 1팀","n":24,"cycles":[{"a":48.3,"ap":38.2,"c":61.7,"i":18.3,"im":57.0,"score":44.7,"lvl":3,"cycle":0},{"a":54.1,"ap":49.6,"c":55.5,"i":16.9,"im":59.4,"score":47.1,"lvl":3,"cycle":1},{"a":57.7,"ap":57.5,"c":56.5,"i":23.8,"im":52.2,"score":49.5,"lvl":3,"cycle":2},{"a":60.2,"ap":56.2,"c":58.1,"i":40.5,"im":57.2,"score":54.4,"lvl":3,"cycle":3}]},{"id":"T116","biz":"지원/R&D/SCM","honbu":"R&I","dept":"R&I전략","name":"R&I전략 2팀","n":23,"cycles":[{"a":54.2,"ap":42.6,"c":56.7,"i":19.9,"im":60.0,"score":46.7,"lvl":3,"cycle":0},{"a":53.8,"ap":36.5,"c":61.6,"i":37.6,"im":65.4,"score":51.0,"lvl":3,"cycle":1},{"a":60.3,"ap":46.7,"c":63.8,"i":31.7,"im":69.7,"score":54.4,"lvl":3,"cycle":2},{"a":62.1,"ap":54.3,"c":70.0,"i":50.8,"im":74.7,"score":62.4,"lvl":4,"cycle":3}]},{"id":"T117","biz":"지원/R&D/SCM","honbu":"R&I","dept":"R&I전략","name":"R&I전략 3팀","n":23,"cycles":[{"a":45.9,"ap":39.4,"c":32.1,"i":17.5,"im":58.8,"score":38.7,"lvl":2,"cycle":0},{"a":41.8,"ap":43.9,"c":41.3,"i":30.4,"im":66.0,"score":44.7,"lvl":3,"cycle":1},{"a":43.9,"ap":51.8,"c":48.8,"i":47.7,"im":74.8,"score":53.4,"lvl":3,"cycle":2},{"a":42.5,"ap":57.7,"c":54.2,"i":43.0,"im":79.3,"score":55.3,"lvl":3,"cycle":3}]},{"id":"T118","biz":"지원/R&D/SCM","honbu":"R&I","dept":"스킨케어연구","name":"스킨케어연구 1팀","n":23,"cycles":[{"a":57.4,"ap":46.5,"c":59.6,"i":17.5,"im":61.5,"score":48.5,"lvl":3,"cycle":0},{"a":61.2,"ap":54.9,"c":62.2,"i":30.2,"im":69.5,"score":55.6,"lvl":3,"cycle":1},{"a":58.6,"ap":61.5,"c":65.1,"i":41.6,"im":74.1,"score":60.2,"lvl":3,"cycle":2},{"a":70.6,"ap":55.9,"c":61.0,"i":40.3,"im":77.1,"score":61.0,"lvl":3,"cycle":3}]},{"id":"T119","biz":"지원/R&D/SCM","honbu":"R&I","dept":"스킨케어연구","name":"스킨케어연구 2팀","n":23,"cycles":[{"a":62.5,"ap":52.0,"c":33.8,"i":26.8,"im":62.8,"score":47.6,"lvl":3,"cycle":0},{"a":59.7,"ap":59.5,"c":47.2,"i":38.1,"im":72.5,"score":55.4,"lvl":3,"cycle":1},{"a":61.7,"ap":64.0,"c":46.5,"i":33.8,"im":75.2,"score":56.2,"lvl":3,"cycle":2},{"a":69.8,"ap":60.7,"c":60.5,"i":46.4,"im":81.2,"score":63.7,"lvl":3,"cycle":3}]},{"id":"T120","biz":"지원/R&D/SCM","honbu":"R&I","dept":"스킨케어연구","name":"스킨케어연구 3팀","n":23,"cycles":[{"a":51.9,"ap":40.9,"c":61.2,"i":17.7,"im":56.4,"score":45.6,"lvl":3,"cycle":0},{"a":57.2,"ap":37.2,"c":59.7,"i":31.7,"im":60.5,"score":49.3,"lvl":3,"cycle":1},{"a":64.4,"ap":47.6,"c":66.3,"i":49.2,"im":63.2,"score":58.1,"lvl":3,"cycle":2},{"a":55.8,"ap":44.3,"c":69.6,"i":58.6,"im":64.4,"score":58.5,"lvl":3,"cycle":3}]},{"id":"T121","biz":"지원/R&D/SCM","honbu":"R&I","dept":"스킨케어연구","name":"스킨케어연구 4팀","n":23,"cycles":[{"a":56.2,"ap":41.7,"c":67.1,"i":29.0,"im":55.7,"score":50.0,"lvl":3,"cycle":0},{"a":60.8,"ap":51.8,"c":60.1,"i":40.1,"im":62.6,"score":55.1,"lvl":3,"cycle":1},{"a":63.9,"ap":64.3,"c":72.0,"i":49.6,"im":66.7,"score":63.3,"lvl":3,"cycle":2},{"a":72.4,"ap":70.0,"c":76.4,"i":58.8,"im":70.6,"score":69.6,"lvl":4,"cycle":3}]},{"id":"T122","biz":"지원/R&D/SCM","honbu":"R&I","dept":"스킨케어연구","name":"스킨케어연구 5팀","n":23,"cycles":[{"a":48.2,"ap":40.1,"c":55.8,"i":23.4,"im":60.0,"score":45.5,"lvl":3,"cycle":0},{"a":52.4,"ap":36.4,"c":63.3,"i":41.0,"im":60.0,"score":50.6,"lvl":3,"cycle":1},{"a":57.6,"ap":44.6,"c":65.7,"i":55.0,"im":52.6,"score":55.1,"lvl":3,"cycle":2},{"a":68.3,"ap":58.4,"c":59.5,"i":60.9,"im":61.9,"score":61.8,"lvl":4,"cycle":3}]},{"id":"T123","biz":"지원/R&D/SCM","honbu":"R&I","dept":"스킨케어연구","name":"스킨케어연구 6팀","n":23,"cycles":[{"a":43.0,"ap":34.4,"c":45.4,"i":21.9,"im":56.7,"score":40.3,"lvl":3,"cycle":0},{"a":46.0,"ap":47.2,"c":53.9,"i":30.7,"im":65.7,"score":48.7,"lvl":3,"cycle":1},{"a":58.6,"ap":53.8,"c":55.2,"i":39.3,"im":70.8,"score":55.5,"lvl":3,"cycle":2},{"a":63.1,"ap":49.7,"c":55.8,"i":58.6,"im":72.1,"score":59.8,"lvl":3,"cycle":3}]},{"id":"T124","biz":"지원/R&D/SCM","honbu":"R&I","dept":"스킨케어연구","name":"스킨케어연구 7팀","n":22,"cycles":[{"a":52.1,"ap":38.2,"c":56.2,"i":27.1,"im":59.1,"score":46.6,"lvl":3,"cycle":0},{"a":56.2,"ap":50.0,"c":62.9,"i":49.8,"im":66.5,"score":57.1,"lvl":3,"cycle":1},{"a":61.2,"ap":43.9,"c":68.2,"i":56.9,"im":68.9,"score":59.8,"lvl":3,"cycle":2},{"a":64.9,"ap":53.9,"c":61.9,"i":62.4,"im":69.1,"score":62.4,"lvl":4,"cycle":3}]},{"id":"T125","biz":"지원/R&D/SCM","honbu":"R&I","dept":"메이크업연구","name":"메이크업연구 1팀","n":24,"cycles":[{"a":50.6,"ap":40.3,"c":62.1,"i":18.1,"im":59.5,"score":46.1,"lvl":3,"cycle":0},{"a":56.0,"ap":52.6,"c":63.9,"i":31.6,"im":54.7,"score":51.7,"lvl":3,"cycle":1},{"a":63.6,"ap":67.6,"c":66.5,"i":44.3,"im":62.3,"score":60.9,"lvl":3,"cycle":2},{"a":66.8,"ap":69.3,"c":65.4,"i":58.5,"im":66.8,"score":65.4,"lvl":4,"cycle":3}]},{"id":"T126","biz":"지원/R&D/SCM","honbu":"R&I","dept":"메이크업연구","name":"메이크업연구 2팀","n":24,"cycles":[{"a":45.1,"ap":39.5,"c":62.9,"i":18.5,"im":56.1,"score":44.4,"lvl":3,"cycle":0},{"a":41.6,"ap":55.7,"c":66.0,"i":14.2,"im":62.5,"score":48.0,"lvl":3,"cycle":1},{"a":50.7,"ap":62.0,"c":74.9,"i":11.6,"im":65.6,"score":53.0,"lvl":3,"cycle":2},{"a":47.6,"ap":59.8,"c":76.4,"i":32.0,"im":68.3,"score":56.8,"lvl":3,"cycle":3}]},{"id":"T127","biz":"지원/R&D/SCM","honbu":"R&I","dept":"메이크업연구","name":"메이크업연구 3팀","n":24,"cycles":[{"a":56.3,"ap":47.3,"c":43.3,"i":18.8,"im":59.5,"score":45.1,"lvl":3,"cycle":0},{"a":54.1,"ap":47.8,"c":55.2,"i":14.0,"im":68.5,"score":47.9,"lvl":3,"cycle":1},{"a":53.8,"ap":55.9,"c":51.9,"i":9.5,"im":69.7,"score":48.2,"lvl":3,"cycle":2},{"a":61.5,"ap":62.9,"c":46.4,"i":26.8,"im":69.1,"score":53.3,"lvl":3,"cycle":3}]},{"id":"T128","biz":"지원/R&D/SCM","honbu":"R&I","dept":"메이크업연구","name":"메이크업연구 4팀","n":24,"cycles":[{"a":53.4,"ap":42.2,"c":57.1,"i":21.9,"im":56.8,"score":46.3,"lvl":3,"cycle":0},{"a":56.7,"ap":51.9,"c":60.5,"i":34.9,"im":54.2,"score":51.6,"lvl":3,"cycle":1},{"a":63.5,"ap":63.1,"c":64.6,"i":47.4,"im":56.7,"score":59.0,"lvl":3,"cycle":2},{"a":63.5,"ap":61.4,"c":70.2,"i":57.2,"im":60.7,"score":62.6,"lvl":4,"cycle":3}]},{"id":"T129","biz":"지원/R&D/SCM","honbu":"R&I","dept":"메이크업연구","name":"메이크업연구 5팀","n":24,"cycles":[{"a":52.8,"ap":43.0,"c":70.4,"i":28.2,"im":60.0,"score":50.9,"lvl":3,"cycle":0},{"a":60.8,"ap":38.9,"c":74.4,"i":39.3,"im":55.4,"score":53.8,"lvl":3,"cycle":1},{"a":66.3,"ap":50.5,"c":79.2,"i":35.8,"im":54.7,"score":57.3,"lvl":3,"cycle":2},{"a":70.1,"ap":58.8,"c":79.0,"i":49.3,"im":57.4,"score":62.9,"lvl":3,"cycle":3}]},{"id":"T130","biz":"지원/R&D/SCM","honbu":"R&I","dept":"헤어·바디연구","name":"헤어·바디연구 1팀","n":23,"cycles":[{"a":49.5,"ap":40.1,"c":67.1,"i":19.3,"im":55.7,"score":46.3,"lvl":3,"cycle":0},{"a":46.0,"ap":36.3,"c":71.1,"i":34.9,"im":48.7,"score":47.4,"lvl":3,"cycle":1},{"a":49.3,"ap":46.0,"c":74.5,"i":48.0,"im":53.1,"score":54.2,"lvl":3,"cycle":2},{"a":51.1,"ap":47.9,"c":75.4,"i":60.4,"im":60.3,"score":59.1,"lvl":3,"cycle":3}]},{"id":"T131","biz":"지원/R&D/SCM","honbu":"R&I","dept":"헤어·바디연구","name":"헤어·바디연구 2팀","n":23,"cycles":[{"a":51.6,"ap":41.9,"c":51.2,"i":26.1,"im":58.9,"score":45.9,"lvl":3,"cycle":0},{"a":46.0,"ap":55.8,"c":52.1,"i":34.2,"im":54.5,"score":48.5,"lvl":3,"cycle":1},{"a":52.7,"ap":62.6,"c":55.6,"i":43.9,"im":59.2,"score":54.8,"lvl":3,"cycle":2},{"a":47.9,"ap":59.4,"c":58.9,"i":51.5,"im":60.2,"score":55.6,"lvl":3,"cycle":3}]},{"id":"T132","biz":"지원/R&D/SCM","honbu":"R&I","dept":"헤어·바디연구","name":"헤어·바디연구 3팀","n":22,"cycles":[{"a":54.6,"ap":45.8,"c":63.8,"i":19.2,"im":57.2,"score":48.1,"lvl":3,"cycle":0},{"a":54.4,"ap":54.1,"c":59.2,"i":37.5,"im":61.5,"score":53.3,"lvl":3,"cycle":1},{"a":62.0,"ap":62.4,"c":57.7,"i":42.6,"im":69.4,"score":58.8,"lvl":3,"cycle":2},{"a":67.1,"ap":67.7,"c":63.9,"i":34.6,"im":66.6,"score":60.0,"lvl":3,"cycle":3}]},{"id":"T133","biz":"지원/R&D/SCM","honbu":"R&I","dept":"헤어·바디연구","name":"헤어·바디연구 4팀","n":22,"cycles":[{"a":50.1,"ap":43.6,"c":57.9,"i":27.3,"im":59.4,"score":47.6,"lvl":3,"cycle":0},{"a":54.4,"ap":49.8,"c":54.2,"i":41.6,"im":63.6,"score":52.7,"lvl":3,"cycle":1},{"a":50.5,"ap":59.2,"c":49.6,"i":35.4,"im":66.8,"score":52.3,"lvl":3,"cycle":2},{"a":45.5,"ap":65.5,"c":61.4,"i":50.6,"im":73.9,"score":59.4,"lvl":3,"cycle":3}]},{"id":"T134","biz":"지원/R&D/SCM","honbu":"R&I","dept":"소재·임상연구","name":"소재·임상연구 1팀","n":20,"cycles":[{"a":51.0,"ap":45.1,"c":38.3,"i":21.0,"im":56.9,"score":42.5,"lvl":3,"cycle":0},{"a":59.2,"ap":48.7,"c":33.1,"i":34.4,"im":60.8,"score":47.2,"lvl":3,"cycle":1},{"a":60.7,"ap":43.0,"c":43.1,"i":43.6,"im":62.7,"score":50.6,"lvl":3,"cycle":2},{"a":66.3,"ap":56.0,"c":54.3,"i":41.4,"im":67.3,"score":57.1,"lvl":3,"cycle":3}]},{"id":"T135","biz":"지원/R&D/SCM","honbu":"R&I","dept":"소재·임상연구","name":"소재·임상연구 2팀","n":20,"cycles":[{"a":52.4,"ap":41.8,"c":53.8,"i":21.1,"im":58.3,"score":45.5,"lvl":3,"cycle":0},{"a":54.9,"ap":56.7,"c":48.4,"i":34.7,"im":61.3,"score":51.2,"lvl":3,"cycle":1},{"a":61.3,"ap":59.6,"c":55.6,"i":31.6,"im":66.4,"score":54.9,"lvl":3,"cycle":2},{"a":56.6,"ap":58.0,"c":51.0,"i":27.1,"im":65.3,"score":51.6,"lvl":3,"cycle":3}]},{"id":"T136","biz":"지원/R&D/SCM","honbu":"R&I","dept":"소재·임상연구","name":"소재·임상연구 3팀","n":20,"cycles":[{"a":52.1,"ap":39.2,"c":58.8,"i":21.9,"im":60.0,"score":46.4,"lvl":3,"cycle":0},{"a":51.0,"ap":51.3,"c":53.3,"i":30.1,"im":66.4,"score":50.4,"lvl":3,"cycle":1},{"a":59.1,"ap":56.2,"c":52.2,"i":38.2,"im":67.3,"score":54.6,"lvl":3,"cycle":2},{"a":57.2,"ap":59.0,"c":64.5,"i":49.5,"im":69.1,"score":59.8,"lvl":3,"cycle":3}]},{"id":"T137","biz":"지원/R&D/SCM","honbu":"R&I","dept":"소재·임상연구","name":"소재·임상연구 4팀","n":20,"cycles":[{"a":46.7,"ap":38.9,"c":70.8,"i":19.1,"im":57.9,"score":46.7,"lvl":3,"cycle":0},{"a":41.7,"ap":47.5,"c":72.7,"i":36.5,"im":60.7,"score":51.8,"lvl":3,"cycle":1},{"a":52.5,"ap":49.8,"c":75.4,"i":47.4,"im":63.5,"score":57.7,"lvl":3,"cycle":2},{"a":48.4,"ap":61.0,"c":79.6,"i":54.8,"im":55.6,"score":59.9,"lvl":3,"cycle":3}]},{"id":"T138","biz":"지원/R&D/SCM","honbu":"R&I","dept":"소재·임상연구","name":"소재·임상연구 5팀","n":20,"cycles":[{"a":40.7,"ap":36.5,"c":47.5,"i":26.0,"im":55.7,"score":41.3,"lvl":3,"cycle":0},{"a":37.9,"ap":49.2,"c":52.0,"i":20.6,"im":62.2,"score":44.4,"lvl":3,"cycle":1},{"a":45.8,"ap":48.4,"c":55.2,"i":19.9,"im":58.5,"score":45.6,"lvl":3,"cycle":2},{"a":54.7,"ap":54.5,"c":64.7,"i":33.5,"im":63.3,"score":54.1,"lvl":3,"cycle":3}]},{"id":"T139","biz":"지원/R&D/SCM","honbu":"R&I","dept":"웰니스연구","name":"웰니스연구 1팀","n":24,"cycles":[{"a":52.4,"ap":44.2,"c":55.8,"i":17.0,"im":65.0,"score":46.9,"lvl":3,"cycle":0},{"a":48.8,"ap":57.1,"c":51.1,"i":33.9,"im":70.2,"score":52.2,"lvl":3,"cycle":1},{"a":42.7,"ap":60.2,"c":51.9,"i":47.2,"im":77.5,"score":55.9,"lvl":3,"cycle":2},{"a":42.2,"ap":63.6,"c":62.9,"i":65.1,"im":78.8,"score":62.5,"lvl":4,"cycle":3}]},{"id":"T140","biz":"지원/R&D/SCM","honbu":"R&I","dept":"웰니스연구","name":"웰니스연구 2팀","n":23,"cycles":[{"a":53.3,"ap":42.1,"c":83.3,"i":20.1,"im":57.3,"score":51.2,"lvl":3,"cycle":0},{"a":56.4,"ap":55.1,"c":80.2,"i":16.6,"im":64.8,"score":54.6,"lvl":3,"cycle":1},{"a":62.9,"ap":61.7,"c":83.0,"i":18.0,"im":62.7,"score":57.7,"lvl":3,"cycle":2},{"a":72.8,"ap":55.3,"c":83.3,"i":33.6,"im":65.2,"score":62.0,"lvl":3,"cycle":3}]},{"id":"T141","biz":"지원/R&D/SCM","honbu":"R&I","dept":"웰니스연구","name":"웰니스연구 3팀","n":23,"cycles":[{"a":46.2,"ap":36.4,"c":70.4,"i":19.7,"im":58.3,"score":46.2,"lvl":3,"cycle":0},{"a":53.9,"ap":32.6,"c":64.6,"i":36.7,"im":62.3,"score":50.0,"lvl":3,"cycle":1},{"a":57.8,"ap":46.0,"c":58.6,"i":50.5,"im":70.7,"score":56.7,"lvl":3,"cycle":2},{"a":64.9,"ap":38.2,"c":65.4,"i":58.9,"im":76.8,"score":60.8,"lvl":4,"cycle":3}]},{"id":"T142","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"생산전략","name":"생산전략 1팀","n":20,"cycles":[{"a":30.5,"ap":23.8,"c":37.1,"i":10.6,"im":42.2,"score":28.8,"lvl":1,"cycle":0},{"a":43.6,"ap":34.3,"c":40.6,"i":6.3,"im":45.0,"score":34.0,"lvl":2,"cycle":1},{"a":49.6,"ap":26.9,"c":47.0,"i":22.7,"im":50.4,"score":39.3,"lvl":2,"cycle":2},{"a":54.1,"ap":39.7,"c":51.0,"i":32.7,"im":57.0,"score":46.9,"lvl":3,"cycle":3}]},{"id":"T143","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"생산전략","name":"생산전략 2팀","n":20,"cycles":[{"a":31.0,"ap":27.5,"c":52.1,"i":8.2,"im":47.5,"score":33.3,"lvl":2,"cycle":0},{"a":38.1,"ap":38.6,"c":56.0,"i":20.2,"im":53.5,"score":41.3,"lvl":3,"cycle":1},{"a":52.7,"ap":40.4,"c":56.2,"i":36.0,"im":49.8,"score":47.0,"lvl":3,"cycle":2},{"a":57.9,"ap":45.6,"c":60.7,"i":46.6,"im":48.6,"score":51.9,"lvl":3,"cycle":3}]},{"id":"T144","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"생산전략","name":"생산전략 3팀","n":20,"cycles":[{"a":23.3,"ap":20.0,"c":62.5,"i":14.8,"im":46.0,"score":33.3,"lvl":1,"cycle":0},{"a":30.6,"ap":37.2,"c":64.9,"i":31.4,"im":37.9,"score":40.4,"lvl":3,"cycle":1},{"a":22.7,"ap":34.9,"c":65.6,"i":41.7,"im":41.8,"score":41.3,"lvl":3,"cycle":2},{"a":36.9,"ap":47.3,"c":72.3,"i":34.8,"im":41.3,"score":46.5,"lvl":3,"cycle":3}]},{"id":"T145","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"생산전략","name":"생산전략 4팀","n":20,"cycles":[{"a":33.5,"ap":24.8,"c":49.6,"i":13.7,"im":48.3,"score":34.0,"lvl":1,"cycle":0},{"a":31.0,"ap":39.3,"c":50.5,"i":11.3,"im":54.7,"score":37.4,"lvl":2,"cycle":1},{"a":40.7,"ap":43.7,"c":48.3,"i":28.5,"im":56.7,"score":43.6,"lvl":3,"cycle":2},{"a":51.1,"ap":49.7,"c":54.9,"i":37.7,"im":52.5,"score":49.2,"lvl":3,"cycle":3}]},{"id":"T146","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 1팀","n":22,"cycles":[{"a":34.5,"ap":28.3,"c":32.5,"i":13.7,"im":49.4,"score":31.7,"lvl":2,"cycle":0},{"a":43.5,"ap":24.7,"c":40.9,"i":28.2,"im":53.9,"score":38.3,"lvl":1,"cycle":1},{"a":51.0,"ap":38.7,"c":49.5,"i":46.9,"im":54.6,"score":48.1,"lvl":3,"cycle":2},{"a":57.3,"ap":47.0,"c":50.2,"i":56.3,"im":62.5,"score":54.6,"lvl":3,"cycle":3}]},{"id":"T147","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 2팀","n":22,"cycles":[{"a":34.2,"ap":29.5,"c":26.7,"i":9.6,"im":47.0,"score":29.4,"lvl":2,"cycle":0},{"a":36.5,"ap":26.5,"c":42.4,"i":22.3,"im":59.3,"score":37.4,"lvl":2,"cycle":1},{"a":44.9,"ap":41.3,"c":49.6,"i":34.1,"im":60.7,"score":46.1,"lvl":3,"cycle":2},{"a":48.1,"ap":35.1,"c":46.2,"i":50.6,"im":60.3,"score":48.1,"lvl":3,"cycle":3}]},{"id":"T148","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 3팀","n":22,"cycles":[{"a":26.1,"ap":22.1,"c":55.8,"i":12.0,"im":45.9,"score":32.4,"lvl":1,"cycle":0},{"a":34.7,"ap":15.3,"c":57.4,"i":10.5,"im":42.6,"score":32.1,"lvl":1,"cycle":1},{"a":46.2,"ap":15.7,"c":51.3,"i":27.3,"im":52.5,"score":38.6,"lvl":1,"cycle":2},{"a":55.5,"ap":30.8,"c":50.6,"i":41.2,"im":65.8,"score":48.8,"lvl":3,"cycle":3}]},{"id":"T149","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 4팀","n":22,"cycles":[{"a":31.5,"ap":28.4,"c":53.8,"i":7.1,"im":49.0,"score":34.0,"lvl":2,"cycle":0},{"a":41.1,"ap":45.9,"c":59.1,"i":28.3,"im":51.4,"score":45.1,"lvl":3,"cycle":1},{"a":35.0,"ap":53.8,"c":64.9,"i":43.6,"im":53.0,"score":50.0,"lvl":3,"cycle":2},{"a":50.5,"ap":49.7,"c":62.7,"i":56.3,"im":57.5,"score":55.3,"lvl":3,"cycle":3}]},{"id":"T150","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 5팀","n":22,"cycles":[{"a":36.9,"ap":27.4,"c":30.8,"i":11.9,"im":48.5,"score":31.1,"lvl":2,"cycle":0},{"a":41.6,"ap":37.1,"c":39.4,"i":10.6,"im":50.5,"score":35.8,"lvl":2,"cycle":1},{"a":47.5,"ap":50.8,"c":35.8,"i":4.1,"im":45.1,"score":36.7,"lvl":2,"cycle":2},{"a":51.9,"ap":59.1,"c":44.6,"i":19.2,"im":50.7,"score":45.1,"lvl":3,"cycle":3}]},{"id":"T151","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 6팀","n":22,"cycles":[{"a":35.4,"ap":27.0,"c":43.3,"i":9.5,"im":48.7,"score":32.8,"lvl":2,"cycle":0},{"a":33.3,"ap":38.1,"c":43.9,"i":30.1,"im":50.3,"score":39.2,"lvl":2,"cycle":1},{"a":47.6,"ap":48.8,"c":52.6,"i":52.5,"im":55.1,"score":51.3,"lvl":3,"cycle":2},{"a":61.6,"ap":46.9,"c":59.0,"i":54.8,"im":58.4,"score":56.2,"lvl":3,"cycle":3}]},{"id":"T152","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 7팀","n":21,"cycles":[{"a":30.9,"ap":24.8,"c":42.9,"i":7.1,"im":45.6,"score":30.3,"lvl":1,"cycle":0},{"a":41.9,"ap":19.3,"c":41.7,"i":27.0,"im":55.4,"score":37.1,"lvl":1,"cycle":1},{"a":36.0,"ap":31.5,"c":36.7,"i":37.9,"im":57.6,"score":40.0,"lvl":2,"cycle":2},{"a":50.7,"ap":45.9,"c":32.3,"i":51.0,"im":60.4,"score":48.1,"lvl":3,"cycle":3}]},{"id":"T153","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 8팀","n":21,"cycles":[{"a":25.0,"ap":21.4,"c":64.2,"i":6.6,"im":48.0,"score":33.0,"lvl":1,"cycle":0},{"a":34.2,"ap":36.6,"c":70.7,"i":27.9,"im":55.9,"score":45.1,"lvl":3,"cycle":1},{"a":44.2,"ap":41.4,"c":68.4,"i":27.3,"im":63.1,"score":48.9,"lvl":3,"cycle":2},{"a":42.8,"ap":50.6,"c":74.8,"i":24.4,"im":56.7,"score":49.9,"lvl":3,"cycle":3}]},{"id":"T154","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 9팀","n":21,"cycles":[{"a":29.8,"ap":24.8,"c":37.5,"i":13.0,"im":44.7,"score":30.0,"lvl":1,"cycle":0},{"a":39.4,"ap":43.4,"c":39.1,"i":8.0,"im":46.2,"score":35.2,"lvl":2,"cycle":1},{"a":47.4,"ap":37.0,"c":38.1,"i":26.3,"im":47.0,"score":39.2,"lvl":2,"cycle":2},{"a":51.9,"ap":55.0,"c":46.4,"i":38.4,"im":41.1,"score":46.6,"lvl":3,"cycle":3}]},{"id":"T155","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 10팀","n":21,"cycles":[{"a":33.2,"ap":28.2,"c":32.5,"i":9.5,"im":48.1,"score":30.3,"lvl":2,"cycle":0},{"a":42.8,"ap":24.1,"c":31.6,"i":24.2,"im":45.7,"score":33.7,"lvl":1,"cycle":1},{"a":50.8,"ap":31.9,"c":43.2,"i":40.5,"im":41.5,"score":41.6,"lvl":3,"cycle":2},{"a":44.1,"ap":41.7,"c":42.6,"i":53.0,"im":52.2,"score":46.7,"lvl":3,"cycle":3}]},{"id":"T156","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 11팀","n":21,"cycles":[{"a":33.2,"ap":28.4,"c":50.8,"i":11.1,"im":45.3,"score":33.8,"lvl":2,"cycle":0},{"a":40.7,"ap":38.7,"c":61.6,"i":22.5,"im":47.8,"score":42.3,"lvl":3,"cycle":1},{"a":40.1,"ap":45.5,"c":66.8,"i":35.0,"im":53.0,"score":48.1,"lvl":3,"cycle":2},{"a":51.8,"ap":52.2,"c":65.2,"i":48.0,"im":50.2,"score":53.5,"lvl":3,"cycle":3}]},{"id":"T157","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 12팀","n":21,"cycles":[{"a":38.6,"ap":28.8,"c":60.0,"i":11.0,"im":43.2,"score":36.3,"lvl":2,"cycle":0},{"a":39.6,"ap":41.4,"c":67.1,"i":5.7,"im":50.4,"score":40.8,"lvl":3,"cycle":1},{"a":51.3,"ap":51.9,"c":72.2,"i":24.6,"im":45.2,"score":49.0,"lvl":3,"cycle":2},{"a":47.5,"ap":53.8,"c":72.5,"i":33.0,"im":57.8,"score":52.9,"lvl":3,"cycle":3}]},{"id":"T158","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 13팀","n":21,"cycles":[{"a":33.2,"ap":25.4,"c":66.7,"i":9.0,"im":49.0,"score":36.6,"lvl":2,"cycle":0},{"a":28.9,"ap":22.5,"c":69.0,"i":26.6,"im":54.8,"score":40.4,"lvl":1,"cycle":1},{"a":23.0,"ap":42.2,"c":76.3,"i":43.1,"im":53.4,"score":47.6,"lvl":3,"cycle":2},{"a":40.4,"ap":56.5,"c":70.9,"i":46.5,"im":50.8,"score":53.0,"lvl":3,"cycle":3}]},{"id":"T159","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"오산제조","name":"오산제조 14팀","n":21,"cycles":[{"a":35.3,"ap":25.5,"c":47.5,"i":9.1,"im":48.9,"score":33.3,"lvl":2,"cycle":0},{"a":31.8,"ap":35.1,"c":54.1,"i":25.3,"im":54.9,"score":40.2,"lvl":3,"cycle":1},{"a":46.5,"ap":43.6,"c":56.2,"i":36.0,"im":59.9,"score":48.4,"lvl":3,"cycle":2},{"a":57.6,"ap":38.5,"c":64.1,"i":33.0,"im":63.0,"score":51.2,"lvl":3,"cycle":3}]},{"id":"T160","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"품질관리","name":"품질관리 1팀","n":24,"cycles":[{"a":32.2,"ap":27.2,"c":26.2,"i":10.1,"im":52.9,"score":29.7,"lvl":2,"cycle":0},{"a":28.4,"ap":29.1,"c":40.3,"i":32.7,"im":55.2,"score":37.1,"lvl":2,"cycle":1},{"a":41.0,"ap":21.3,"c":45.9,"i":38.1,"im":58.1,"score":40.9,"lvl":1,"cycle":2},{"a":33.2,"ap":35.2,"c":45.7,"i":48.2,"im":64.7,"score":45.4,"lvl":3,"cycle":3}]},{"id":"T161","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"품질관리","name":"품질관리 2팀","n":24,"cycles":[{"a":33.7,"ap":24.9,"c":53.8,"i":10.1,"im":46.5,"score":33.8,"lvl":1,"cycle":0},{"a":42.0,"ap":42.2,"c":57.4,"i":26.9,"im":57.1,"score":45.1,"lvl":3,"cycle":1},{"a":50.8,"ap":48.2,"c":52.1,"i":41.1,"im":62.8,"score":51.0,"lvl":3,"cycle":2},{"a":47.7,"ap":56.3,"c":46.4,"i":37.8,"im":68.9,"score":51.4,"lvl":3,"cycle":3}]},{"id":"T162","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"품질관리","name":"품질관리 3팀","n":24,"cycles":[{"a":34.9,"ap":26.6,"c":50.0,"i":10.8,"im":46.0,"score":33.6,"lvl":2,"cycle":0},{"a":42.6,"ap":41.4,"c":54.4,"i":26.0,"im":46.3,"score":42.1,"lvl":3,"cycle":1},{"a":48.0,"ap":39.8,"c":53.8,"i":22.2,"im":51.0,"score":43.0,"lvl":3,"cycle":2},{"a":53.6,"ap":54.3,"c":56.3,"i":37.6,"im":46.2,"score":49.6,"lvl":3,"cycle":3}]},{"id":"T163","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"품질관리","name":"품질관리 4팀","n":24,"cycles":[{"a":29.0,"ap":22.0,"c":28.3,"i":13.9,"im":44.3,"score":27.5,"lvl":1,"cycle":0},{"a":23.4,"ap":32.4,"c":23.8,"i":30.8,"im":49.2,"score":31.9,"lvl":2,"cycle":1},{"a":33.9,"ap":38.3,"c":36.8,"i":40.3,"im":54.8,"score":40.8,"lvl":3,"cycle":2},{"a":48.7,"ap":34.7,"c":42.9,"i":46.8,"im":55.3,"score":45.7,"lvl":3,"cycle":3}]},{"id":"T164","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"품질관리","name":"품질관리 5팀","n":24,"cycles":[{"a":26.3,"ap":21.2,"c":38.8,"i":10.0,"im":48.9,"score":29.0,"lvl":1,"cycle":0},{"a":19.0,"ap":18.2,"c":34.6,"i":30.1,"im":54.9,"score":31.4,"lvl":1,"cycle":1},{"a":37.0,"ap":14.4,"c":41.7,"i":37.1,"im":62.5,"score":38.5,"lvl":1,"cycle":2},{"a":54.4,"ap":36.7,"c":46.6,"i":43.7,"im":60.8,"score":48.5,"lvl":3,"cycle":3}]},{"id":"T165","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"포장재개발","name":"포장재개발 1팀","n":20,"cycles":[{"a":39.3,"ap":28.4,"c":49.6,"i":10.0,"im":49.3,"score":35.3,"lvl":2,"cycle":0},{"a":35.6,"ap":24.2,"c":53.7,"i":23.6,"im":49.1,"score":37.2,"lvl":1,"cycle":1},{"a":41.1,"ap":15.7,"c":55.8,"i":36.8,"im":53.9,"score":40.7,"lvl":1,"cycle":2},{"a":36.2,"ap":12.5,"c":56.7,"i":52.4,"im":59.2,"score":43.4,"lvl":1,"cycle":3}]},{"id":"T166","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"포장재개발","name":"포장재개발 2팀","n":20,"cycles":[{"a":31.3,"ap":25.4,"c":58.3,"i":8.0,"im":46.9,"score":34.0,"lvl":2,"cycle":0},{"a":37.5,"ap":37.9,"c":63.4,"i":6.6,"im":55.1,"score":40.1,"lvl":3,"cycle":1},{"a":50.4,"ap":46.8,"c":63.4,"i":23.9,"im":58.3,"score":48.6,"lvl":3,"cycle":2},{"a":59.3,"ap":56.5,"c":67.1,"i":34.1,"im":57.0,"score":54.8,"lvl":3,"cycle":3}]},{"id":"T167","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"포장재개발","name":"포장재개발 3팀","n":20,"cycles":[{"a":24.4,"ap":20.5,"c":44.6,"i":8.6,"im":47.1,"score":29.0,"lvl":1,"cycle":0},{"a":29.0,"ap":35.3,"c":52.0,"i":8.4,"im":55.3,"score":36.0,"lvl":2,"cycle":1},{"a":42.1,"ap":40.3,"c":61.2,"i":27.3,"im":59.0,"score":46.0,"lvl":3,"cycle":2},{"a":48.0,"ap":53.5,"c":63.5,"i":45.1,"im":65.3,"score":55.1,"lvl":3,"cycle":3}]},{"id":"T168","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"포장재개발","name":"포장재개발 4팀","n":20,"cycles":[{"a":29.3,"ap":25.1,"c":52.1,"i":11.4,"im":44.4,"score":32.5,"lvl":2,"cycle":0},{"a":36.8,"ap":18.9,"c":60.1,"i":8.5,"im":55.8,"score":36.0,"lvl":1,"cycle":1},{"a":46.1,"ap":33.4,"c":56.5,"i":25.1,"im":58.3,"score":43.9,"lvl":3,"cycle":2},{"a":41.2,"ap":50.5,"c":61.4,"i":36.9,"im":64.8,"score":50.9,"lvl":3,"cycle":3}]},{"id":"T169","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"설비·엔지니어링","name":"설비·엔지니어링 1팀","n":22,"cycles":[{"a":33.7,"ap":30.0,"c":39.2,"i":8.7,"im":52.6,"score":32.8,"lvl":2,"cycle":0},{"a":37.3,"ap":45.5,"c":37.9,"i":23.4,"im":54.1,"score":39.6,"lvl":2,"cycle":1},{"a":31.8,"ap":48.9,"c":40.5,"i":42.4,"im":54.2,"score":43.5,"lvl":3,"cycle":2},{"a":51.3,"ap":53.1,"c":53.6,"i":48.5,"im":57.0,"score":52.7,"lvl":3,"cycle":3}]},{"id":"T170","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"설비·엔지니어링","name":"설비·엔지니어링 2팀","n":22,"cycles":[{"a":31.5,"ap":25.7,"c":33.3,"i":10.6,"im":46.7,"score":29.5,"lvl":2,"cycle":0},{"a":38.3,"ap":41.0,"c":38.8,"i":27.6,"im":50.8,"score":39.3,"lvl":2,"cycle":1},{"a":45.3,"ap":47.4,"c":45.2,"i":39.4,"im":52.7,"score":46.0,"lvl":3,"cycle":2},{"a":53.6,"ap":53.6,"c":45.2,"i":51.9,"im":58.7,"score":52.6,"lvl":3,"cycle":3}]},{"id":"T171","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"설비·엔지니어링","name":"설비·엔지니어링 3팀","n":22,"cycles":[{"a":30.8,"ap":24.4,"c":61.7,"i":10.7,"im":44.1,"score":34.3,"lvl":1,"cycle":0},{"a":34.2,"ap":22.9,"c":61.1,"i":2.7,"im":40.4,"score":32.3,"lvl":1,"cycle":1},{"a":39.4,"ap":45.4,"c":57.3,"i":24.8,"im":49.4,"score":43.2,"lvl":3,"cycle":2},{"a":47.1,"ap":48.4,"c":49.2,"i":35.4,"im":54.4,"score":46.9,"lvl":3,"cycle":3}]},{"id":"T172","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"설비·엔지니어링","name":"설비·엔지니어링 4팀","n":22,"cycles":[{"a":36.1,"ap":30.5,"c":49.6,"i":10.6,"im":45.5,"score":34.4,"lvl":2,"cycle":0},{"a":41.6,"ap":24.8,"c":54.3,"i":4.3,"im":52.5,"score":35.5,"lvl":1,"cycle":1},{"a":35.9,"ap":38.8,"c":51.5,"i":19.0,"im":52.6,"score":39.5,"lvl":2,"cycle":2},{"a":34.8,"ap":43.8,"c":52.8,"i":16.1,"im":61.2,"score":41.8,"lvl":3,"cycle":3}]},{"id":"T173","biz":"지원/R&D/SCM","honbu":"SCM생산","dept":"설비·엔지니어링","name":"설비·엔지니어링 5팀","n":22,"cycles":[{"a":28.9,"ap":24.1,"c":57.1,"i":10.3,"im":44.7,"score":33.0,"lvl":1,"cycle":0},{"a":38.5,"ap":35.4,"c":58.6,"i":26.1,"im":50.4,"score":41.8,"lvl":3,"cycle":1},{"a":43.2,"ap":29.4,"c":54.7,"i":43.5,"im":55.5,"score":45.3,"lvl":3,"cycle":2},{"a":51.3,"ap":45.6,"c":62.5,"i":33.0,"im":54.6,"score":49.4,"lvl":3,"cycle":3}]},{"id":"T174","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"수요계획","name":"수요계획 1팀","n":23,"cycles":[{"a":38.1,"ap":29.4,"c":43.3,"i":12.7,"im":52.9,"score":35.3,"lvl":2,"cycle":0},{"a":32.7,"ap":39.4,"c":49.5,"i":28.1,"im":59.5,"score":41.8,"lvl":3,"cycle":1},{"a":42.3,"ap":34.0,"c":54.0,"i":43.5,"im":54.0,"score":45.5,"lvl":3,"cycle":2},{"a":34.1,"ap":45.6,"c":50.2,"i":50.2,"im":59.6,"score":47.9,"lvl":3,"cycle":3}]},{"id":"T175","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"수요계획","name":"수요계획 2팀","n":23,"cycles":[{"a":39.1,"ap":33.0,"c":62.1,"i":15.6,"im":51.1,"score":40.2,"lvl":3,"cycle":0},{"a":44.3,"ap":28.7,"c":62.4,"i":34.9,"im":57.8,"score":45.6,"lvl":3,"cycle":1},{"a":51.4,"ap":27.2,"c":67.0,"i":44.8,"im":55.4,"score":49.2,"lvl":3,"cycle":2},{"a":54.1,"ap":23.0,"c":64.3,"i":41.4,"im":58.7,"score":48.3,"lvl":1,"cycle":3}]},{"id":"T176","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"수요계획","name":"수요계획 3팀","n":22,"cycles":[{"a":43.5,"ap":33.7,"c":33.3,"i":13.7,"im":51.5,"score":35.1,"lvl":2,"cycle":0},{"a":44.3,"ap":29.0,"c":51.2,"i":28.6,"im":55.8,"score":41.8,"lvl":3,"cycle":1},{"a":51.9,"ap":27.7,"c":55.8,"i":41.3,"im":55.6,"score":46.5,"lvl":3,"cycle":2},{"a":62.8,"ap":23.7,"c":50.5,"i":51.4,"im":58.7,"score":49.4,"lvl":1,"cycle":3}]},{"id":"T177","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"수요계획","name":"수요계획 4팀","n":22,"cycles":[{"a":43.7,"ap":35.3,"c":52.5,"i":16.2,"im":50.5,"score":39.7,"lvl":2,"cycle":0},{"a":48.7,"ap":51.7,"c":43.9,"i":36.1,"im":57.1,"score":47.5,"lvl":3,"cycle":1},{"a":55.5,"ap":57.2,"c":52.3,"i":54.7,"im":65.1,"score":56.9,"lvl":3,"cycle":2},{"a":53.8,"ap":53.7,"c":60.0,"i":65.6,"im":63.0,"score":59.2,"lvl":3,"cycle":3}]},{"id":"T178","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"구매","name":"구매 1팀","n":23,"cycles":[{"a":44.5,"ap":34.7,"c":55.4,"i":17.4,"im":51.1,"score":40.6,"lvl":3,"cycle":0},{"a":50.3,"ap":49.4,"c":60.9,"i":30.8,"im":53.1,"score":48.9,"lvl":3,"cycle":1},{"a":57.3,"ap":64.3,"c":56.1,"i":45.2,"im":53.1,"score":55.2,"lvl":3,"cycle":2},{"a":50.4,"ap":69.4,"c":60.8,"i":57.6,"im":65.8,"score":60.8,"lvl":4,"cycle":3}]},{"id":"T179","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"구매","name":"구매 2팀","n":23,"cycles":[{"a":40.0,"ap":34.1,"c":45.4,"i":15.8,"im":51.1,"score":37.3,"lvl":2,"cycle":0},{"a":45.1,"ap":49.7,"c":51.1,"i":8.6,"im":52.9,"score":41.5,"lvl":3,"cycle":1},{"a":51.4,"ap":54.4,"c":54.4,"i":31.1,"im":59.7,"score":50.2,"lvl":3,"cycle":2},{"a":48.8,"ap":49.2,"c":63.0,"i":43.0,"im":59.9,"score":52.8,"lvl":3,"cycle":3}]},{"id":"T180","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"구매","name":"구매 3팀","n":22,"cycles":[{"a":42.1,"ap":32.1,"c":52.5,"i":13.8,"im":49.5,"score":38.0,"lvl":2,"cycle":0},{"a":50.0,"ap":42.6,"c":58.0,"i":13.2,"im":48.6,"score":42.5,"lvl":3,"cycle":1},{"a":51.0,"ap":48.5,"c":59.8,"i":24.2,"im":53.6,"score":47.4,"lvl":3,"cycle":2},{"a":55.6,"ap":44.7,"c":63.8,"i":35.1,"im":59.1,"score":51.7,"lvl":3,"cycle":3}]},{"id":"T181","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"구매","name":"구매 4팀","n":22,"cycles":[{"a":40.9,"ap":34.2,"c":29.2,"i":16.2,"im":51.7,"score":34.4,"lvl":2,"cycle":0},{"a":45.8,"ap":27.9,"c":43.0,"i":28.4,"im":59.8,"score":41.0,"lvl":3,"cycle":1},{"a":52.8,"ap":24.5,"c":43.4,"i":21.6,"im":63.8,"score":41.2,"lvl":1,"cycle":2},{"a":55.6,"ap":17.2,"c":49.6,"i":37.0,"im":70.5,"score":46.0,"lvl":1,"cycle":3}]},{"id":"T182","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"물류운영","name":"물류운영 1팀","n":22,"cycles":[{"a":40.7,"ap":36.0,"c":58.3,"i":11.0,"im":55.9,"score":40.4,"lvl":3,"cycle":0},{"a":45.6,"ap":43.9,"c":62.7,"i":33.3,"im":59.8,"score":49.1,"lvl":3,"cycle":1},{"a":56.1,"ap":38.5,"c":58.7,"i":32.0,"im":68.9,"score":50.9,"lvl":3,"cycle":2},{"a":59.3,"ap":53.5,"c":56.1,"i":43.4,"im":62.8,"score":55.0,"lvl":3,"cycle":3}]},{"id":"T183","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"물류운영","name":"물류운영 2팀","n":22,"cycles":[{"a":41.8,"ap":32.8,"c":31.7,"i":14.3,"im":50.6,"score":34.2,"lvl":2,"cycle":0},{"a":39.0,"ap":26.6,"c":45.3,"i":29.9,"im":56.9,"score":39.6,"lvl":2,"cycle":1},{"a":48.2,"ap":43.7,"c":42.2,"i":39.3,"im":50.8,"score":44.9,"lvl":3,"cycle":2},{"a":58.2,"ap":51.2,"c":49.1,"i":51.2,"im":52.2,"score":52.4,"lvl":3,"cycle":3}]},{"id":"T184","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"물류운영","name":"물류운영 3팀","n":22,"cycles":[{"a":43.4,"ap":32.4,"c":62.1,"i":15.5,"im":49.5,"score":40.6,"lvl":3,"cycle":0},{"a":48.4,"ap":42.0,"c":70.4,"i":35.6,"im":46.6,"score":48.6,"lvl":3,"cycle":1},{"a":52.2,"ap":52.9,"c":73.0,"i":46.8,"im":56.3,"score":56.2,"lvl":3,"cycle":2},{"a":45.0,"ap":58.1,"c":77.2,"i":42.0,"im":62.5,"score":57.0,"lvl":3,"cycle":3}]},{"id":"T185","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"물류운영","name":"물류운영 4팀","n":21,"cycles":[{"a":41.6,"ap":35.9,"c":32.1,"i":15.2,"im":55.5,"score":36.1,"lvl":2,"cycle":0},{"a":52.4,"ap":40.4,"c":32.0,"i":29.3,"im":62.6,"score":43.4,"lvl":3,"cycle":1},{"a":56.9,"ap":49.8,"c":49.8,"i":43.6,"im":69.8,"score":54.0,"lvl":3,"cycle":2},{"a":59.4,"ap":47.8,"c":59.0,"i":55.3,"im":73.3,"score":59.0,"lvl":3,"cycle":3}]},{"id":"T186","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"물류운영","name":"물류운영 5팀","n":21,"cycles":[{"a":40.1,"ap":32.2,"c":70.8,"i":17.0,"im":54.2,"score":42.9,"lvl":3,"cycle":0},{"a":46.9,"ap":29.4,"c":71.9,"i":36.1,"im":55.3,"score":47.9,"lvl":3,"cycle":1},{"a":53.3,"ap":40.3,"c":75.4,"i":44.2,"im":58.8,"score":54.4,"lvl":3,"cycle":2},{"a":54.2,"ap":52.0,"c":67.8,"i":38.5,"im":62.4,"score":55.0,"lvl":3,"cycle":3}]},{"id":"T187","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"물류운영","name":"물류운영 6팀","n":21,"cycles":[{"a":40.3,"ap":34.6,"c":57.5,"i":12.3,"im":52.2,"score":39.4,"lvl":2,"cycle":0},{"a":38.3,"ap":49.5,"c":61.3,"i":26.5,"im":48.4,"score":44.8,"lvl":3,"cycle":1},{"a":52.4,"ap":54.6,"c":60.9,"i":41.1,"im":54.1,"score":52.6,"lvl":3,"cycle":2},{"a":51.5,"ap":53.5,"c":58.6,"i":37.3,"im":60.5,"score":52.3,"lvl":3,"cycle":3}]},{"id":"T188","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"물류운영","name":"물류운영 7팀","n":21,"cycles":[{"a":38.5,"ap":28.9,"c":31.7,"i":15.3,"im":51.7,"score":33.2,"lvl":2,"cycle":0},{"a":42.7,"ap":44.9,"c":29.5,"i":37.1,"im":59.2,"score":42.7,"lvl":2,"cycle":1},{"a":46.9,"ap":49.7,"c":22.7,"i":33.9,"im":65.0,"score":43.6,"lvl":2,"cycle":2},{"a":55.5,"ap":53.6,"c":17.1,"i":47.5,"im":59.7,"score":46.7,"lvl":2,"cycle":3}]},{"id":"T189","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"글로벌SCM","name":"글로벌SCM 1팀","n":23,"cycles":[{"a":37.9,"ap":30.8,"c":53.8,"i":12.1,"im":51.0,"score":37.1,"lvl":2,"cycle":0},{"a":46.0,"ap":41.6,"c":58.8,"i":10.9,"im":52.0,"score":41.9,"lvl":3,"cycle":1},{"a":48.1,"ap":50.6,"c":64.1,"i":27.3,"im":55.6,"score":49.2,"lvl":3,"cycle":2},{"a":55.4,"ap":43.4,"c":69.0,"i":40.3,"im":52.5,"score":52.1,"lvl":3,"cycle":3}]},{"id":"T190","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"글로벌SCM","name":"글로벌SCM 2팀","n":23,"cycles":[{"a":39.1,"ap":29.3,"c":54.2,"i":15.9,"im":44.4,"score":36.6,"lvl":2,"cycle":0},{"a":36.4,"ap":41.4,"c":50.0,"i":36.0,"im":53.2,"score":43.4,"lvl":3,"cycle":1},{"a":44.7,"ap":46.1,"c":54.3,"i":46.7,"im":58.0,"score":50.0,"lvl":3,"cycle":2},{"a":53.7,"ap":50.9,"c":57.1,"i":46.1,"im":62.1,"score":54.0,"lvl":3,"cycle":3}]},{"id":"T191","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"글로벌SCM","name":"글로벌SCM 3팀","n":22,"cycles":[{"a":43.1,"ap":32.7,"c":54.2,"i":12.6,"im":51.9,"score":38.9,"lvl":2,"cycle":0},{"a":48.8,"ap":42.1,"c":63.3,"i":25.6,"im":47.3,"score":45.4,"lvl":3,"cycle":1},{"a":44.8,"ap":50.5,"c":57.9,"i":20.3,"im":59.2,"score":46.5,"lvl":3,"cycle":2},{"a":59.3,"ap":45.5,"c":56.1,"i":36.4,"im":55.6,"score":50.6,"lvl":3,"cycle":3}]},{"id":"T192","biz":"지원/R&D/SCM","honbu":"SCM물류","dept":"글로벌SCM","name":"글로벌SCM 4팀","n":22,"cycles":[{"a":48.2,"ap":39.8,"c":55.8,"i":13.2,"im":56.8,"score":42.8,"lvl":3,"cycle":0},{"a":47.3,"ap":37.0,"c":64.8,"i":30.5,"im":63.5,"score":48.6,"lvl":3,"cycle":1},{"a":45.2,"ap":47.6,"c":65.8,"i":38.0,"im":68.1,"score":52.9,"lvl":3,"cycle":2},{"a":53.2,"ap":50.0,"c":69.4,"i":31.1,"im":71.4,"score":55.0,"lvl":3,"cycle":3}]},{"id":"T193","biz":"지원/R&D/SCM","honbu":"디지털·IT","dept":"Enterprise IT","name":"Enterprise IT 1팀","n":19,"cycles":[{"a":82.1,"ap":64.2,"c":77.5,"i":55.3,"im":75.3,"score":70.9,"lvl":4,"cycle":0},{"a":78.0,"ap":70.9,"c":70.9,"i":60.5,"im":76.8,"score":71.4,"lvl":4,"cycle":1},{"a":80.2,"ap":72.7,"c":77.0,"i":68.7,"im":74.2,"score":74.6,"lvl":4,"cycle":2},{"a":81.8,"ap":82.2,"c":78.7,"i":74.2,"im":75.7,"score":78.5,"lvl":4,"cycle":3}]},{"id":"T194","biz":"지원/R&D/SCM","honbu":"디지털·IT","dept":"Enterprise IT","name":"Enterprise IT 2팀","n":18,"cycles":[{"a":82.3,"ap":67.9,"c":86.2,"i":53.8,"im":76.0,"score":73.3,"lvl":4,"cycle":0},{"a":86.8,"ap":71.3,"c":85.0,"i":60.2,"im":73.6,"score":75.4,"lvl":4,"cycle":1},{"a":87.7,"ap":72.9,"c":88.9,"i":53.9,"im":71.2,"score":74.9,"lvl":4,"cycle":2},{"a":90.9,"ap":74.7,"c":90.0,"i":64.8,"im":63.5,"score":76.8,"lvl":4,"cycle":3}]},{"id":"T195","biz":"지원/R&D/SCM","honbu":"디지털·IT","dept":"Enterprise IT","name":"Enterprise IT 3팀","n":18,"cycles":[{"a":81.6,"ap":69.4,"c":77.5,"i":55.7,"im":76.9,"score":72.2,"lvl":4,"cycle":0},{"a":82.5,"ap":74.8,"c":83.0,"i":63.8,"im":78.2,"score":76.5,"lvl":4,"cycle":1},{"a":87.4,"ap":72.9,"c":76.2,"i":70.7,"im":78.3,"score":77.1,"lvl":4,"cycle":2},{"a":87.9,"ap":81.0,"c":81.4,"i":66.7,"im":72.0,"score":77.8,"lvl":4,"cycle":3}]},{"id":"T196","biz":"지원/R&D/SCM","honbu":"디지털·IT","dept":"Data·AI","name":"Data·AI 1팀","n":19,"cycles":[{"a":81.0,"ap":65.0,"c":83.3,"i":55.2,"im":75.0,"score":71.9,"lvl":4,"cycle":0},{"a":82.9,"ap":69.1,"c":80.0,"i":50.6,"im":78.6,"score":72.2,"lvl":4,"cycle":1},{"a":84.8,"ap":73.6,"c":80.2,"i":65.1,"im":83.0,"score":77.3,"lvl":4,"cycle":2},{"a":89.2,"ap":80.5,"c":85.3,"i":76.3,"im":87.7,"score":83.8,"lvl":5,"cycle":3}]},{"id":"T197","biz":"지원/R&D/SCM","honbu":"디지털·IT","dept":"Data·AI","name":"Data·AI 2팀","n":18,"cycles":[{"a":91.1,"ap":72.7,"c":28.8,"i":57.0,"im":74.7,"score":64.9,"lvl":2,"cycle":0},{"a":93.1,"ap":75.7,"c":25.4,"i":48.6,"im":79.2,"score":64.4,"lvl":2,"cycle":1},{"a":95.8,"ap":78.0,"c":38.8,"i":54.0,"im":80.1,"score":69.3,"lvl":4,"cycle":2},{"a":96.0,"ap":74.2,"c":36.0,"i":63.0,"im":76.1,"score":69.1,"lvl":4,"cycle":3}]},{"id":"T198","biz":"지원/R&D/SCM","honbu":"디지털·IT","dept":"Data·AI","name":"Data·AI 3팀","n":18,"cycles":[{"a":80.7,"ap":65.5,"c":43.3,"i":53.0,"im":74.7,"score":63.5,"lvl":4,"cycle":0},{"a":83.5,"ap":61.9,"c":57.3,"i":47.3,"im":76.2,"score":65.2,"lvl":3,"cycle":1},{"a":84.5,"ap":58.3,"c":70.0,"i":57.6,"im":78.8,"score":69.8,"lvl":4,"cycle":2},{"a":84.4,"ap":67.6,"c":66.8,"i":61.1,"im":82.8,"score":72.5,"lvl":4,"cycle":3}]},{"id":"T199","biz":"지원/R&D/SCM","honbu":"디지털·IT","dept":"Digital Workplace","name":"Digital Workplace 1팀","n":20,"cycles":[{"a":81.7,"ap":66.0,"c":91.7,"i":52.1,"im":76.2,"score":73.5,"lvl":4,"cycle":0},{"a":74.6,"ap":71.7,"c":90.4,"i":61.6,"im":79.2,"score":75.5,"lvl":4,"cycle":1},{"a":69.3,"ap":81.5,"c":91.1,"i":56.7,"im":80.6,"score":75.8,"lvl":4,"cycle":2},{"a":75.4,"ap":83.2,"c":86.2,"i":67.6,"im":74.6,"score":77.4,"lvl":4,"cycle":3}]},{"id":"T200","biz":"지원/R&D/SCM","honbu":"디지털·IT","dept":"Digital Workplace","name":"Digital Workplace 2팀","n":20,"cycles":[{"a":75.4,"ap":59.5,"c":74.2,"i":55.5,"im":73.8,"score":67.6,"lvl":4,"cycle":0},{"a":74.6,"ap":70.8,"c":76.5,"i":59.9,"im":74.0,"score":71.2,"lvl":4,"cycle":1},{"a":77.0,"ap":78.2,"c":80.4,"i":71.9,"im":80.3,"score":77.5,"lvl":4,"cycle":2},{"a":81.2,"ap":78.2,"c":81.9,"i":81.3,"im":77.8,"score":80.1,"lvl":5,"cycle":3}]},{"id":"T201","biz":"지원/R&D/SCM","honbu":"디지털·IT","dept":"정보보안","name":"정보보안 1팀","n":30,"cycles":[{"a":83.1,"ap":63.8,"c":39.2,"i":56.8,"im":75.6,"score":63.7,"lvl":4,"cycle":0},{"a":83.3,"ap":63.0,"c":54.8,"i":63.0,"im":76.8,"score":68.2,"lvl":4,"cycle":1},{"a":87.0,"ap":59.8,"c":63.1,"i":70.2,"im":76.2,"score":71.3,"lvl":4,"cycle":2},{"a":84.5,"ap":68.2,"c":71.7,"i":74.5,"im":76.8,"score":75.2,"lvl":4,"cycle":3}]},{"id":"T202","biz":"지원/R&D/SCM","honbu":"전략·재무","dept":"경영전략","name":"경영전략 1팀","n":23,"cycles":[{"a":56.3,"ap":45.6,"c":40.8,"i":34.6,"im":63.0,"score":48.1,"lvl":3,"cycle":0},{"a":60.7,"ap":52.5,"c":56.7,"i":41.6,"im":67.7,"score":55.8,"lvl":3,"cycle":1},{"a":60.5,"ap":59.8,"c":60.3,"i":50.4,"im":66.9,"score":59.6,"lvl":3,"cycle":2},{"a":57.5,"ap":69.4,"c":62.2,"i":59.9,"im":69.8,"score":63.7,"lvl":4,"cycle":3}]},{"id":"T203","biz":"지원/R&D/SCM","honbu":"전략·재무","dept":"경영전략","name":"경영전략 2팀","n":22,"cycles":[{"a":59.1,"ap":49.4,"c":62.1,"i":21.5,"im":60.0,"score":50.4,"lvl":3,"cycle":0},{"a":65.4,"ap":60.0,"c":64.9,"i":38.8,"im":63.6,"score":58.5,"lvl":3,"cycle":1},{"a":68.8,"ap":70.5,"c":66.1,"i":31.7,"im":67.5,"score":60.9,"lvl":3,"cycle":2},{"a":69.6,"ap":73.6,"c":62.5,"i":42.9,"im":74.7,"score":64.7,"lvl":3,"cycle":3}]},{"id":"T204","biz":"지원/R&D/SCM","honbu":"전략·재무","dept":"재무","name":"재무 1팀","n":19,"cycles":[{"a":57.6,"ap":47.7,"c":79.2,"i":19.6,"im":60.0,"score":52.8,"lvl":3,"cycle":0},{"a":54.6,"ap":52.1,"c":82.9,"i":28.5,"im":55.0,"score":54.6,"lvl":3,"cycle":1},{"a":62.4,"ap":48.6,"c":84.4,"i":41.8,"im":60.1,"score":59.5,"lvl":3,"cycle":2},{"a":69.0,"ap":46.0,"c":84.3,"i":38.6,"im":60.1,"score":59.6,"lvl":3,"cycle":3}]},{"id":"T205","biz":"지원/R&D/SCM","honbu":"전략·재무","dept":"재무","name":"재무 2팀","n":18,"cycles":[{"a":58.5,"ap":50.9,"c":64.2,"i":28.9,"im":66.0,"score":53.7,"lvl":3,"cycle":0},{"a":61.3,"ap":56.3,"c":63.9,"i":20.8,"im":67.9,"score":54.0,"lvl":3,"cycle":1},{"a":64.8,"ap":63.4,"c":63.8,"i":39.1,"im":64.4,"score":59.1,"lvl":3,"cycle":2},{"a":65.9,"ap":70.6,"c":67.2,"i":52.3,"im":68.8,"score":64.9,"lvl":4,"cycle":3}]},{"id":"T206","biz":"지원/R&D/SCM","honbu":"전략·재무","dept":"재무","name":"재무 3팀","n":18,"cycles":[{"a":52.1,"ap":43.2,"c":56.2,"i":28.6,"im":56.0,"score":47.2,"lvl":3,"cycle":0},{"a":60.3,"ap":60.0,"c":52.9,"i":25.4,"im":64.8,"score":52.7,"lvl":3,"cycle":1},{"a":66.6,"ap":57.9,"c":45.6,"i":46.5,"im":69.7,"score":57.3,"lvl":3,"cycle":2},{"a":67.2,"ap":62.6,"c":62.9,"i":55.4,"im":71.0,"score":63.8,"lvl":4,"cycle":3}]},{"id":"T207","biz":"지원/R&D/SCM","honbu":"전략·재무","dept":"회계·세무","name":"회계·세무 1팀","n":30,"cycles":[{"a":53.6,"ap":43.6,"c":51.2,"i":26.7,"im":59.6,"score":47.0,"lvl":3,"cycle":0},{"a":51.3,"ap":57.5,"c":56.0,"i":40.4,"im":59.4,"score":52.9,"lvl":3,"cycle":1},{"a":62.6,"ap":60.6,"c":64.4,"i":34.1,"im":62.4,"score":56.8,"lvl":3,"cycle":2},{"a":66.4,"ap":67.5,"c":67.8,"i":45.8,"im":69.4,"score":63.4,"lvl":3,"cycle":3}]},{"id":"T208","biz":"지원/R&D/SCM","honbu":"전략·재무","dept":"IR","name":"IR 1팀","n":20,"cycles":[{"a":67.2,"ap":54.6,"c":74.2,"i":41.2,"im":66.1,"score":60.6,"lvl":3,"cycle":0},{"a":68.2,"ap":65.7,"c":74.7,"i":45.5,"im":58.8,"score":62.6,"lvl":3,"cycle":1},{"a":70.8,"ap":66.3,"c":75.9,"i":52.8,"im":67.8,"score":66.7,"lvl":4,"cycle":2},{"a":71.8,"ap":70.9,"c":78.6,"i":57.4,"im":60.9,"score":67.9,"lvl":4,"cycle":3}]},{"id":"T209","biz":"지원/R&D/SCM","honbu":"인사·조직문화","dept":"HR전략","name":"HR전략 1팀","n":30,"cycles":[{"a":56.1,"ap":48.1,"c":19.2,"i":19.6,"im":62.6,"score":41.1,"lvl":2,"cycle":0},{"a":59.9,"ap":45.1,"c":36.1,"i":25.9,"im":65.7,"score":46.6,"lvl":3,"cycle":1},{"a":60.0,"ap":50.6,"c":47.5,"i":38.6,"im":58.4,"score":51.0,"lvl":3,"cycle":2},{"a":62.3,"ap":56.3,"c":56.8,"i":51.9,"im":60.1,"score":57.5,"lvl":3,"cycle":3}]},{"id":"T210","biz":"지원/R&D/SCM","honbu":"인사·조직문화","dept":"인재개발","name":"인재개발 1팀","n":25,"cycles":[{"a":46.7,"ap":43.4,"c":56.2,"i":20.4,"im":58.5,"score":45.0,"lvl":3,"cycle":0},{"a":51.8,"ap":57.4,"c":60.3,"i":14.3,"im":61.6,"score":49.1,"lvl":3,"cycle":1},{"a":59.7,"ap":51.3,"c":56.1,"i":27.2,"im":65.9,"score":52.0,"lvl":3,"cycle":2},{"a":62.2,"ap":41.5,"c":58.7,"i":44.1,"im":60.6,"score":53.4,"lvl":3,"cycle":3}]},{"id":"T211","biz":"지원/R&D/SCM","honbu":"인사·조직문화","dept":"조직문화","name":"조직문화 1팀","n":20,"cycles":[{"a":49.9,"ap":41.2,"c":48.3,"i":28.1,"im":61.1,"score":45.7,"lvl":3,"cycle":0},{"a":52.7,"ap":54.3,"c":55.7,"i":40.3,"im":66.5,"score":53.9,"lvl":3,"cycle":1},{"a":61.2,"ap":57.3,"c":61.5,"i":50.3,"im":75.9,"score":61.2,"lvl":4,"cycle":2},{"a":54.1,"ap":50.2,"c":60.5,"i":59.4,"im":67.8,"score":58.4,"lvl":3,"cycle":3}]},{"id":"T212","biz":"지원/R&D/SCM","honbu":"인사·조직문화","dept":"HR운영","name":"HR운영 1팀","n":20,"cycles":[{"a":54.3,"ap":44.7,"c":67.9,"i":20.5,"im":63.5,"score":50.2,"lvl":3,"cycle":0},{"a":55.1,"ap":53.0,"c":67.6,"i":32.4,"im":66.7,"score":55.0,"lvl":3,"cycle":1},{"a":61.5,"ap":47.5,"c":70.9,"i":29.6,"im":69.2,"score":55.7,"lvl":3,"cycle":2},{"a":66.2,"ap":61.8,"c":73.8,"i":50.2,"im":72.4,"score":64.9,"lvl":4,"cycle":3}]},{"id":"T213","biz":"지원/R&D/SCM","honbu":"법무·준법·ESG","dept":"법무","name":"법무 1팀","n":30,"cycles":[{"a":50.0,"ap":40.3,"c":59.6,"i":20.3,"im":57.1,"score":45.5,"lvl":3,"cycle":0},{"a":55.4,"ap":47.7,"c":68.5,"i":29.2,"im":61.9,"score":52.6,"lvl":3,"cycle":1},{"a":59.2,"ap":56.6,"c":70.6,"i":23.3,"im":66.7,"score":55.3,"lvl":3,"cycle":2},{"a":62.5,"ap":64.7,"c":66.4,"i":41.3,"im":66.0,"score":60.2,"lvl":3,"cycle":3}]},{"id":"T214","biz":"지원/R&D/SCM","honbu":"법무·준법·ESG","dept":"준법·감사","name":"준법·감사 1팀","n":24,"cycles":[{"a":48.9,"ap":38.4,"c":50.4,"i":19.3,"im":57.7,"score":43.0,"lvl":3,"cycle":0},{"a":58.2,"ap":43.8,"c":53.3,"i":14.8,"im":65.0,"score":47.0,"lvl":3,"cycle":1},{"a":62.4,"ap":54.6,"c":60.8,"i":33.2,"im":63.3,"score":54.8,"lvl":3,"cycle":2},{"a":68.2,"ap":46.7,"c":51.2,"i":47.3,"im":64.1,"score":55.5,"lvl":3,"cycle":3}]},{"id":"T215","biz":"지원/R&D/SCM","honbu":"법무·준법·ESG","dept":"지속가능경영","name":"지속가능경영 1팀","n":30,"cycles":[{"a":46.9,"ap":39.6,"c":40.8,"i":20.9,"im":56.0,"score":40.8,"lvl":3,"cycle":0},{"a":52.7,"ap":49.1,"c":35.4,"i":32.0,"im":62.3,"score":46.3,"lvl":3,"cycle":1},{"a":59.8,"ap":58.8,"c":52.7,"i":42.4,"im":66.5,"score":56.0,"lvl":3,"cycle":2},{"a":64.2,"ap":59.6,"c":62.6,"i":51.3,"im":61.6,"score":59.8,"lvl":3,"cycle":3}]}],"nCycles":4};
+</script>
+<script>
+(function(){
+"use strict";
+
+const LEVELS = [
+  { n:1, key:"desert", icon:"🏜️", name:"Desert", nameKr:"사막", color:"var(--l1)",
+    def:"AI 활용 기반이 형성되지 않은 단계",
+    state:"AI 사용 구성원이 적고 실제 업무 적용도 낮으며, 팀 차원의 AI 활용 경험이나 공통된 활용 방식이 거의 없습니다.",
+    condRule:"별도 조건 없음", condWhy:"종합점수 20점 미만이면 그대로 Desert로 판정합니다." },
+  { n:2, key:"seed", icon:"🌱", name:"Seed", nameKr:"씨앗", color:"var(--l2)",
+    def:"개인 단위의 AI 활용이 시작되는 단계",
+    state:"일부 구성원이 AI를 사용하기 시작하지만 활용이 개인의 관심이나 역량에 의존하며, 팀 전체로 확산되지는 않습니다.",
+    condRule:"AI Application ≥ 25점", condWhy:"로그인만 하고 실제 업무에 적용하지 않는다면 Seed로 인정하지 않고 Desert에 머무릅니다." },
+  { n:3, key:"sprout", icon:"🌿", name:"Sprout", nameKr:"새싹", color:"var(--l3)",
+    def:"AI 활용이 팀 내 여러 구성원과 업무로 확산되는 단계",
+    state:"여러 구성원이 실제 업무에 AI를 활용하고, AI 활용 경험·사례·노하우가 팀 내에서 공유되기 시작합니다.",
+    condRule:"AI Application ≥ 25점 + AI Collaboration ≥ 30점", condWhy:"업무 적용은 있어도 경험·노하우가 팀 안에서 공유되지 않는다면 Sprout으로 인정하지 않고 Seed에 머무릅니다." },
+  { n:4, key:"forest", icon:"🌳", name:"Forest", nameKr:"숲", color:"var(--l4)",
+    def:"AI가 팀의 주요 업무와 협업 방식에 내재화되는 단계",
+    state:"AI 활용이 일회성 시도가 아니라 반복적으로 이루어지며, 주요 업무 프로세스와 협업 과정에 AI가 자연스럽게 연결됩니다.",
+    condRule:"AI Application ≥ 25점 + AI Collaboration ≥ 30점 + AI Integration ≥ 50점", condWhy:"공유는 활발해도 실제 업무 프로세스에 AI가 연결되어 있지 않다면 Forest로 인정하지 않고 Sprout에 머무릅니다." },
+  { n:5, key:"oasis", icon:"🏝️", name:"Oasis", nameKr:"오아시스", color:"var(--l5)",
+    def:"AI가 팀의 업무문화로 정착된 단계",
+    state:"AI 활용이 구성원의 자연스러운 업무 방식으로 자리 잡고, 구성원들이 AI를 활용해 기존 업무를 지속적으로 개선·재설계합니다.",
+    condRule:"AI Application ≥ 25점 + AI Collaboration ≥ 30점 + AI Integration ≥ 50점 + AI Improvement ≥ 70점", condWhy:"업무에 내재화되어 있어도 지속적인 개선·재설계 시도가 없다면 Oasis로 인정하지 않고 Forest에 머무릅니다." },
+];
+
+const AREAS = [
+  { k:"a", label:"AI Adoption", desc:"팀 구성원의 AI 사용률, 지속 사용률, 사용 빈도",
+    source:"Adoption_Log", sourceCols:["활성일수","지속사용주(8주)","월간로그인"],
+    lines:["usage = min(활성일수 ÷ 20, 1) × 100","persist = min(지속사용주(8주) ÷ 8, 1) × 100","freq = min(월간로그인 ÷ 25, 1) × 100","개인 점수 = (usage + persist + freq) ÷ 3","팀 AI Adoption = 개인 점수의 팀 평균"]},
+  { k:"ap", label:"AI Application", desc:"실제 업무에서의 AI 활용률 및 업무 적용 범위",
+    source:"Adoption_Log", sourceCols:["AI활용업무비율(%)"],
+    lines:["AI활용업무비율 = AI활용업무 ÷ 전체담당업무 × 100","팀 AI Application = AI활용업무비율의 팀 평균"]},
+  { k:"c", label:"AI Collaboration", desc:"AI 활용 경험·사례·Prompt·Workflow 공유 및 동료 간 지원",
+    source:"Collaboration_Log", sourceCols:["AI경험공유","노하우자산등록","자산재사용","동료페어학습","공동Workflow표준화"],
+    lines:["share = min(AI경험공유 ÷ 10, 1) × 100","asset = min(노하우자산등록 ÷ 6, 1) × 100","reuse = min(자산재사용 ÷ 6, 1) × 100","peer = min(동료페어학습 ÷ 4, 1) × 100","표준화 보너스 = 공동Workflow표준화 '있음' 이면 +10","팀 AI Collaboration = min((share+asset+reuse+peer)÷4 + 보너스, 100)"]},
+  { k:"i", label:"AI Integration", desc:"주요 업무 및 협업 과정에서 AI가 반복적으로 활용되는 정도",
+    source:"Workflow_Meta", sourceCols:["AI초안비율(%)","AI회의록비율(%)","AI ActionItem비율(%)","AI검토후제출비율(%)","표준프로세스AI단계"],
+    lines:["표준화율 = 표준프로세스AI단계 '포함' 워크플로 비율 × 100","팀 AI Integration = (AI초안비율 + AI회의록비율","  + AI ActionItem비율 + AI검토후제출비율 + 표준화율) ÷ 5"]},
+  { k:"im", label:"AI Improvement", desc:"AI를 활용한 업무 개선·재설계 및 새로운 활용 방식의 지속적 시도",
+    source:"Pulse_Check", sourceCols:["Q6","Q42"],
+    lines:["Q6 = \"AI 사용 전후로 시간·품질이 좋아진 것을 체감한다\" (1~5)","Q42 = \"AI 활용으로 실제 업무시간이 줄었다고 느낀다\" (1~5)","개인 점수 = (Q6 + Q42) ÷ 2 × 20","팀 AI Improvement = 응답자 개인 점수의 팀 평균"]},
+];
+
+const BANDS = [
+  ["0 – 19","🏜️ Desert","AI 활용 기반 부족"],
+  ["20 – 39","🌱 Seed","개인 단위 활용 시작"],
+  ["40 – 59","🌿 Sprout","팀 내 활용 확산"],
+  ["60 – 79","🌳 Forest","업무·협업 내재화"],
+  ["80 – 100","🏝️ Oasis","업무문화 정착·지속적 개선"],
+];
+
+const MENU_LABELS = { home:"전사 현황", levels:"5단계 정의", formula:"산정 방식 · 산출 수식", bands:"점수 구간 · 핵심 조건" };
+const CYCLE_LABEL = (i) => i===0 ? "최초 진단" : `${i}차 재측정`;
+
+function levelColor(n){ return LEVELS[n-1].color; }
+function levelIcon(n){ return LEVELS[n-1].icon; }
+function levelName(n){ return LEVELS[n-1].name; }
+function last(cycles){ return cycles[cycles.length-1]; }
+function first(cycles){ return cycles[0]; }
+function fmt(n){ return (Math.round(n*10)/10).toFixed(1); }
+function fmtDelta(n){ const v = Math.round(n*10)/10; return (v>=0?'+':'') + v.toFixed(1); }
+
+/* ---------- Sparkline ---------- */
+function sparkline(scores, {w=90, h=28, pad=4} = {}){
+  const min = Math.min(...scores), max = Math.max(...scores);
+  const range = (max-min) || 1;
+  const n = scores.length;
+  const pts = scores.map((s,i) => {
+    const x = pad + (i/(n-1)) * (w-pad*2);
+    const y = h-pad - ((s-min)/range) * (h-pad*2);
+    return [x,y];
+  });
+  const path = pts.map((p,i) => (i===0?'M':'L')+p[0].toFixed(1)+','+p[1].toFixed(1)).join(' ');
+  const dots = pts.map((p,i) => {
+    const isLast = i===n-1, isFirst = i===0;
+    const cls = isLast ? 'spark-dot-cur' : (isFirst ? 'spark-dot-start' : '');
+    const r = isLast ? 3 : 2;
+    return cls ? `<circle cx="${p[0].toFixed(1)}" cy="${p[1].toFixed(1)}" r="${r}" class="${cls}"/>` : '';
+  }).join('');
+  return `<svg width="${w}" height="${h}" viewBox="0 0 ${w} ${h}" role="img" aria-label="Cycle 0부터 최신까지 ${scores.join(', ')}점 추이">
+    <path d="${path}" fill="none" stroke="var(--brand)" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" opacity="0.85"/>
+    ${dots}
+  </svg>`;
+}
+
+/* ---------- Panel navigation ---------- */
+function gotoPanel(target){
+  document.querySelectorAll('.panel').forEach(p => {
+    const active = p.id === 'panel-'+target;
+    p.classList.toggle('is-active', active);
+    p.hidden = !active;
+  });
+  window.scrollTo(0,0);
+  history.replaceState(null, '', '#'+target);
+}
+
+/* ---------- Slide-in menu ---------- */
+function setupMenu(){
+  const overlay = document.getElementById('menuOverlay');
+  const panel = document.getElementById('menuPanel');
+  const openBtn = document.getElementById('menuBtn');
+  const closeBtn = document.getElementById('menuCloseBtn');
+  function open(){ overlay.hidden=false; requestAnimationFrame(()=>{ overlay.classList.add('is-open'); panel.classList.add('is-open'); }); openBtn.setAttribute('aria-expanded','true'); panel.setAttribute('aria-hidden','false'); }
+  function close(){ overlay.classList.remove('is-open'); panel.classList.remove('is-open'); openBtn.setAttribute('aria-expanded','false'); panel.setAttribute('aria-hidden','true'); setTimeout(()=>{ overlay.hidden=true; },300); }
+  openBtn.addEventListener('click', open);
+  closeBtn.addEventListener('click', close);
+  overlay.addEventListener('click', close);
+  document.querySelectorAll('.menu-item').forEach(item => item.addEventListener('click', () => { gotoPanel(item.dataset.panel); close(); }));
+  document.querySelector('.word-link').addEventListener('click', (e) => { e.preventDefault(); gotoPanel('home'); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
+  const initial = location.hash.replace('#','');
+  if(MENU_LABELS[initial]) gotoPanel(initial);
+}
+
+/* ---------- Global search ---------- */
+function setupSearch(){
+  const btn = document.getElementById('searchBtn');
+  const searchPanel = document.getElementById('searchPanel');
+  const input = document.getElementById('globalSearch');
+  const results = document.getElementById('searchResults');
+  function open(){ searchPanel.hidden=false; btn.setAttribute('aria-expanded','true'); input.focus(); }
+  function close(){ searchPanel.hidden=true; btn.setAttribute('aria-expanded','false'); input.value=''; results.innerHTML=''; }
+  btn.addEventListener('click', () => searchPanel.hidden ? open() : close());
+  document.addEventListener('click', (e) => { if(!searchPanel.hidden && !searchPanel.contains(e.target) && e.target!==btn && !btn.contains(e.target)) close(); });
+  document.addEventListener('keydown', (e) => { if(e.key === 'Escape') close(); });
+  input.addEventListener('input', () => {
+    const q = input.value.trim().toLowerCase();
+    if(!q){ results.innerHTML=''; return; }
+    const sectionHits = Object.entries(MENU_LABELS).filter(([k,v]) => v.toLowerCase().includes(q));
+    const teamHits = OASIS_DATA.teams.filter(t => (t.honbu+t.dept+t.name).toLowerCase().includes(q)).slice(0,8);
+    if(sectionHits.length===0 && teamHits.length===0){ results.innerHTML = '<div class="search-empty">검색 결과가 없습니다.</div>'; return; }
+    let html = '';
+    sectionHits.forEach(([k,v]) => { html += `<div class="search-result-item" data-panel="${k}"><span>${v}</span><span class="sr-type">메뉴</span></div>`; });
+    teamHits.forEach(t => { html += `<div class="search-result-item" data-team="${t.name}"><span>${t.name}<br><small style="color:var(--ink-faint)">${t.honbu} · ${t.dept}</small></span><span class="sr-type">팀</span></div>`; });
+    results.innerHTML = html;
+    results.querySelectorAll('.search-result-item').forEach(el => {
+      el.addEventListener('click', () => {
+        if(el.dataset.panel){ gotoPanel(el.dataset.panel); }
+        else if(el.dataset.team){
+          gotoPanel('home');
+          document.getElementById('searchInput').value = el.dataset.team;
+          currentPage = 1;
+          renderTable();
+          document.getElementById('teamTable').scrollIntoView({behavior:'smooth', block:'center'});
+        }
+        close();
+      });
+    });
+  });
+}
+
+/* ---------- Level rows ---------- */
+function renderLevels(){
+  document.getElementById('levelRows').innerHTML = LEVELS.map(l => `
+    <div class="level-row">
+      <div class="lr-icon">${l.icon}</div>
+      <div class="lr-name">Level ${l.n} · ${l.name}<small>${l.nameKr}</small></div>
+      <div><p class="lr-def"><span class="lr-badge" style="background:${l.color}"></span>${l.def}</p><p class="lr-state">${l.state}</p></div>
+    </div>`).join('');
+}
+
+/* ---------- Area cards + formulas ---------- */
+function renderFormula(){
+  document.getElementById('areaCards').innerHTML = AREAS.map((a,i) => `
+    <div class="area-card"><div class="ac-num">0${i+1}</div><h4>${a.label}</h4><p>${a.desc}</p></div>`).join('');
+  document.getElementById('formulaDetail').innerHTML = AREAS.map((a,i) => `
+    <div class="formula-row">
+      <div class="fr-head"><span class="fr-num">0${i+1}</span><span class="fr-name">${a.label}</span><span class="fr-source">${a.source} · ${a.sourceCols.join(', ')}</span></div>
+      <pre class="fr-code">${a.lines.join('\n')}</pre>
+    </div>`).join('');
+}
+
+/* ---------- Bands + per-level conditions ---------- */
+function renderBands(){
+  document.getElementById('bandTable').innerHTML = BANDS.map(b => `<tr><td>${b[0]}점</td><td>${b[1]}</td><td>${b[2]}</td></tr>`).join('');
+  document.getElementById('condRows').innerHTML = LEVELS.map(l => `
+    <div class="cond-row">
+      <div class="cr-lvl"><span class="cr-icon">${l.icon}</span><span class="cr-name">Level ${l.n} · ${l.name}<small>${l.nameKr}</small></span></div>
+      <div><p class="cr-rule">${l.condRule}</p><p class="cr-why">${l.condWhy}</p></div>
+    </div>`).join('');
+}
+
+/* ---------- Growth path — all cycle points on one line ---------- */
+function renderGrowthPath(){
+  const el = document.getElementById('growthPath');
+  const cycles = OASIS_DATA.company.cycles;
+  const PAD = 46, W = 1116, H = 110;
+  const innerW = W - PAD*2;
+  const pts5 = [[PAD, H-24],[PAD+innerW*0.25, H-38],[PAD+innerW*0.5, H-54],[PAD+innerW*0.75, H-72],[PAD+innerW, H-90]];
+  const path = `M ${pts5[0][0]} ${pts5[0][1]} S ${pts5[1][0]} ${pts5[1][1]}, ${pts5[1][0]} ${pts5[1][1]} S ${pts5[2][0]} ${pts5[2][1]}, ${pts5[2][0]} ${pts5[2][1]} S ${pts5[3][0]} ${pts5[3][1]}, ${pts5[3][0]} ${pts5[3][1]} S ${pts5[4][0]} ${pts5[4][1]}, ${pts5[4][0]} ${pts5[4][1]}`;
+  function ptAt(t){ const seg=t*4; const i=Math.min(3,Math.floor(seg)); const lt=seg-i; const p0=pts5[i],p1=pts5[i+1]; return [p0[0]+(p1[0]-p0[0])*lt, p0[1]+(p1[1]-p0[1])*lt]; }
+  const labels = LEVELS.map((l,i)=>{
+    const [x,y] = ptAt(i/4);
+    const anchor = i===0 ? 'start' : (i===4 ? 'end' : 'middle');
+    return `<g transform="translate(${x},${y})"><circle r="4" fill="${l.color}" stroke="var(--surface)" stroke-width="2"/><text x="0" y="22" text-anchor="${anchor}" font-size="11" fill="var(--ink-faint)" font-family="var(--sans)">${l.name}</text></g>`;
+  }).join('');
+
+  const cyclePts = cycles.map(c => {
+    const t = Math.min(98, Math.max(2, c.score))/100;
+    return { ...c, pt: ptAt(t) };
+  });
+  const connector = cyclePts.map((c,i) => (i===0?'M':'L')+c.pt[0].toFixed(1)+','+c.pt[1].toFixed(1)).join(' ');
+  const markers = cyclePts.map((c,i) => {
+    const isLast = i === cyclePts.length-1;
+    const anchor = c.pt[0]/W < 0.12 ? 'start' : (c.pt[0]/W > 0.88 ? 'end' : 'middle');
+    if(isLast){
+      return `<g transform="translate(${c.pt[0]},${c.pt[1]})">
+        <circle r="8" fill="var(--brand-deep)" stroke="var(--surface)" stroke-width="3"/>
+        <text x="0" y="-16" text-anchor="${anchor}" font-size="12" font-weight="600" fill="var(--brand-deep)" font-family="var(--sans)">${CYCLE_LABEL(i)} · ${fmt(c.score)}점</text>
+      </g>`;
+    }
+    return `<g transform="translate(${c.pt[0]},${c.pt[1]})">
+      <circle r="5" fill="var(--surface)" stroke="var(--ink-faint)" stroke-width="2"/>
+      <text x="0" y="-11" text-anchor="${anchor}" font-size="10" fill="var(--ink-faint)" font-family="var(--sans)">C${i}</text>
+    </g>`;
+  }).join('');
+
+  el.innerHTML = `
+    <svg viewBox="0 0 ${W} ${H+26}" width="100%" role="img" aria-label="Desert부터 Oasis까지의 성장 경로. Cycle 0부터 최신 Cycle까지의 위치가 표시됩니다.">
+      <path d="${path}" fill="none" stroke="var(--line)" stroke-width="2"/>
+      ${labels}
+      <path d="${connector}" fill="none" stroke="var(--brand)" stroke-width="1.5" stroke-dasharray="3 3" opacity="0.55"/>
+      ${markers}
+    </svg>`;
+}
+
+/* ---------- Company badge ---------- */
+function renderCompany(){
+  const cycles = OASIS_DATA.company.cycles;
+  const cur = last(cycles), start = first(cycles);
+  document.getElementById('companyIcon').textContent = levelIcon(cur.lvl);
+  document.getElementById('companyLevelName').textContent = `Level ${cur.lvl} · ${levelName(cur.lvl)}`;
+  document.getElementById('companyScore').textContent = fmt(cur.score);
+  document.getElementById('companyN').textContent = OASIS_DATA.company.n.toLocaleString();
+  document.getElementById('companyTeams').textContent = OASIS_DATA.company.teams;
+  document.getElementById('companyCycleCount').textContent = cycles.length - 1;
+
+  const d = cur.score - start.score;
+  const deltaEl = document.getElementById('companyDelta');
+  deltaEl.textContent = ` (진단 대비 ${fmtDelta(d)})`;
+  deltaEl.className = 'hb-delta ' + (d>=0?'pos':'neg');
+
+  document.getElementById('companyLevelChange').innerHTML = start.lvl === cur.lvl
+    ? `Level 유지 — ${levelIcon(start.lvl)} ${levelName(start.lvl)}`
+    : `Level 상승 — ${levelIcon(start.lvl)} ${levelName(start.lvl)} → ${levelIcon(cur.lvl)} ${levelName(cur.lvl)}`;
+
+  document.getElementById('companySpark').innerHTML = sparkline(cycles.map(c=>c.score), {w:120, h:40});
+
+  document.getElementById('companyAreas').innerHTML = AREAS.map(ar => {
+    const sv = start[ar.k], cv = cur[ar.k];
+    const ad = +(cv-sv).toFixed(1);
+    return `<div class="ha-item"><div class="ha-label">${ar.label.replace(' ', '<br>')}</div>
+      <div class="ha-val-row"><span class="ha-val">${fmt(cv)}</span>
+      <span class="ha-delta" style="color:${ad>=0?'var(--brand)':'#A6543F'}">${fmtDelta(ad)}</span></div>
+    </div>`;
+  }).join('');
+}
+
+/* ---------- Distribution — one row per cycle ---------- */
+function renderDistribution(){
+  const nCycles = OASIS_DATA.nCycles;
+  const total = OASIS_DATA.teams.length;
+  function countsFor(cIdx){
+    const c = [0,0,0,0,0];
+    OASIS_DATA.teams.forEach(t => c[t.cycles[cIdx].lvl-1]++);
+    return c;
+  }
+  const allCounts = [];
+  let rows = '';
+  for(let ci=0; ci<nCycles; ci++){
+    const c = countsFor(ci);
+    allCounts.push(c);
+    const bar = LEVELS.map((l,i) => {
+      const pct = c[i]/total*100;
+      if(pct<=0) return '';
+      return `<div class="dist-seg" style="width:${pct}%;background:${l.color}" title="${l.name} ${c[i]}개 팀">${pct>=6?c[i]:''}</div>`;
+    }).join('');
+    rows += `<div class="dist-compare-row"><span class="dist-compare-label">${CYCLE_LABEL(ci)}</span><div class="dist-bar">${bar}</div></div>`;
+  }
+  document.getElementById('distCompare').innerHTML = rows;
+  document.getElementById('distLegend').innerHTML = LEVELS.map((l,i) =>
+    `<span><i style="background:${l.color}"></i>${l.name} — ${allCounts.map(c=>c[i]).join(' → ')}개 팀</span>`
+  ).join('');
+}
+
+/* ---------- Honbu ranking (latest score + sparkline) ---------- */
+function renderHonbu(){
+  const wrap = document.getElementById('honbuList');
+  wrap.innerHTML = OASIS_DATA.honbu.map(h => {
+    const cur = last(h.cycles), start = first(h.cycles);
+    const d = cur.score-start.score;
+    return `
+    <div class="h-row">
+      <div class="h-name">${h.honbu}<small>${h.teams}개 팀 · ${h.n.toLocaleString()}명</small></div>
+      <div class="h-bar-track"><div class="h-bar-fill" style="width:${cur.score.toFixed(1)}%;background:${levelColor(cur.lvl)}"></div></div>
+      <div class="spark-cell">${sparkline(h.cycles.map(c=>c.score))}</div>
+      <div class="h-score-col">${fmt(cur.score)}점 <span class="h-delta ${d>=0?'pos':'neg'}">${fmtDelta(d)}</span></div>
+      <span class="h-lvl" style="background:${levelColor(cur.lvl)}">${levelIcon(cur.lvl)} ${levelName(cur.lvl)}</span>
+    </div>`;
+  }).join('');
+}
+
+/* ---------- Top / most-improved spotlight ---------- */
+function renderSpotlight(){
+  const sorted = [...OASIS_DATA.teams].sort((x,y)=>last(y.cycles).score - last(x.cycles).score);
+  function topCard(t){
+    const s = last(t.cycles);
+    return `<div class="spot-card"><div class="sc-name">${t.name}<small>${t.honbu} · ${t.dept}</small></div><div class="sc-score">${fmt(s.score)}점</div><div class="lvl-chip" style="background:${levelColor(s.lvl)}">${levelIcon(s.lvl)} L${s.lvl}</div></div>`;
+  }
+  document.getElementById('topTeams').innerHTML = sorted.slice(0,5).map(topCard).join('');
+
+  const improved = [...OASIS_DATA.teams].sort((x,y)=> (last(y.cycles).score-first(y.cycles).score) - (last(x.cycles).score-first(x.cycles).score)).slice(0,5);
+  function impCard(t){
+    const s = last(t.cycles), s0 = first(t.cycles);
+    const d = s.score - s0.score;
+    return `<div class="spot-card"><div class="sc-name">${t.name}<small>${t.honbu} · ${t.dept}</small></div><div class="sc-score td-delta pos">${fmtDelta(d)}</div><div class="lvl-chip" style="background:${levelColor(s.lvl)}">${levelIcon(s0.lvl)}→${levelIcon(s.lvl)}</div></div>`;
+  }
+  document.getElementById('bottomTeams').innerHTML = improved.map(impCard).join('');
+}
+
+/* ---------- Team table ---------- */
+let sortKey = 'score', sortDir = -1;
+let currentPage = 1;
+const PAGE_SIZE = 10;
+
+function renderTable(){
+  const q = document.getElementById('searchInput').value.trim().toLowerCase();
+  const honbuF = document.getElementById('honbuFilter').value;
+  const lvlF = document.getElementById('levelFilter').value;
+
+  let rows = OASIS_DATA.teams.map(t => {
+    const cur = last(t.cycles), s0 = first(t.cycles);
+    return { ...t, score: cur.score, lvl: cur.lvl, delta: cur.score-s0.score };
+  }).filter(t => {
+    if(honbuF && t.honbu !== honbuF) return false;
+    if(lvlF && String(t.lvl) !== lvlF) return false;
+    if(q && !(t.honbu+t.dept+t.name).toLowerCase().includes(q)) return false;
+    return true;
+  });
+  rows.sort((x,y)=>{
+    const xv=x[sortKey], yv=y[sortKey];
+    if(typeof xv === 'string') return sortDir*xv.localeCompare(yv);
+    return sortDir*(xv-yv);
+  });
+
+  const totalPages = Math.max(1, Math.ceil(rows.length / PAGE_SIZE));
+  if(currentPage > totalPages) currentPage = totalPages;
+  if(currentPage < 1) currentPage = 1;
+  const startIdx = (currentPage-1) * PAGE_SIZE;
+  const pageRows = rows.slice(startIdx, startIdx + PAGE_SIZE);
+
+  document.getElementById('teamTbody').innerHTML = pageRows.map(t => `
+    <tr>
+      <td>${t.honbu}</td><td>${t.name}</td><td>${t.n}</td>
+      <td>${sparkline(t.cycles.map(c=>c.score), {w:76, h:24})}</td>
+      <td><strong>${fmt(t.score)}</strong></td>
+      <td><span class="lvl-chip" style="background:${levelColor(t.lvl)}">${levelIcon(t.lvl)} L${t.lvl}</span></td>
+      <td class="td-delta ${t.delta>=0?'pos':'neg'}">${fmtDelta(t.delta)}</td>
+    </tr>
+  `).join('');
+
+  const shownFrom = rows.length === 0 ? 0 : startIdx+1;
+  const shownTo = Math.min(startIdx+PAGE_SIZE, rows.length);
+  document.getElementById('tableCount').textContent = `${shownFrom}–${shownTo}번째 표시 (검색결과 ${rows.length}개 / 전체 ${OASIS_DATA.teams.length}개) · 진단 이후 ${OASIS_DATA.nCycles-1}회 재측정 누적`;
+
+  renderPagination(totalPages);
+}
+
+function renderPagination(totalPages){
+  const el = document.getElementById('pagination');
+  if(totalPages <= 1){ el.innerHTML = ''; return; }
+
+  function pageBtn(p, label, opts={}){
+    const { active=false, disabled=false } = opts;
+    return `<button class="page-btn${active?' is-active':''}" data-page="${p}" ${disabled?'disabled':''}>${label}</button>`;
+  }
+
+  let pages = [];
+  pages.push(pageBtn(currentPage-1, '‹', { disabled: currentPage===1 }));
+
+  const windowSize = 1;
+  const range = [];
+  for(let p=1; p<=totalPages; p++){
+    if(p===1 || p===totalPages || Math.abs(p-currentPage)<=windowSize) range.push(p);
+  }
+  let prev = 0;
+  range.forEach(p => {
+    if(prev && p-prev>1) pages.push('<span class="page-ellipsis">…</span>');
+    pages.push(pageBtn(p, p, { active: p===currentPage }));
+    prev = p;
+  });
+
+  pages.push(pageBtn(currentPage+1, '›', { disabled: currentPage===totalPages }));
+  el.innerHTML = pages.join('');
+
+  el.querySelectorAll('.page-btn:not(:disabled)').forEach(btn => {
+    btn.addEventListener('click', () => {
+      currentPage = +btn.dataset.page;
+      renderTable();
+      document.getElementById('teamTable').scrollIntoView({behavior:'smooth', block:'start'});
+    });
+  });
+}
+
+function setupControls(){
+  const honbuSel = document.getElementById('honbuFilter');
+  [...new Set(OASIS_DATA.teams.map(t=>t.honbu))].forEach(h => { const o=document.createElement('option'); o.value=h; o.textContent=h; honbuSel.appendChild(o); });
+  const lvlSel = document.getElementById('levelFilter');
+  LEVELS.forEach(l => { const o=document.createElement('option'); o.value=l.n; o.textContent=`Level ${l.n} · ${l.name}`; lvlSel.appendChild(o); });
+  document.getElementById('searchInput').addEventListener('input', () => { currentPage = 1; renderTable(); });
+  honbuSel.addEventListener('change', () => { currentPage = 1; renderTable(); });
+  lvlSel.addEventListener('change', () => { currentPage = 1; renderTable(); });
+  document.querySelectorAll('#teamTable th').forEach(th => {
+    th.addEventListener('click', () => {
+      const k = th.dataset.k;
+      if(k === 'trend') return;
+      if(sortKey === k) sortDir *= -1; else { sortKey = k; sortDir = -1; }
+      currentPage = 1;
+      renderTable();
+    });
+  });
+}
+
+document.addEventListener('DOMContentLoaded', () => {
+  setupMenu();
+  setupSearch();
+  renderLevels();
+  renderFormula();
+  renderBands();
+  renderCompany();
+  renderGrowthPath();
+  renderDistribution();
+  renderHonbu();
+  renderSpotlight();
+  setupControls();
+  renderTable();
+});
+})();
+
+</script>
+
+
+</body></html>
